@@ -1,21 +1,27 @@
 
 
-## Mostrar el favicon (icono de pestaña) con el logo de Calibots Kairos
+## Actualizar logo y favicon con la nueva imagen (fondo transparente)
 
-### Problema
-El favicon esta configurado en `index.html` pero apunta a un archivo `favicon.ico` generico. Para que aparezca el logo del equipo en la pestana del navegador, se necesita usar la imagen del logo.
+El usuario quiere reemplazar el logo actual (`logo.png`) con la nueva imagen que tiene fondo transparente. Este logo se usa en tres lugares:
 
-### Solucion
-Actualizar `index.html` para usar el archivo `logo.png` como favicon, ya que este si contiene el logo de Calibots Kairos. Tambien se anadira soporte para favicon tipo PNG (mejor compatibilidad con navegadores modernos).
+1. **Favicon** (icono de pestana del navegador) - referenciado en `index.html`
+2. **Navbar** - logo en la barra de navegacion
+3. **Footer** - logo en el pie de pagina
+4. **Hero de la pagina de inicio** - logo grande animado
 
 ### Cambios necesarios
 
-**index.html** - Reemplazar la linea del favicon:
-- De: `<link rel="icon" type="image/x-icon" href="/favicon.ico" />`
-- A: `<link rel="icon" type="image/png" href="/logo.png" />`
+**Paso 1 - Copiar la imagen al proyecto:**
+- Copiar `user-uploads://CALIBOTSLOGO1_20260216_142201_0000.png` a `public/logo.png` (reemplazando el actual)
 
-Esto hara que el logo de Calibots Kairos aparezca como icono en la pestana del navegador.
+Esto automaticamente actualiza todos los lugares donde se usa `/logo.png`:
+- `index.html` (favicon)
+- `Navbar.tsx` (logo en navegacion)
+- `Footer.tsx` (logo en footer)
+- `Index.tsx` (hero)
 
-### Nota
-Para mejores resultados (icono nitido en todos los tamanos), se recomienda en el futuro generar un archivo `.ico` a partir del logo en tamanos 16x16, 32x32 y 48x48 pixeles. Pero usar el PNG funciona perfectamente en navegadores modernos.
+No se necesitan cambios en codigo, solo reemplazar el archivo.
 
+### Resultado
+- El nuevo logo con fondo transparente aparecera en la navegacion, hero, footer y como favicon
+- El fondo transparente se integrara mejor con el fondo beige del sitio
