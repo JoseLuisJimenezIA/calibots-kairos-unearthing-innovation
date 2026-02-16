@@ -1,27 +1,21 @@
 
 
-## Cambiar fondo base a beige
+## Mostrar el favicon (icono de pestaña) con el logo de Calibots Kairos
 
-### Análisis actual
-El fondo base se define a través del CSS variable `--background` en `src/index.css`:
-- **Light mode:** `--background: 40 30% 96%` (actualmente muy claro, casi blanco)
-- **Dark mode:** `--background: 0 0% 6%` (muy oscuro)
+### Problema
+El favicon esta configurado en `index.html` pero apunta a un archivo `favicon.ico` generico. Para que aparezca el logo del equipo en la pestana del navegador, se necesita usar la imagen del logo.
 
-Luego, en el `body` se aplica con `@apply bg-background`, que usa `background: hsl(var(--background))`.
+### Solucion
+Actualizar `index.html` para usar el archivo `logo.png` como favicon, ya que este si contiene el logo de Calibots Kairos. Tambien se anadira soporte para favicon tipo PNG (mejor compatibilidad con navegadores modernos).
 
-### Solución
-Cambiar la variable `--background` en light mode al color **sand/beige** de la paleta (`--sand: 40 30% 80%`), que corresponde a `#D4C5A0`.
+### Cambios necesarios
 
-**Cambios necesarios:**
-1. **src/index.css** – Línea 9:
-   - De: `--background: 40 30% 96%;`
-   - A: `--background: 40 30% 80%;` (usando los mismos valores que `--sand`)
-   
-   Esto hará que el fondo base sea beige en light mode sin afectar el dark mode.
+**index.html** - Reemplazar la linea del favicon:
+- De: `<link rel="icon" type="image/x-icon" href="/favicon.ico" />`
+- A: `<link rel="icon" type="image/png" href="/logo.png" />`
 
-### Resultado
-- Todas las páginas tendrán un fondo beige elegante y cálido
-- El color se alinea con la paleta de marca (sand/arena)
-- El dark mode se mantiene sin cambios
-- No requiere cambios en otros archivos
+Esto hara que el logo de Calibots Kairos aparezca como icono en la pestana del navegador.
+
+### Nota
+Para mejores resultados (icono nitido en todos los tamanos), se recomienda en el futuro generar un archivo `.ico` a partir del logo en tamanos 16x16, 32x32 y 48x48 pixeles. Pero usar el PNG funciona perfectamente en navegadores modernos.
 
