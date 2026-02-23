@@ -27,7 +27,7 @@ const Contacto = () => {
               <div><Label htmlFor="name">Nombre</Label><Input id="name" placeholder="Tu nombre" className="mt-1" /></div>
               <div><Label htmlFor="email">Correo electrónico</Label><Input id="email" type="email" placeholder="tu@correo.com" className="mt-1" /></div>
               <div><Label htmlFor="message">Mensaje</Label><Textarea id="message" placeholder="Escribe tu mensaje..." rows={5} className="mt-1" /></div>
-              <Button type="submit" className="bg-accent text-accent-foreground hover:bg-accent/90">Enviar mensaje</Button>
+              <Button type="submit" variant="secondary" className="font-bold">Enviar mensaje</Button>
             </form>
           </motion.div>
 
@@ -35,9 +35,9 @@ const Contacto = () => {
             <div>
               <h2 className="mb-4 font-heading text-xl font-bold">Información</h2>
               <ul className="space-y-4 text-muted-foreground">
-                <li className="flex items-start gap-3"><School className="mt-0.5 h-5 w-5 shrink-0 text-primary" /><span>Colegio Comfandi El Prado<br />Club de Robótica Calibots Kairos</span></li>
-                <li className="flex items-start gap-3"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" /><span>Ciudad, Colombia</span></li>
-                <li className="flex items-start gap-3"><Mail className="mt-0.5 h-5 w-5 shrink-0 text-primary" /><span>contacto@calibotskairos.com</span></li>
+                <li className="flex items-start gap-3"><School className="mt-0.5 h-5 w-5 shrink-0 text-secondary" /><span>Colegio Comfandi El Prado<br />Club de Robótica Calibots Kairos</span></li>
+                <li className="flex items-start gap-3"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-secondary" /><span>Ciudad, Colombia</span></li>
+                <li className="flex items-start gap-3"><Mail className="mt-0.5 h-5 w-5 shrink-0 text-secondary" /><span>contacto@calibotskairos.com</span></li>
               </ul>
             </div>
             <div>

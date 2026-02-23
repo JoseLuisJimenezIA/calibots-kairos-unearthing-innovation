@@ -61,10 +61,10 @@ const QuienesSomos = () => {
               <motion.div key={member.name} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i}>
                 <Card className="overflow-hidden border-none shadow-md">
                   <PhotoPlaceholder aspectRatio="portrait" className="rounded-none" />
-                  <CardContent className="p-5 text-center">
-                    <h3 className="font-heading font-bold">{member.name}</h3>
-                    <p className="text-sm text-muted-foreground">{member.role}</p>
-                  </CardContent>
+                   <CardContent className="p-5 text-center">
+                     <h3 className="font-heading font-bold">{member.name}</h3>
+                     <span className="mt-1 inline-block rounded-full bg-secondary/10 px-3 py-0.5 text-xs font-semibold text-secondary">{member.role}</span>
+                   </CardContent>
                 </Card>
               </motion.div>
             ))}
@@ -75,10 +75,10 @@ const QuienesSomos = () => {
       <section className="container py-16">
         <h2 className="mb-10 text-center font-heading text-2xl font-bold">Nuestro Recorrido</h2>
         <div className="relative mx-auto max-w-2xl">
-          <div className="absolute left-4 top-0 h-full w-0.5 bg-primary/20 md:left-1/2 md:-translate-x-1/2" />
+          <div className="absolute left-4 top-0 h-full w-0.5 bg-secondary/20 md:left-1/2 md:-translate-x-1/2" />
           {timeline.map((item, i) => (
             <motion.div key={item.phase} className="relative mb-10 pl-12 md:pl-0" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i}>
-              <div className="absolute left-2 top-1 h-5 w-5 rounded-full border-4 border-primary bg-background md:left-1/2 md:-translate-x-1/2" />
+              <div className="absolute left-2 top-1 h-5 w-5 rounded-full border-4 border-secondary bg-background md:left-1/2 md:-translate-x-1/2" />
               <div className={`md:w-5/12 ${i % 2 === 0 ? "md:mr-auto md:pr-8 md:text-right" : "md:ml-auto md:pl-8"}`}>
                 <h3 className="font-heading font-bold text-primary">{item.phase}</h3>
                 <p className="text-sm text-muted-foreground">{item.desc}</p>
@@ -94,7 +94,7 @@ const QuienesSomos = () => {
           <div className="flex flex-wrap justify-center gap-6">
             {values.map((v, i) => (
               <motion.div key={v.label} className="flex flex-col items-center gap-2" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i}>
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/20 text-primary"><v.icon className="h-8 w-8" /></div>
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary/20 text-secondary"><v.icon className="h-8 w-8" /></div>
                 <span className="text-sm font-medium">{v.label}</span>
               </motion.div>
             ))}
