@@ -1,18 +1,19 @@
 
 
-## Agregar patron de fosiles al fondo negro del Hero
+## Cambiar el fondo del Hero de negro a amarillo/mostaza
 
-El usuario quiere que el patron arqueologico de fosiles aparezca en la seccion hero (el fondo negro/oscuro que se ve de primero al entrar al sitio), no en el fondo general del sitio.
+### El problema
+La sección hero usa `bg-foreground` (negro). El usuario quiere que el fondo sea del color amarillo/mostaza del logo, no negro.
 
-### Que se hara
+### La solución
 
-**Archivo: `src/pages/Index.tsx`**
+**Archivo: `src/pages/Index.tsx`** (línea 16-17)
 
-Reemplazar el patron actual de cruces (`+`) en el hero por el patron de fosiles arqueologicos (amonites, huesos, hojas, huellas de dinosaurio), pero en color blanco con baja opacidad para que se vea sutil sobre el fondo negro.
+1. Cambiar `bg-foreground text-background` por un fondo amarillo/mostaza usando `bg-primary text-primary-foreground` (que es el color mostaza de la paleta, `43 78% 45%`)
+2. Subir la opacidad del patrón de fósiles de `0.08` a `0.15` para que se note más sobre el fondo mostaza
+3. Cambiar el color de los fósiles en el SVG de blanco a negro/marrón oscuro para que contrasten sobre el fondo amarillo
 
-Cambiar el `div` del patron de fondo dentro de la seccion hero (linea 19) para usar el SVG de fosiles en blanco en lugar del patron de cruces actual.
-
-### Detalles
-- El patron sera igual al que ya esta en el body pero con color blanco (`%23ffffff`) en vez de negro, para que contraste sobre el fondo oscuro del hero
-- Se mantendra la opacidad baja (~5-8%) para que sea sutil
-- No se necesitan dependencias nuevas
+### Resultado
+- El hero tendrá fondo amarillo/mostaza como el logo
+- El patrón de fósiles será visible en un tono más oscuro sobre el amarillo
+- El texto será blanco para buena legibilidad
