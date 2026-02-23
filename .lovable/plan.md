@@ -1,54 +1,56 @@
 
 
-## Mejorar la paleta de colores para mejor UI/UX
+## Aplicar la nueva paleta de colores terrosa
 
-### Problemas actuales
+Vamos a actualizar toda la paleta del sitio usando los 5 colores que compartiste, manteniendo la estructura actual pero con esta nueva identidad visual mas terrosa y arqueologica.
 
-1. **Todo se ve igual**: El fondo del sitio (`43 55% 75%` arena) y el hero usan practicamente el mismo color, no hay separacion visual
-2. **Poco contraste entre secciones**: Las cards (`43 40% 88%`) son muy similares al fondo, se pierden
-3. **Salto brusco al negro**: El footer y algunas secciones usan `bg-foreground` (negro puro), creando un contraste muy agresivo
-4. **Texto poco legible**: El `muted-foreground` (`0 0% 35%`) sobre el fondo arena no tiene suficiente contraste
+### Mapeo de colores
 
-### Solucion propuesta
+| Color Hex | HSL aproximado | Uso en el sitio |
+|-----------|---------------|-----------------|
+| `#D9C7B8` | `27 27% 79%` | **Background** - Fondo general del sitio (beige claro) |
+| `#402116` | `16 47% 17%` | **Foreground** - Texto principal, hero y footer (marron muy oscuro) |
+| `#734E20` | `33 57% 29%` | **Primary** - Color de marca principal, botones, acentos (dorado oscuro) |
+| `#733924` | `16 52% 30%` | **Accent** - Botones CTA, elementos de enfasis (rojo ladrillo) |
+| `#73473D` | `11 31% 35%` | **Muted-foreground** - Texto secundario (marron rosado) |
 
-Mantener la identidad de marca (mostaza, teal, arena, rojo) pero ajustar los tonos para crear mas jerarquia visual y mejor legibilidad.
+### Cambios por archivo
 
-**Archivo: `src/index.css`** - Ajustar las variables CSS:
+**`src/index.css`** - Actualizar variables CSS:
 
-| Variable | Antes | Despues | Razon |
-|----------|-------|---------|-------|
-| `--background` | `43 55% 75%` (arena oscuro) | `40 30% 92%` (crema muy claro) | Fondo mas limpio, las cards y secciones resaltan |
-| `--foreground` | `0 0% 8%` | `30 10% 15%` (marron muy oscuro) | Texto mas calido, menos agresivo que negro puro |
-| `--card` | `43 40% 88%` | `0 0% 100%` (blanco) | Cards blancas que resaltan sobre el fondo crema |
-| `--card-foreground` | `0 0% 8%` | `30 10% 15%` | Consistente con foreground |
-| `--muted` | `43 35% 82%` | `40 20% 88%` | Mas sutil |
-| `--muted-foreground` | `0 0% 35%` | `30 8% 45%` | Mejor contraste para texto secundario |
-| `--border` | `43 30% 68%` | `40 15% 82%` | Bordes mas suaves |
-| `--sand` | `43 55% 75%` | `40 35% 82%` | Arena mas claro como acento, no como fondo |
+- `--background`: `27 27% 79%` (beige `#D9C7B8`)
+- `--foreground`: `16 47% 17%` (marron oscuro `#402116`)
+- `--card`: `27 27% 90%` (beige mas claro, para que las cards resalten)
+- `--card-foreground`: `16 47% 17%`
+- `--primary`: `33 57% 29%` (dorado oscuro `#734E20`)
+- `--primary-foreground`: `0 0% 100%` (blanco)
+- `--accent`: `16 52% 30%` (rojo ladrillo `#733924`)
+- `--accent-foreground`: `0 0% 100%`
+- `--muted`: `27 20% 72%` (beige un poco mas oscuro)
+- `--muted-foreground`: `11 31% 35%` (marron rosado `#73473D`)
+- `--border`: `27 20% 70%`
+- `--ring`: `33 57% 29%`
+- `--sand`: `27 27% 79%`
+- `--mustard`: `33 57% 29%`
+- `--crimson`: `16 52% 30%`
 
-**Archivo: `src/pages/Index.tsx`** - Hero con mas presencia:
+**`src/pages/Index.tsx`** - Hero:
 
-- Cambiar el hero de `bg-[hsl(43,55%,75%)]` a `bg-[hsl(30,10%,15%)]` (marron muy oscuro, casi negro pero calido)
-- Texto blanco (`text-white`) para buen contraste
-- Patron de fosiles en blanco con opacidad sutil
-- El boton CTA rojo resalta perfecto sobre fondo oscuro
+- Fondo: `bg-[hsl(16,47%,17%)]` (marron muy oscuro `#402116`)
+- Texto blanco, patron de fosiles se mantiene
 
-**Archivo: `src/pages/QuienesSomos.tsx`**:
-- Cambiar secciones `bg-foreground` a `bg-[hsl(30,10%,15%)]` (mismo marron calido)
+**`src/components/Footer.tsx`**:
 
-**Archivo: `src/components/Footer.tsx`**:
-- Cambiar `bg-foreground` a `bg-[hsl(30,10%,15%)]` para consistencia
+- Fondo: `bg-[hsl(16,47%,17%)]` (mismo marron oscuro)
 
-**Archivo: `src/index.css`** - Quitar el patron de fosiles del body:
-- El body tendra fondo crema limpio sin patron
-- El patron de fosiles se reserva solo para el hero (ya esta ahi)
+**`src/pages/QuienesSomos.tsx`**:
 
-### Resultado esperado
+- Secciones oscuras: `bg-[hsl(16,47%,17%)]`
 
-- Fondo crema claro y limpio que deja respirar el contenido
-- Cards blancas que flotan visualmente sobre el fondo
-- Hero oscuro (marron calido) con fosiles como seccion de impacto
-- Footer oscuro calido (no negro puro)
-- Mejor legibilidad del texto en toda la pagina
-- La paleta de marca (mostaza, teal, rojo) resalta mas sobre fondos claros y limpios
+### Resultado
+
+- Paleta 100% terrosa y coherente con la tematica arqueologica UNEARTHED
+- Tonos calidos de tierra, arcilla y madera en vez de grises y negros
+- Mejor armonia visual entre todas las secciones
+- Los colores de marca (dorado y rojo ladrillo) resaltan sobre los fondos beige y marron
 
