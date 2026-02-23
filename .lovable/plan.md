@@ -1,27 +1,31 @@
 
 
-## Actualizar logo y favicon con la nueva imagen (fondo transparente)
+## Fondo amarillo/mostaza con patron de fosiles arqueologicos
 
-El usuario quiere reemplazar el logo actual (`logo.png`) con la nueva imagen que tiene fondo transparente. Este logo se usa en tres lugares:
+### Cambios en el fondo base
+Cambiar el color de fondo del sitio de beige (`40 30% 80%`) a un tono amarillo/mostaza que coincida con el fondo del logo. Se usara un tono cercano a `43 78% 45%` (el mostaza de la paleta), pero mas claro para que funcione como fondo sin perder legibilidad. El valor sera aproximadamente `43 65% 75%` -- un amarillo dorado suave.
 
-1. **Favicon** (icono de pestana del navegador) - referenciado en `index.html`
-2. **Navbar** - logo en la barra de navegacion
-3. **Footer** - logo en el pie de pagina
-4. **Hero de la pagina de inicio** - logo grande animado
+### Patron de fosiles
+Agregar un patron SVG sutil que se repita en todo el fondo con formas arqueologicas:
+- Espirales tipo amonite (fosil de caracol marino)
+- Hojas fosilizadas
+- Huellas de dinosaurio
+- Siluetas de huesos
 
-### Cambios necesarios
+El patron sera en un tono ligeramente mas oscuro que el fondo (~8-10% opacidad) para mantener la legibilidad.
 
-**Paso 1 - Copiar la imagen al proyecto:**
-- Copiar `user-uploads://CALIBOTSLOGO1_20260216_142201_0000.png` a `public/logo.png` (reemplazando el actual)
+### Detalles tecnicos
 
-Esto automaticamente actualiza todos los lugares donde se usa `/logo.png`:
-- `index.html` (favicon)
-- `Navbar.tsx` (logo en navegacion)
-- `Footer.tsx` (logo en footer)
-- `Index.tsx` (hero)
+**Archivo: `src/index.css`**
 
-No se necesitan cambios en codigo, solo reemplazar el archivo.
+1. Cambiar `--background` de `40 30% 80%` a `43 65% 75%` (amarillo mostaza claro)
+2. Actualizar `--sand` para que coincida con el nuevo fondo
+3. Ajustar `--border` e `--input` para armonizar con el nuevo fondo
+4. Agregar `background-image` al `body` con un SVG inline que contenga las formas de fosiles en un tono mostaza mas oscuro con baja opacidad
+5. Ajustar `--card` y `--muted` para que contrasten bien con el nuevo fondo
 
-### Resultado
-- El nuevo logo con fondo transparente aparecera en la navegacion, hero, footer y como favicon
-- El fondo transparente se integrara mejor con el fondo beige del sitio
+### Resultado esperado
+- Fondo amarillo/mostaza dorado que combina con el logo
+- Patron sutil de fosiles reforzando la tematica UNEARTHED/arqueologica
+- Todo el texto y las cards siguen siendo legibles
+- Sin dependencias nuevas ni imagenes externas
