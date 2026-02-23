@@ -53,7 +53,7 @@ const JuegoDelRobot = () => {
           <div className="space-y-6">
             {currentTab.sections.map((s, i) => (
               <motion.div key={s.title} className="rounded-lg border border-border bg-card p-6" variants={fadeUp} initial="hidden" animate="visible" custom={i}>
-                <h3 className="mb-2 font-heading text-lg font-bold">{s.title}</h3>
+                <h3 className="mb-2 font-heading text-lg font-bold text-secondary">{s.title}</h3>
                 <p className="text-sm text-muted-foreground">{s.desc}</p>
               </motion.div>
             ))}
