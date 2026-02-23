@@ -33,7 +33,7 @@ const QuienesSomos = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      <section className="bg-[hsl(30,10%,15%)] py-20 text-white">
+      <section className="bg-[hsl(16_47%_17%)] py-20 text-white">
         <div className="container text-center">
           <motion.h1 className="font-heading text-3xl font-black md:text-5xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>Quiénes Somos</motion.h1>
           <motion.p className="mt-4 text-lg opacity-70" initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} transition={{ delay: 0.3 }}>Conoce al equipo detrás de Calibots Kairos</motion.p>
@@ -88,7 +88,7 @@ const QuienesSomos = () => {
         </div>
       </section>
 
-      <section className="bg-[hsl(30,10%,15%)] py-16 text-white">
+      <section className="bg-[hsl(16_47%_17%)] py-16 text-white">
         <div className="container">
           <h2 className="mb-10 text-center font-heading text-2xl font-bold">Valores FIRST</h2>
           <div className="flex flex-wrap justify-center gap-6">
