@@ -1,31 +1,18 @@
 
 
-## Fondo amarillo/mostaza con patron de fosiles arqueologicos
+## Agregar patron de fosiles al fondo negro del Hero
 
-### Cambios en el fondo base
-Cambiar el color de fondo del sitio de beige (`40 30% 80%`) a un tono amarillo/mostaza que coincida con el fondo del logo. Se usara un tono cercano a `43 78% 45%` (el mostaza de la paleta), pero mas claro para que funcione como fondo sin perder legibilidad. El valor sera aproximadamente `43 65% 75%` -- un amarillo dorado suave.
+El usuario quiere que el patron arqueologico de fosiles aparezca en la seccion hero (el fondo negro/oscuro que se ve de primero al entrar al sitio), no en el fondo general del sitio.
 
-### Patron de fosiles
-Agregar un patron SVG sutil que se repita en todo el fondo con formas arqueologicas:
-- Espirales tipo amonite (fosil de caracol marino)
-- Hojas fosilizadas
-- Huellas de dinosaurio
-- Siluetas de huesos
+### Que se hara
 
-El patron sera en un tono ligeramente mas oscuro que el fondo (~8-10% opacidad) para mantener la legibilidad.
+**Archivo: `src/pages/Index.tsx`**
 
-### Detalles tecnicos
+Reemplazar el patron actual de cruces (`+`) en el hero por el patron de fosiles arqueologicos (amonites, huesos, hojas, huellas de dinosaurio), pero en color blanco con baja opacidad para que se vea sutil sobre el fondo negro.
 
-**Archivo: `src/index.css`**
+Cambiar el `div` del patron de fondo dentro de la seccion hero (linea 19) para usar el SVG de fosiles en blanco en lugar del patron de cruces actual.
 
-1. Cambiar `--background` de `40 30% 80%` a `43 65% 75%` (amarillo mostaza claro)
-2. Actualizar `--sand` para que coincida con el nuevo fondo
-3. Ajustar `--border` e `--input` para armonizar con el nuevo fondo
-4. Agregar `background-image` al `body` con un SVG inline que contenga las formas de fosiles en un tono mostaza mas oscuro con baja opacidad
-5. Ajustar `--card` y `--muted` para que contrasten bien con el nuevo fondo
-
-### Resultado esperado
-- Fondo amarillo/mostaza dorado que combina con el logo
-- Patron sutil de fosiles reforzando la tematica UNEARTHED/arqueologica
-- Todo el texto y las cards siguen siendo legibles
-- Sin dependencias nuevas ni imagenes externas
+### Detalles
+- El patron sera igual al que ya esta en el body pero con color blanco (`%23ffffff`) en vez de negro, para que contraste sobre el fondo oscuro del hero
+- Se mantendra la opacidad baja (~5-8%) para que sea sutil
+- No se necesitan dependencias nuevas
