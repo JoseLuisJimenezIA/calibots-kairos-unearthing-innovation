@@ -1,56 +1,57 @@
 
 
-## Aplicar la nueva paleta de colores terrosa
+## Aplicar nueva paleta de colores
 
-Vamos a actualizar toda la paleta del sitio usando los 5 colores que compartiste, manteniendo la estructura actual pero con esta nueva identidad visual mas terrosa y arqueologica.
+Nueva paleta basada en la imagen compartida, con tonos mas variados que incluyen un verde oliva y un mostaza dorado.
 
 ### Mapeo de colores
 
-| Color Hex | HSL aproximado | Uso en el sitio |
-|-----------|---------------|-----------------|
-| `#D9C7B8` | `27 27% 79%` | **Background** - Fondo general del sitio (beige claro) |
-| `#402116` | `16 47% 17%` | **Foreground** - Texto principal, hero y footer (marron muy oscuro) |
-| `#734E20` | `33 57% 29%` | **Primary** - Color de marca principal, botones, acentos (dorado oscuro) |
-| `#733924` | `16 52% 30%` | **Accent** - Botones CTA, elementos de enfasis (rojo ladrillo) |
-| `#73473D` | `11 31% 35%` | **Muted-foreground** - Texto secundario (marron rosado) |
+| Hex | HSL | Uso |
+|-----|-----|-----|
+| `#DCD4C4` | `37 22% 81%` | **Background** - Fondo general (crema calido) |
+| `#421C06` | `19 87% 14%` | **Foreground** - Texto principal, Hero, Footer (marron muy oscuro) |
+| `#9E780C` | `45 87% 33%` | **Primary** - Color de marca, botones principales (mostaza dorado) |
+| `#547550` | `115 20% 39%` | **Secondary** - Acento secundario, badges, detalles (verde oliva) |
+| `#8A634C` | `22 29% 42%` | **Accent / Muted-foreground** - Texto secundario, CTA alternativo (marron calido) |
 
-### Cambios por archivo
+### Cambios
 
-**`src/index.css`** - Actualizar variables CSS:
+**`src/index.css`** - Variables CSS actualizadas:
 
-- `--background`: `27 27% 79%` (beige `#D9C7B8`)
-- `--foreground`: `16 47% 17%` (marron oscuro `#402116`)
-- `--card`: `27 27% 90%` (beige mas claro, para que las cards resalten)
-- `--card-foreground`: `16 47% 17%`
-- `--primary`: `33 57% 29%` (dorado oscuro `#734E20`)
-- `--primary-foreground`: `0 0% 100%` (blanco)
-- `--accent`: `16 52% 30%` (rojo ladrillo `#733924`)
+- `--background`: `37 22% 81%` (crema `#DCD4C4`)
+- `--foreground`: `19 87% 14%` (marron muy oscuro `#421C06`)
+- `--card`: `37 22% 91%` (crema mas claro para que las cards resalten)
+- `--card-foreground`: `19 87% 14%`
+- `--popover` / `--popover-foreground`: mismos que card
+- `--primary`: `45 87% 33%` (mostaza dorado `#9E780C`)
+- `--primary-foreground`: `0 0% 100%`
+- `--secondary`: `115 20% 39%` (verde oliva `#547550`)
+- `--secondary-foreground`: `0 0% 100%`
+- `--muted`: `37 15% 74%`
+- `--muted-foreground`: `22 29% 42%` (marron calido `#8A634C`)
+- `--accent`: `22 29% 42%` (marron calido)
 - `--accent-foreground`: `0 0% 100%`
-- `--muted`: `27 20% 72%` (beige un poco mas oscuro)
-- `--muted-foreground`: `11 31% 35%` (marron rosado `#73473D`)
-- `--border`: `27 20% 70%`
-- `--ring`: `33 57% 29%`
-- `--sand`: `27 27% 79%`
-- `--mustard`: `33 57% 29%`
-- `--crimson`: `16 52% 30%`
+- `--border`: `37 15% 72%`
+- `--input`: `37 15% 72%`
+- `--ring`: `45 87% 33%`
+- `--sand`: `37 22% 81%`
+- `--teal`: `115 20% 39%` (ahora verde oliva)
+- `--mustard`: `45 87% 33%`
+- `--crimson`: `22 29% 42%`
 
 **`src/pages/Index.tsx`** - Hero:
-
-- Fondo: `bg-[hsl(16,47%,17%)]` (marron muy oscuro `#402116`)
-- Texto blanco, patron de fosiles se mantiene
+- Fondo: `bg-[hsl(19_87%_14%)]` (marron muy oscuro `#421C06`)
 
 **`src/components/Footer.tsx`**:
-
-- Fondo: `bg-[hsl(16,47%,17%)]` (mismo marron oscuro)
+- Fondo: `bg-[hsl(19_87%_14%)]`
 
 **`src/pages/QuienesSomos.tsx`**:
-
-- Secciones oscuras: `bg-[hsl(16,47%,17%)]`
+- Secciones oscuras: `bg-[hsl(19_87%_14%)]`
 
 ### Resultado
 
-- Paleta 100% terrosa y coherente con la tematica arqueologica UNEARTHED
-- Tonos calidos de tierra, arcilla y madera en vez de grises y negros
-- Mejor armonia visual entre todas las secciones
-- Los colores de marca (dorado y rojo ladrillo) resaltan sobre los fondos beige y marron
+- Paleta mas rica con 5 tonos distintos incluyendo verde oliva y mostaza dorado
+- Mayor variedad cromatica manteniendo la coherencia terrosa/arqueologica
+- El verde oliva como secondary agrega frescura sin romper la tematica
+- El mostaza dorado como primary da mas impacto que el marron anterior
 
