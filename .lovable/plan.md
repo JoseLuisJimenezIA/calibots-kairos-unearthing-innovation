@@ -2,56 +2,56 @@
 
 ## Aplicar nueva paleta de colores
 
-Nueva paleta basada en la imagen compartida, con tonos mas variados que incluyen un verde oliva y un mostaza dorado.
+Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
 
 ### Mapeo de colores
 
-| Hex | HSL | Uso |
-|-----|-----|-----|
-| `#DCD4C4` | `37 22% 81%` | **Background** - Fondo general (crema calido) |
-| `#421C06` | `19 87% 14%` | **Foreground** - Texto principal, Hero, Footer (marron muy oscuro) |
-| `#9E780C` | `45 87% 33%` | **Primary** - Color de marca, botones principales (mostaza dorado) |
-| `#547550` | `115 20% 39%` | **Secondary** - Acento secundario, badges, detalles (verde oliva) |
-| `#8A634C` | `22 29% 42%` | **Accent / Muted-foreground** - Texto secundario, CTA alternativo (marron calido) |
+| Hex | HSL | Uso en el sitio |
+|-----|-----|-----------------|
+| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
+| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
+| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
+| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
+| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
+| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
 
-### Cambios
+### Cambios por archivo
 
-**`src/index.css`** - Variables CSS actualizadas:
+**`src/index.css`** - Actualizar todas las variables CSS:
 
-- `--background`: `37 22% 81%` (crema `#DCD4C4`)
-- `--foreground`: `19 87% 14%` (marron muy oscuro `#421C06`)
-- `--card`: `37 22% 91%` (crema mas claro para que las cards resalten)
-- `--card-foreground`: `19 87% 14%`
-- `--popover` / `--popover-foreground`: mismos que card
-- `--primary`: `45 87% 33%` (mostaza dorado `#9E780C`)
+- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
+- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
+- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
+- `--card-foreground`: `31 54% 22%`
+- `--primary`: `40 64% 55%` (dorado `#D6A340`)
 - `--primary-foreground`: `0 0% 100%`
-- `--secondary`: `115 20% 39%` (verde oliva `#547550`)
+- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
 - `--secondary-foreground`: `0 0% 100%`
-- `--muted`: `37 15% 74%`
-- `--muted-foreground`: `22 29% 42%` (marron calido `#8A634C`)
-- `--accent`: `22 29% 42%` (marron calido)
-- `--accent-foreground`: `0 0% 100%`
-- `--border`: `37 15% 72%`
-- `--input`: `37 15% 72%`
-- `--ring`: `45 87% 33%`
-- `--sand`: `37 22% 81%`
-- `--teal`: `115 20% 39%` (ahora verde oliva)
-- `--mustard`: `45 87% 33%`
-- `--crimson`: `22 29% 42%`
+- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
+- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
+- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
+- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
+- `--border`: `49 25% 65%`
+- `--ring`: `40 64% 55%`
+- `--sand`: `49 38% 74%`
+- `--teal`: `124 24% 38%`
+- `--mustard`: `40 64% 55%`
+- `--crimson`: `31 54% 35%`
+- `--dark-brown`: `31 54% 35%`
 
-**`src/pages/Index.tsx`** - Hero:
-- Fondo: `bg-[hsl(19_87%_14%)]` (marron muy oscuro `#421C06`)
+**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
+- Fondo: `bg-dark-brown` (usando `#8B5B29`)
 
-**`src/components/Footer.tsx`**:
-- Fondo: `bg-[hsl(19_87%_14%)]`
+**`src/components/Footer.tsx`** - Mismo fondo oscuro:
+- Fondo: `bg-dark-brown`
 
-**`src/pages/QuienesSomos.tsx`**:
-- Secciones oscuras: `bg-[hsl(19_87%_14%)]`
+**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
+- Fondo: `bg-dark-brown`
 
 ### Resultado
 
-- Paleta mas rica con 5 tonos distintos incluyendo verde oliva y mostaza dorado
-- Mayor variedad cromatica manteniendo la coherencia terrosa/arqueologica
-- El verde oliva como secondary agrega frescura sin romper la tematica
-- El mostaza dorado como primary da mas impacto que el marron anterior
-
+- Paleta mas fresca y variada con la introduccion del azul cielo como acento
+- El verde bosque se mantiene como secondary para badges y botones
+- El dorado como primary da presencia a los CTAs
+- El verde salvia como muted aporta suavidad a fondos pasivos
+- Fondo khaki calido que armoniza todos los colores
