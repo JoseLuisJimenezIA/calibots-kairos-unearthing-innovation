@@ -1,57 +1,77 @@
 
 
-## Aplicar nueva paleta de colores
+## Actualización completa del sitio CaliBots Kairos
 
-Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
+Este es un cambio grande que abarca paleta de colores, tipografía, contenido real y nuevas secciones. Se divide en bloques para mantener claridad.
 
-### Mapeo de colores
+---
 
-| Hex | HSL | Uso en el sitio |
-|-----|-----|-----------------|
-| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
-| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
-| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
-| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
-| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
-| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
+### 1. Nueva paleta de colores (`src/index.css`)
 
-### Cambios por archivo
+| Hex | HSL | Variable |
+|-----|-----|----------|
+| `#E3B03F` | `40 76% 57%` | `--primary` (mostaza arqueológica) |
+| `#D8B36A` | `37 56% 63%` | `--background` (arena/piedra) |
+| `#5C5A54` | `30 4% 35%` | `--muted-foreground` (roca) |
+| `#3A2E1F` | `29 32% 17%` | `--foreground`, `--dark-brown` (tierra profunda) |
+| `#6E8B78` | `144 12% 49%` | `--secondary` (verde fósil) |
+| `#C63D2F` | `5 63% 48%` | `--destructive` / `--accent` (rojo mineral, para botones CTA) |
 
-**`src/index.css`** - Actualizar todas las variables CSS:
+Variables derivadas: card (arena mas claro), muted (arena grisácea), border, etc.
 
-- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
-- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
-- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
-- `--card-foreground`: `31 54% 22%`
-- `--primary`: `40 64% 55%` (dorado `#D6A340`)
-- `--primary-foreground`: `0 0% 100%`
-- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
-- `--secondary-foreground`: `0 0% 100%`
-- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
-- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
-- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
-- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
-- `--border`: `49 25% 65%`
-- `--ring`: `40 64% 55%`
-- `--sand`: `49 38% 74%`
-- `--teal`: `124 24% 38%`
-- `--mustard`: `40 64% 55%`
-- `--crimson`: `31 54% 35%`
-- `--dark-brown`: `31 54% 35%`
+### 2. Tipografía (`src/index.css` + `tailwind.config.ts`)
 
-**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
-- Fondo: `bg-dark-brown` (usando `#8B5B29`)
+Agregar Poppins e Inter al import de Google Fonts. Mapear:
+- `font-heading`: Montserrat (ya existe)
+- `font-subtitle`: Poppins SemiBold (nueva)
+- `font-body`: Inter Regular (reemplaza Open Sans)
 
-**`src/components/Footer.tsx`** - Mismo fondo oscuro:
-- Fondo: `bg-dark-brown`
+### 3. Contenido de "Quiénes Somos" (`src/pages/QuienesSomos.tsx`)
 
-**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
-- Fondo: `bg-dark-brown`
+- Reemplazar texto placeholder con el contenido real del equipo
+- Actualizar array `teamMembers` con los 10 estudiantes + 2 profesores reales
+- Separar visualmente profesores de estudiantes
+- Mantener estructura de tarjetas con foto placeholder
 
-### Resultado
+### 4. Proyecto Innovador - ARGOS (`src/pages/ProyectoInnovador.tsx`)
 
-- Paleta mas fresca y variada con la introduccion del azul cielo como acento
-- El verde bosque se mantiene como secondary para badges y botones
-- El dorado como primary da presencia a los CTAs
-- El verde salvia como muted aporta suavidad a fondos pasivos
-- Fondo khaki calido que armoniza todos los colores
+Reescritura completa del contenido manteniendo la estructura de secciones:
+- Hero: "ARGOS" como nombre del proyecto
+- Descripción: espeleología + robot explorador
+- Significado del nombre (Argos mitológico + Kairos)
+- Objetivo general y específicos
+- Problemáticas (cultural, económica, seguridad, tecnológica)
+- Nueva sección: **Evolución del robot** (V1, V2 con placeholders)
+- Nueva sección: **Tecnología** (sensor MQ-7, Arduino/Raspberry Pi)
+- Nueva sección: **Avances** (línea de tiempo semanas 1-14)
+
+### 5. Galería - filtros actualizados (`src/pages/Galeria.tsx`)
+
+Cambiar filtros de `["Todo", "Proyecto", "Equipo", "Registros", "Juego del Robot"]` a `["Todo", "Proyecto", "Equipo", "Robot", "Competencia", "Investigación"]` y actualizar items.
+
+### 6. Index - Hero actualizado (`src/pages/Index.tsx`)
+
+Actualizar textos para reflejar ARGOS y espeleología. Cambiar botón CTA a rojo mineral (`bg-accent`). Mantener patrón de fósiles.
+
+### 7. Footer y Navbar
+
+Sin cambios estructurales, solo absorben la nueva paleta via CSS variables.
+
+### 8. Animaciones suaves
+
+Ya existen via framer-motion `fadeUp`. Se agregarán transiciones hover a botones (`transition-all duration-300 hover:scale-105 hover:shadow-lg`).
+
+---
+
+### Archivos a modificar
+
+| Archivo | Cambios |
+|---------|---------|
+| `src/index.css` | Paleta completa + tipografías |
+| `tailwind.config.ts` | font-subtitle (Poppins), font-body (Inter) |
+| `src/pages/Index.tsx` | Textos Hero, botón CTA rojo |
+| `src/pages/QuienesSomos.tsx` | Contenido real, 12 integrantes |
+| `src/pages/ProyectoInnovador.tsx` | Contenido ARGOS completo + secciones nuevas |
+| `src/pages/Galeria.tsx` | Filtros actualizados |
+| `src/pages/JuegoDelRobot.tsx` | Mejoras menores de texto |
+
