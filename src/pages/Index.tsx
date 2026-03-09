@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Trophy, Pickaxe } from "lucide-react";
+import { Users, Trophy, Pickaxe, Mountain, Eye, Shield } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { fadeUp } from "@/lib/animations";
@@ -13,24 +13,24 @@ const Index = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-dark-brown text-white">
-        <div className="absolute inset-0 opacity-[0.08]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M35 45c0-8 6-14 14-14s14 6 14 14-6 14-14 14c-5 0-9-2-11-6' fill='none' stroke='%23ffffff' stroke-opacity='0.2' stroke-width='2'/%3E%3Cpath d='M40 45c0-5 4-9 9-9s9 4 9 9-4 9-9 9' fill='none' stroke='%23ffffff' stroke-opacity='0.2' stroke-width='1.5'/%3E%3Cpath d='M44 45c0-3 2-5 5-5s5 2 5 5' fill='none' stroke='%23ffffff' stroke-opacity='0.2' stroke-width='1.5'/%3E%3Cellipse cx='140' cy='30' rx='6' ry='4' fill='%23ffffff' fill-opacity='0.15'/%3E%3Crect x='137' y='30' width='6' height='20' rx='2' fill='%23ffffff' fill-opacity='0.15'/%3E%3Cellipse cx='140' cy='50' rx='6' ry='4' fill='%23ffffff' fill-opacity='0.15'/%3E%3Cpath d='M160 100c-10-15 0-35 15-40c-5 20 5 30 0 40z' fill='%23ffffff' fill-opacity='0.1'/%3E%3Cline x1='165' y1='65' x2='165' y2='100' stroke='%23ffffff' stroke-opacity='0.15' stroke-width='1'/%3E%3Ccircle cx='50' cy='140' r='4' fill='%23ffffff' fill-opacity='0.1'/%3E%3Cellipse cx='44' cy='132' rx='2.5' ry='4' transform='rotate(-20 44 132)' fill='%23ffffff' fill-opacity='0.1'/%3E%3Cellipse cx='50' cy='130' rx='2.5' ry='4' fill='%23ffffff' fill-opacity='0.1'/%3E%3Cellipse cx='56' cy='132' rx='2.5' ry='4' transform='rotate(20 56 132)' fill='%23ffffff' fill-opacity='0.1'/%3E%3Cpath d='M120 160c0-6 5-10 10-10s10 5 10 10-5 10-10 10' fill='none' stroke='%23ffffff' stroke-opacity='0.15' stroke-width='1.5'/%3E%3Cpath d='M124 160c0-3 3-6 6-6s6 3 6 6' fill='none' stroke='%23ffffff' stroke-opacity='0.12' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E\")", backgroundSize: "200px 200px" }} />
+      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-dark-brown text-primary-foreground">
+        <div className="absolute inset-0 opacity-[0.06]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.15' stroke-width='1'%3E%3Cpath d='M0 250 Q75 200 150 230 Q225 260 300 220'/%3E%3Cpath d='M0 270 Q75 220 150 250 Q225 280 300 240'/%3E%3Cpath d='M0 290 Q75 240 150 270 Q225 300 300 260'/%3E%3Ccircle cx='50' cy='80' r='8'/%3E%3Ccircle cx='50' cy='80' r='3'/%3E%3Ccircle cx='200' cy='60' r='6'/%3E%3Ccircle cx='200' cy='60' r='2'/%3E%3Crect x='120' y='120' width='15' height='20' rx='2'/%3E%3Cline x1='127' y1='125' x2='127' y2='135'/%3E%3Cpath d='M240 150 l10-20 l10 20z'/%3E%3Cpath d='M80 180 l15-30 l15 30z'/%3E%3C/g%3E%3C/svg%3E\")", backgroundSize: "300px 300px" }} />
         <div className="container relative z-10 flex flex-col items-center gap-8 text-center">
-          <motion.img src="/logo.png" alt="Calibots Kairos" className="h-32 w-auto drop-shadow-2xl md:h-44" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }} />
-          <motion.span className="inline-block rounded-full bg-secondary/20 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-secondary" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
-            Temporada UNEARTHED
+          <motion.img src="/logo.png" alt="CaliBots Kairos" className="h-32 w-auto drop-shadow-2xl md:h-44" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }} />
+          <motion.span className="inline-block rounded-full bg-primary/20 px-4 py-1.5 font-subtitle text-xs font-semibold uppercase tracking-widest text-primary" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.5 }}>
+            Temporada UNEARTHED · FIRST LEGO League
           </motion.span>
           <motion.h1 className="max-w-3xl font-heading text-3xl font-black leading-tight tracking-tight md:text-5xl lg:text-6xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.7 }}>
-            Explorando el pasado,{" "}<span className="text-primary">construyendo el futuro</span> con robótica
+            Explorando cuevas,{" "}<span className="text-primary">protegiendo arqueólogos</span> con robótica
           </motion.h1>
-          <motion.p className="max-w-xl text-lg text-white/70 md:text-xl" initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} transition={{ delay: 0.6, duration: 0.7 }}>
-            Club de Robótica del Colegio Comfandi El Prado<br />FIRST LEGO League – Temporada UNEARTHED
+          <motion.p className="max-w-xl text-lg opacity-70 md:text-xl" initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} transition={{ delay: 0.6, duration: 0.7 }}>
+            Conoce a ARGOS, nuestro robot explorador diseñado para la seguridad en espeleología y arqueología
           </motion.p>
           <motion.div className="flex gap-4" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.5 }}>
-            <Button asChild size="lg" className="bg-accent text-accent-foreground px-8 text-base font-bold shadow-lg hover:bg-accent/90">
-              <Link to="/proyecto-innovador">Conoce nuestro proyecto</Link>
+            <Button asChild size="lg" className="bg-accent text-accent-foreground px-8 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:bg-accent/90">
+              <Link to="/proyecto-innovador">Conoce ARGOS</Link>
             </Button>
-            <Button asChild size="lg" variant="secondary" className="px-8 text-base font-bold shadow-lg">
+            <Button asChild size="lg" variant="secondary" className="px-8 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105">
               <Link to="/quienes-somos">Nuestro equipo</Link>
             </Button>
           </motion.div>
@@ -44,14 +44,14 @@ const Index = () => {
         </motion.h2>
         <div className="grid gap-6 md:grid-cols-3">
           {[
-            { icon: Users, title: "Quiénes Somos", desc: "Un equipo apasionado de jóvenes innovadores del Colegio Comfandi El Prado, unidos por la robótica y la tecnología.", color: "primary" },
-            { icon: Trophy, title: "FIRST LEGO League", desc: "Participamos en la competencia internacional más importante de robótica educativa para jóvenes de todo el mundo.", color: "secondary" },
-            { icon: Pickaxe, title: "Temporada UNEARTHED", desc: "Esta temporada exploramos los misterios del pasado, combinando arqueología y tecnología para resolver problemas reales.", color: "primary" },
+            { icon: Mountain, title: "Espeleología & Arqueología", desc: "Investigamos los desafíos que enfrentan los arqueólogos al explorar cuevas y cavidades naturales con fósiles y restos históricos.", color: "primary" },
+            { icon: Eye, title: "Proyecto ARGOS", desc: "Desarrollamos un robot terrestre explorador que analiza zonas peligrosas antes de que los arqueólogos ingresen, siendo sus ojos en la oscuridad.", color: "accent" },
+            { icon: Shield, title: "Seguridad Primero", desc: "Nuestro robot integra sensores para detectar gases tóxicos, inestabilidad estructural y condiciones adversas en cuevas y cavernas.", color: "secondary" },
           ].map((card, i) => (
             <motion.div key={card.title} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i + 1}>
-              <Card className="h-full border-none bg-card shadow-md transition-shadow hover:shadow-xl">
+              <Card className="h-full border-none bg-card shadow-md transition-all duration-300 hover:shadow-xl hover:scale-[1.02]">
                 <CardContent className="flex flex-col items-center gap-4 p-8 text-center">
-                  <div className={`flex h-14 w-14 items-center justify-center rounded-full ${card.color === "secondary" ? "bg-secondary/10 text-secondary" : "bg-primary/10 text-primary"}`}>
+                  <div className={`flex h-14 w-14 items-center justify-center rounded-full ${card.color === "secondary" ? "bg-secondary/10 text-secondary" : card.color === "accent" ? "bg-accent/10 text-accent" : "bg-primary/10 text-primary"}`}>
                     <card.icon className="h-7 w-7" />
                   </div>
                   <h3 className="font-heading text-lg font-bold">{card.title}</h3>
