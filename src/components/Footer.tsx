@@ -59,8 +59,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-8 border-t border-background/10 pt-6 text-center text-xs opacity-40">
-          © {new Date().getFullYear()} Calibots Kairos. Todos los derechos reservados.
+        <div className="mt-8 border-t border-background/10 pt-6 flex flex-col items-center gap-3">
+          <img src="/logo.png" alt="Calibots Kairos" className="h-16 w-auto brightness-0 invert opacity-60" />
+          <p className="text-xs opacity-40">
+            © {new Date().getFullYear()} Calibots Kairos. Todos los derechos reservados.
+          </p>
         </div>
       </div>
     </footer>
