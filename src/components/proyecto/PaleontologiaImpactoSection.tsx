@@ -1,0 +1,36 @@
+import { motion } from "framer-motion";
+import { Bone, Users } from "lucide-react";
+import { fadeUp } from "@/lib/animations";
+
+const PaleontologiaImpactoSection = () => (
+  <section className="container py-16">
+    <div className="mx-auto max-w-4xl grid gap-8 md:grid-cols-2">
+      <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} className="rounded-xl border border-border bg-card p-6">
+        <div className="flex items-center gap-3 mb-3">
+          <Bone className="h-6 w-6 text-secondary" />
+          <h3 className="font-heading text-lg font-bold text-foreground">Paleontología</h3>
+        </div>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Los fósiles son valiosos archivos del pasado. Conservan detalles sobre los seres vivos de hace miles o cientos de millones de años. Su estudio nos ayuda a comprender la evolución de las especies a lo largo del tiempo y nos permite vislumbrar instantáneas de los entornos y climas del pasado.
+        </p>
+        <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+          También pueden revelar las dietas o los patrones migratorios de especies desaparecidas hace mucho tiempo, incluidos nuestros antepasados.
+        </p>
+      </motion.div>
+      <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={1} className="rounded-xl border border-border bg-card p-6">
+        <div className="flex items-center gap-3 mb-3">
+          <Users className="h-6 w-6 text-accent" />
+          <h3 className="font-heading text-lg font-bold text-foreground">Impacto Social</h3>
+        </div>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          La arqueología tiene un impacto importante en la sociedad porque nos ayuda a conocer cómo vivían las personas en el pasado y a entender mejor nuestra historia. Gracias a los descubrimientos arqueológicos se pueden aprender las costumbres, tradiciones y formas de vida de las antiguas civilizaciones.
+        </p>
+        <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+          También ayuda a cuidar y conservar los lugares y objetos históricos para que no se pierdan con el tiempo. Muchos sitios arqueológicos atraen turistas, lo que puede generar trabajo y beneficios para las comunidades.
+        </p>
+      </motion.div>
+    </div>
+  </section>
+);
+
+export default PaleontologiaImpactoSection;
