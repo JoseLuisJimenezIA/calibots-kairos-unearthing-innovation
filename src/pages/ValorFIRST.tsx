@@ -73,6 +73,7 @@ const ValorFIRST = () => {
     return (
       <div className="flex min-h-screen flex-col">
         <Navbar />
+        <BackButton />
         <div className="container flex flex-1 flex-col items-center justify-center gap-4 py-20">
           <h1 className="font-heading text-2xl font-bold">Valor no encontrado</h1>
           <Button asChild><Link to="/quienes-somos">Volver</Link></Button>
