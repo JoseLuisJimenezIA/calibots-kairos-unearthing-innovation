@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import VideoPlaceholder from "@/components/VideoPlaceholder";
@@ -47,6 +48,7 @@ const ProyectoInnovador = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
+      <BackButton />
 
       {/* Hero */}
       <section className="bg-dark-brown py-20 text-primary-foreground">

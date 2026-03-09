@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import { fadeUp } from "@/lib/animations";
@@ -73,6 +74,7 @@ const ValorFIRST = () => {
     return (
       <div className="flex min-h-screen flex-col">
         <Navbar />
+        <BackButton />
         <div className="container flex flex-1 flex-col items-center justify-center gap-4 py-20">
           <h1 className="font-heading text-2xl font-bold">Valor no encontrado</h1>
           <Button asChild><Link to="/quienes-somos">Volver</Link></Button>
@@ -89,6 +91,7 @@ const ValorFIRST = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
+      <BackButton />
 
       {/* Hero */}
       <section className="bg-dark-brown py-16 text-primary-foreground">

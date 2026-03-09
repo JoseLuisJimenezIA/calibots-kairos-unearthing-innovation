@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import VideoPlaceholder from "@/components/VideoPlaceholder";
@@ -34,6 +35,7 @@ const JuegoDelRobot = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
+      <BackButton />
       <section className="bg-foreground py-20 text-background">
         <div className="container text-center">
           <motion.h1 className="font-heading text-3xl font-black md:text-5xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>Juego del Robot</motion.h1>
