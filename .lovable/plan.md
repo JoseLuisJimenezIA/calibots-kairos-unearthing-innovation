@@ -1,57 +1,49 @@
 
 
-## Aplicar nueva paleta de colores
+## Plan: Agregar contenido faltante al Proyecto Innovador
 
-Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
+### Resumen
+La página de Proyecto Innovador ya tiene estructura pero le faltan secciones completas de contenido proporcionado por el usuario. Se agregarán todas las secciones faltantes manteniendo el diseño existente.
 
-### Mapeo de colores
+### Cambios en `src/pages/ProyectoInnovador.tsx`
 
-| Hex | HSL | Uso en el sitio |
-|-----|-----|-----------------|
-| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
-| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
-| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
-| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
-| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
-| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
+**Secciones nuevas a agregar:**
 
-### Cambios por archivo
+1. **Justificación** — Bloque completo con el texto sobre herramientas tecnológicas accesibles en minería pero no en arqueología, y cómo ARGOS aporta desde la tecnología.
 
-**`src/index.css`** - Actualizar todas las variables CSS:
+2. **Problemáticas expandidas** — Reemplazar las descripciones de una línea por los textos completos:
+   - Cultural: desafío ético de sitios sagrados
+   - Económico: inversión vs retribución
+   - Seguridad: materiales poco rígidos, gases, precipitaciones
+   - Tecnológico: LIDAR, Georradar, retroalimentación háptica, interoperabilidad
 
-- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
-- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
-- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
-- `--card-foreground`: `31 54% 22%`
-- `--primary`: `40 64% 55%` (dorado `#D6A340`)
-- `--primary-foreground`: `0 0% 100%`
-- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
-- `--secondary-foreground`: `0 0% 100%`
-- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
-- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
-- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
-- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
-- `--border`: `49 25% 65%`
-- `--ring`: `40 64% 55%`
-- `--sand`: `49 38% 74%`
-- `--teal`: `124 24% 38%`
-- `--mustard`: `40 64% 55%`
-- `--crimson`: `31 54% 35%`
-- `--dark-brown`: `31 54% 35%`
+3. **Problemas de la minería** — Subsección con desertización, erosión, cambio de relieve, etc.
 
-**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
-- Fondo: `bg-dark-brown` (usando `#8B5B29`)
+4. **Excavaciones en cueva** — Riesgos: derrumbes, caídas, atmósferas peligrosas.
 
-**`src/components/Footer.tsx`** - Mismo fondo oscuro:
-- Fondo: `bg-dark-brown`
+5. **Espeleología** — Definición completa con etimología griega y conexión con geomorfología/hidrogeología.
 
-**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
-- Fondo: `bg-dark-brown`
+6. **Paleontología** — Sección sobre fósiles como archivos del pasado, evolución, climas antiguos.
 
-### Resultado
+7. **Impacto Social** — Texto sobre cómo la arqueología ayuda a conocer el pasado, conservar patrimonio y generar turismo.
 
-- Paleta mas fresca y variada con la introduccion del azul cielo como acento
-- El verde bosque se mantiene como secondary para badges y botones
-- El dorado como primary da presencia a los CTAs
-- El verde salvia como muted aporta suavidad a fondos pasivos
-- Fondo khaki calido que armoniza todos los colores
+8. **Casos reales de problemática arqueológica** — Tres tarjetas:
+   - Tumba de Tutankamón (Egipto): humedad, hongos, deterioro
+   - Pompeya (Italia): intemperie, turismo masivo, colapsos
+   - Machu Picchu (Perú): cambio climático, turismo masivo
+
+9. **Timeline expandido** — Agregar descripciones detalladas para cada semana (1-10, 14) con el contenido proporcionado. Semanas 11-13 marcadas como "Pendiente".
+
+10. **Tecnología expandida** — Agregar detalles sobre oxímetro, sensor electroquímico MQ-7, conexión con Raspberry Pi, y por qué se descartó el sensor óptico.
+
+### Sin cambios en
+- `QuienesSomos.tsx` — ya tiene todo el contenido del usuario
+- `Index.tsx` — no requiere cambios
+- Orden de estudiantes se mantiene (Jose Luis primero por indicación previa)
+
+### Enfoque técnico
+- Mismo patrón de componentes: `motion.div`, `fadeUp`, `Card`, `PhotoPlaceholder`
+- Secciones alternadas con fondo `bg-muted/50` y fondo blanco
+- Iconos de Lucide para cada sección
+- Tarjetas para los casos reales (Egipto, Italia, Perú)
+
