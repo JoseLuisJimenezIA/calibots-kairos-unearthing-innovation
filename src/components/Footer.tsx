@@ -46,7 +46,7 @@ const Footer = () => {
               Redes Sociales
             </h4>
             <div className="flex gap-3">
-              <a href="#" aria-label="Instagram" className="rounded-full bg-background/10 p-2 transition-colors hover:bg-primary hover:text-primary-foreground">
+              <a href="https://www.instagram.com/calibots_?igsh=cjh4ZHlpZXE5bG4z" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="rounded-full bg-background/10 p-2 transition-colors hover:bg-primary hover:text-primary-foreground">
                 <Instagram className="h-5 w-5" />
               </a>
               <a href="#" aria-label="TikTok" className="rounded-full bg-background/10 p-2 transition-colors hover:bg-primary hover:text-primary-foreground">
