@@ -44,6 +44,7 @@ const QuienesSomos = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
+      <BackButton />
       <section className="bg-dark-brown py-20 text-primary-foreground">
         <div className="container text-center">
           <motion.h1 className="font-heading text-3xl font-black md:text-5xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>Quiénes Somos</motion.h1>

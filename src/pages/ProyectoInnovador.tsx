@@ -47,6 +47,7 @@ const ProyectoInnovador = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
+      <BackButton />
 
       {/* Hero */}
       <section className="bg-dark-brown py-20 text-primary-foreground">

@@ -90,6 +90,7 @@ const ValorFIRST = () => {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
+      <BackButton />
 
       {/* Hero */}
       <section className="bg-dark-brown py-16 text-primary-foreground">
