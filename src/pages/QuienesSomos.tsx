@@ -7,10 +7,10 @@ import { Users, Lightbulb, Heart, HandHeart, Search } from "lucide-react";
 import { fadeUp } from "@/lib/animations";
 
 const students = [
+  { name: "Jose Luis Jiménez", role: "Integrante" },
   { name: "Sebastián Sánchez", role: "Integrante" },
   { name: "Samuel Monzalve", role: "Integrante" },
   { name: "Juan E. Gutiérrez", role: "Integrante" },
-  { name: "Jose Luis Jiménez", role: "Integrante" },
   { name: "Raúl A. Castillo", role: "Integrante" },
   { name: "Luisa F. Ávila", role: "Integrante" },
   { name: "Maria A. Zúñiga", role: "Integrante" },
