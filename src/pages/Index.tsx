@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Trophy, Pickaxe, Mountain, Eye, Shield } from "lucide-react";
+import { Users, Trophy, Mountain, Eye, Shield, Lightbulb, Gamepad2, Heart } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { fadeUp } from "@/lib/animations";
@@ -23,10 +23,10 @@ const Index = () => {
           <motion.h1 className="max-w-3xl font-heading text-3xl font-black leading-tight tracking-tight md:text-5xl lg:text-6xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.7 }}>
             Explorando cuevas,{" "}<span className="text-primary">protegiendo arqueólogos</span> con robótica
           </motion.h1>
-          <motion.p className="max-w-xl text-lg opacity-70 md:text-xl" initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} transition={{ delay: 0.6, duration: 0.7 }}>
+          <motion.p className="max-w-xl text-lg opacity-80 md:text-xl" initial={{ opacity: 0 }} animate={{ opacity: 0.8 }} transition={{ delay: 0.6, duration: 0.7 }}>
             Conoce a ARGOS, nuestro robot explorador diseñado para la seguridad en espeleología y arqueología
           </motion.p>
-          <motion.div className="flex gap-4" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.5 }}>
+          <motion.div className="flex flex-wrap justify-center gap-4" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.5 }}>
             <Button asChild size="lg" className="bg-accent text-accent-foreground px-8 text-base font-bold shadow-lg transition-all duration-300 hover:scale-105 hover:bg-accent/90">
               <Link to="/proyecto-innovador">Conoce ARGOS</Link>
             </Button>
@@ -44,8 +44,8 @@ const Index = () => {
         </motion.h2>
         <div className="grid gap-6 md:grid-cols-3">
           {[
-            { icon: Mountain, title: "Espeleología & Arqueología", desc: "Investigamos los desafíos que enfrentan los arqueólogos al explorar cuevas y cavidades naturales con fósiles y restos históricos.", color: "primary" },
-            { icon: Eye, title: "Proyecto ARGOS", desc: "Desarrollamos un robot terrestre explorador que analiza zonas peligrosas antes de que los arqueólogos ingresen, siendo sus ojos en la oscuridad.", color: "accent" },
+            { icon: Mountain, title: "Espeleología & Arqueología", desc: "Investigamos los desafíos que enfrentan los arqueólogos al explorar cuevas y cavidades naturales con fósiles y restos históricos.", color: "accent" },
+            { icon: Eye, title: "Proyecto ARGOS", desc: "Desarrollamos un robot terrestre explorador que analiza zonas peligrosas antes de que los arqueólogos ingresen, siendo sus ojos en la oscuridad.", color: "secondary" },
             { icon: Shield, title: "Seguridad Primero", desc: "Nuestro robot integra sensores para detectar gases tóxicos, inestabilidad estructural y condiciones adversas en cuevas y cavernas.", color: "secondary" },
           ].map((card, i) => (
             <motion.div key={card.title} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i + 1}>
@@ -60,6 +60,34 @@ const Index = () => {
               </Card>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* Cómo vivimos FIRST LEGO League */}
+      <section className="bg-dark-brown py-16 text-primary-foreground">
+        <div className="container">
+          <motion.h2 className="mb-3 text-center font-heading text-2xl font-bold md:text-3xl" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
+            Cómo Vivimos FIRST LEGO League
+          </motion.h2>
+          <motion.p className="mb-10 text-center text-sm opacity-60" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
+            Nuestra experiencia integra investigación, robótica, valores y aprendizaje
+          </motion.p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: Lightbulb, title: "Proyecto Innovador", desc: "ARGOS nació de una investigación real sobre los riesgos en la exploración arqueológica subterránea.", link: "/proyecto-innovador" },
+              { icon: Gamepad2, title: "Juego del Robot", desc: "Diseñamos, construimos y programamos soluciones robóticas para los desafíos de la temporada UNEARTHED.", link: "/juego-del-robot" },
+              { icon: Heart, title: "Valores FIRST", desc: "Descubrimiento, innovación, impacto, inclusión, trabajo en equipo y diversión guían cada paso.", link: "/quienes-somos" },
+              { icon: Users, title: "Aprendizaje del Equipo", desc: "Cada integrante crece en habilidades técnicas, sociales y de liderazgo a lo largo de la temporada.", link: "/quienes-somos" },
+            ].map((item, i) => (
+              <motion.div key={item.title} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i + 1}>
+                <Link to={item.link} className="group block h-full rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 p-6 transition-all duration-300 hover:bg-primary-foreground/10 hover:shadow-lg">
+                  <item.icon className="mb-3 h-8 w-8 text-primary" />
+                  <h3 className="mb-2 font-heading text-base font-bold">{item.title}</h3>
+                  <p className="text-sm opacity-70">{item.desc}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, Lightbulb, Heart, HandHeart, Search } from "lucide-react";
+import { Users, Lightbulb, Heart, Search, Zap, PartyPopper, ArrowRight } from "lucide-react";
 import { fadeUp } from "@/lib/animations";
 
 const students = [
@@ -24,12 +25,13 @@ const coaches = [
   { name: "Diego Peña", role: "Profesor / Coach" },
 ];
 
-const values = [
-  { icon: Users, label: "Trabajo en equipo" },
-  { icon: Lightbulb, label: "Innovación" },
-  { icon: HandHeart, label: "Inclusión" },
-  { icon: Heart, label: "Respeto" },
-  { icon: Search, label: "Descubrimiento" },
+const valoresFIRST = [
+  { icon: Search, label: "Descubrimiento", slug: "descubrimiento", color: "primary", desc: "Exploramos nuevas habilidades, ideas y conceptos." },
+  { icon: Lightbulb, label: "Innovación", slug: "innovacion", color: "accent", desc: "Usamos creatividad y perseverancia para resolver problemas." },
+  { icon: Zap, label: "Impacto", slug: "impacto", color: "secondary", desc: "Aplicamos lo aprendido para mejorar nuestro mundo." },
+  { icon: Heart, label: "Inclusión", slug: "inclusion", color: "primary", desc: "Nos respetamos y valoramos nuestras diferencias." },
+  { icon: Users, label: "Trabajo en Equipo", slug: "trabajo-en-equipo", color: "secondary", desc: "Somos más fuertes cuando trabajamos juntos." },
+  { icon: PartyPopper, label: "Diversión", slug: "diversion", color: "accent", desc: "¡Disfrutamos y celebramos lo que hacemos!" },
 ];
 
 const timeline = [
@@ -45,7 +47,7 @@ const QuienesSomos = () => {
       <section className="bg-dark-brown py-20 text-primary-foreground">
         <div className="container text-center">
           <motion.h1 className="font-heading text-3xl font-black md:text-5xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>Quiénes Somos</motion.h1>
-          <motion.p className="mt-4 font-subtitle text-lg opacity-70" initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} transition={{ delay: 0.3 }}>Conoce al equipo detrás de CaliBots Kairos</motion.p>
+          <motion.p className="mt-4 font-subtitle text-lg opacity-80" initial={{ opacity: 0 }} animate={{ opacity: 0.8 }} transition={{ delay: 0.3 }}>Conoce al equipo detrás de CaliBots Kairos</motion.p>
         </div>
       </section>
 
@@ -54,16 +56,16 @@ const QuienesSomos = () => {
         <div className="grid items-center gap-10 md:grid-cols-2">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
             <h2 className="mb-4 font-heading text-2xl font-bold">Nuestra Esencia</h2>
-            <p className="mb-4 text-muted-foreground">
+            <p className="mb-4 text-muted-foreground leading-relaxed">
               Somos CaliBots Kairos, un equipo de FIRST LEGO League Challenge de Cali, Colombia, estudiantes con orgullo de Comfandi.
             </p>
-            <p className="mb-4 text-muted-foreground">
+            <p className="mb-4 text-muted-foreground leading-relaxed">
               Nuestro nombre define nuestra esencia: creemos en el <strong className="text-foreground">Kairos</strong>, el momento exacto para aprender, crear e innovar frente a los desafíos tecnológicos de hoy.
             </p>
-            <p className="mb-4 text-muted-foreground">
-              En la temporada <strong className="text-primary">Unearthed</strong> nos sumergimos en el presente para redescubrir los tesoros del pasado. A través de la investigación, la ciencia y la robótica honramos nuestras raíces y representamos a nuestra ciudad con creatividad y compromiso.
+            <p className="mb-4 text-muted-foreground leading-relaxed">
+              En la temporada <strong className="text-foreground">Unearthed</strong> nos sumergimos en el presente para redescubrir los tesoros del pasado. A través de la investigación, la ciencia y la robótica honramos nuestras raíces y representamos a nuestra ciudad con creatividad y compromiso.
             </p>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground leading-relaxed">
               En CaliBots Kairos cada reto es la oportunidad perfecta para dejar huella y demostrar que desde nuestra región también se construye el futuro.
             </p>
           </motion.div>
@@ -103,7 +105,7 @@ const QuienesSomos = () => {
                 <PhotoPlaceholder aspectRatio="portrait" className="rounded-none" />
                 <CardContent className="p-4 text-center">
                   <h3 className="font-heading text-sm font-bold">{coach.name}</h3>
-                  <span className="mt-1 inline-block rounded-full bg-primary/10 px-3 py-0.5 text-xs font-semibold text-primary">{coach.role}</span>
+                  <span className="mt-1 inline-block rounded-full bg-accent/10 px-3 py-0.5 text-xs font-semibold text-accent">{coach.role}</span>
                 </CardContent>
               </Card>
             </motion.div>
@@ -116,12 +118,12 @@ const QuienesSomos = () => {
         <div className="container">
           <h2 className="mb-10 text-center font-heading text-2xl font-bold">Nuestro Recorrido</h2>
           <div className="relative mx-auto max-w-2xl">
-            <div className="absolute left-4 top-0 h-full w-0.5 bg-secondary/20 md:left-1/2 md:-translate-x-1/2" />
+            <div className="absolute left-4 top-0 h-full w-0.5 bg-secondary/30 md:left-1/2 md:-translate-x-1/2" />
             {timeline.map((item, i) => (
               <motion.div key={item.phase} className="relative mb-10 pl-12 md:pl-0" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i}>
                 <div className="absolute left-2 top-1 h-5 w-5 rounded-full border-4 border-secondary bg-background md:left-1/2 md:-translate-x-1/2" />
                 <div className={`md:w-5/12 ${i % 2 === 0 ? "md:mr-auto md:pr-8 md:text-right" : "md:ml-auto md:pl-8"}`}>
-                  <h3 className="font-heading font-bold text-primary">{item.phase}</h3>
+                  <h3 className="font-heading font-bold text-foreground">{item.phase}</h3>
                   <p className="text-sm text-muted-foreground">{item.desc}</p>
                 </div>
               </motion.div>
@@ -130,17 +132,36 @@ const QuienesSomos = () => {
         </div>
       </section>
 
-      {/* Valores */}
+      {/* Valores FIRST en Acción */}
       <section className="bg-dark-brown py-16 text-primary-foreground">
         <div className="container">
-          <h2 className="mb-10 text-center font-heading text-2xl font-bold">Valores FIRST</h2>
-          <div className="flex flex-wrap justify-center gap-6">
-            {values.map((v, i) => (
-              <motion.div key={v.label} className="flex flex-col items-center gap-2" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i}>
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary/20 text-secondary"><v.icon className="h-8 w-8" /></div>
-                <span className="text-sm font-medium">{v.label}</span>
-              </motion.div>
-            ))}
+          <motion.h2 className="mb-3 text-center font-heading text-2xl font-bold" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
+            Valores FIRST en Acción
+          </motion.h2>
+          <motion.p className="mb-10 text-center text-sm opacity-60" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
+            Haz clic en cada valor para descubrir cómo lo vivimos
+          </motion.p>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {valoresFIRST.map((v, i) => {
+              const colorClass = v.color === "accent" ? "text-accent" : v.color === "secondary" ? "text-secondary" : "text-primary";
+              const bgClass = v.color === "accent" ? "bg-accent/15" : v.color === "secondary" ? "bg-secondary/15" : "bg-primary/15";
+              return (
+                <motion.div key={v.slug} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i + 1}>
+                  <Link to={`/valores/${v.slug}`} className="group block rounded-xl border border-primary-foreground/10 bg-primary-foreground/5 p-6 transition-all duration-300 hover:bg-primary-foreground/10 hover:shadow-lg hover:scale-[1.02]">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className={`flex h-12 w-12 items-center justify-center rounded-full ${bgClass}`}>
+                        <v.icon className={`h-6 w-6 ${colorClass}`} />
+                      </div>
+                      <h3 className="font-heading text-base font-bold">{v.label}</h3>
+                    </div>
+                    <p className="mb-3 text-sm opacity-70">{v.desc}</p>
+                    <span className={`inline-flex items-center gap-1 text-xs font-semibold ${colorClass} group-hover:gap-2 transition-all`}>
+                      Ver más <ArrowRight className="h-3 w-3" />
+                    </span>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
