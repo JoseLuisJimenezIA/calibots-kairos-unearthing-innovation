@@ -7,7 +7,8 @@ import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { fadeUp, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, textReveal, flipIn } from "@/lib/animations";
-import LegoModel3D from "@/components/LegoModel3D";
+import { lazy, Suspense } from "react";
+const LegoModel3D = lazy(() => import("@/components/LegoModel3D"));
 
 const Index = () => {
   return (
