@@ -48,9 +48,7 @@ const Index = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Suspense fallback={<div className="h-full flex items-center justify-center"><div className="h-16 w-16 rounded-full border-4 border-primary/30 border-t-primary animate-spin" /></div>}>
-              <LegoModel3D className="h-[340px] md:h-[420px] lg:h-[500px] w-full" />
-            </Suspense>
+            <LegoModel3D className="h-[340px] md:h-[420px] lg:h-[500px] w-full" />
             <motion.p
               className="text-center text-xs text-muted-foreground/40 mt-2 font-subtitle"
               initial={{ opacity: 0 }}
