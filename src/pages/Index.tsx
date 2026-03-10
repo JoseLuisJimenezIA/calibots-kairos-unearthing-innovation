@@ -40,17 +40,17 @@ const Index = () => {
           />
         </div>
 
-        <div className="container relative z-10 flex flex-col items-center gap-6 text-center">
-          {/* 3D LEGO */}
-          <motion.div
-            className="relative w-full max-w-lg mx-auto"
-            initial={{ opacity: 0, scale: 0.5, y: 60 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <LegoModel3D className="h-[340px] md:h-[420px] lg:h-[500px] w-full" />
-          </motion.div>
+        {/* 3D LEGO — large background */}
+        <motion.div
+          className="absolute inset-0 z-0 opacity-60"
+          initial={{ opacity: 0, scale: 0.6 }}
+          animate={{ opacity: 0.6, scale: 1 }}
+          transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <LegoModel3D className="h-full w-full" />
+        </motion.div>
 
+        <div className="container relative z-10 flex flex-col items-center gap-6 text-center">
           <motion.span
             className="inline-block rounded-full border border-primary/30 bg-primary/10 px-5 py-1.5 font-subtitle text-xs font-semibold uppercase tracking-[0.25em] text-primary backdrop-blur-sm"
             initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
@@ -61,7 +61,7 @@ const Index = () => {
           </motion.span>
 
           <motion.h1
-            className="max-w-3xl font-heading text-3xl font-black leading-tight tracking-tight md:text-5xl lg:text-6xl"
+            className="max-w-3xl font-heading text-3xl font-black leading-tight tracking-tight md:text-5xl lg:text-6xl drop-shadow-[0_2px_20px_hsl(0_0%_0%/0.8)]"
             variants={textReveal}
             initial="hidden"
             animate="visible"
@@ -73,7 +73,7 @@ const Index = () => {
           </motion.h1>
 
           <motion.p
-            className="max-w-xl font-subtitle text-lg text-muted-foreground/80 md:text-xl"
+            className="max-w-xl font-subtitle text-lg text-muted-foreground/80 md:text-xl drop-shadow-[0_2px_10px_hsl(0_0%_0%/0.6)]"
             initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 1, duration: 0.8 }}

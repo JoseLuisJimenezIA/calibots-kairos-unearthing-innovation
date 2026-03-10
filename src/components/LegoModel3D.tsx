@@ -14,7 +14,7 @@ const LegoModel = () => {
   });
 
   return (
-    <group ref={ref} scale={1.8} position={[0, -0.8, 0]}>
+    <group ref={ref} scale={3} position={[0, -1.5, 0]}>
       <primitive object={scene} />
     </group>
   );
