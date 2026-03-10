@@ -49,14 +49,6 @@ const Index = () => {
             transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
           >
             <LegoModel3D className="h-[340px] md:h-[420px] lg:h-[500px] w-full" />
-            <motion.p
-              className="text-center text-xs text-muted-foreground/40 mt-2 font-subtitle"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5 }}
-            >
-              ↻ Arrastra para girar el modelo 3D
-            </motion.p>
           </motion.div>
 
           <motion.span

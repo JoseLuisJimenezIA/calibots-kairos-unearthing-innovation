@@ -1,63 +1,30 @@
-import { Suspense, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment, ContactShadows } from "@react-three/drei";
-import * as THREE from "three";
-
-const LegoModel = () => {
-  const { scene } = useGLTF("/models/lego.glb");
-  const ref = useRef<THREE.Group>(null);
-
-  useFrame((_, delta) => {
-    if (ref.current) {
-      ref.current.rotation.y += delta * 0.3;
-    }
-  });
-
-  return (
-    <group ref={ref} scale={2.5} position={[0, -1.2, 0]}>
-      <primitive object={scene} />
-    </group>
-  );
-};
-
-useGLTF.preload("/models/lego.glb");
+import { motion } from "framer-motion";
+import legoExplorer from "@/assets/lego-explorer.png";
 
 const LegoModel3D = ({ className = "" }: { className?: string }) => {
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative flex items-center justify-center ${className}`}>
       {/* Glow behind model */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="h-[60%] w-[60%] rounded-full bg-primary/20 blur-[80px] animate-glow-pulse" />
       </div>
-      <Canvas
-        camera={{ position: [0, 1, 5], fov: 45 }}
-        gl={{ antialias: true, alpha: true }}
-        style={{ background: "transparent" }}
+      <motion.div
+        className="relative"
+        style={{ perspective: "1000px" }}
+        animate={{ y: [0, -15, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
-        <ambientLight intensity={0.4} />
-        <directionalLight position={[5, 5, 5]} intensity={1.2} color="#F5D060" />
-        <directionalLight position={[-3, 3, -3]} intensity={0.6} color="#7FFFCF" />
-        <pointLight position={[0, 3, 0]} intensity={0.8} color="#E3B03F" />
-        <Suspense fallback={null}>
-          <LegoModel />
-          <ContactShadows
-            position={[0, -1.2, 0]}
-            opacity={0.5}
-            scale={8}
-            blur={2}
-            far={4}
-            color="#E3B03F"
-          />
-          <Environment preset="city" />
-        </Suspense>
-        <OrbitControls
-          enableZoom={false}
-          enablePan={false}
-          minPolarAngle={Math.PI / 4}
-          maxPolarAngle={Math.PI / 2}
-          autoRotate={false}
+        <motion.img
+          src={legoExplorer}
+          alt="LEGO Explorer - CaliBots Kairos"
+          className="h-[280px] md:h-[360px] lg:h-[440px] w-auto object-contain drop-shadow-[0_20px_60px_hsl(40_76%_50%/0.4)]"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          whileHover={{ scale: 1.05, rotateY: 10 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 200 }}
         />
-      </Canvas>
+      </motion.div>
     </div>
   );
 };
