@@ -3,9 +3,10 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
+import SectionDivider from "@/components/SectionDivider";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import VideoPlaceholder from "@/components/VideoPlaceholder";
-import { fadeUp } from "@/lib/animations";
+import { textReveal, slideFromLeft, slideFromRight, staggerContainer, staggerItem, scaleReveal } from "@/lib/animations";
 
 const tabs = [
   { id: "construccion", label: "Construcción", sections: [
@@ -37,44 +38,73 @@ const JuegoDelRobot = () => {
       <Navbar />
       <BackButton />
 
-      <section className="relative py-20 overflow-hidden section-dark">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="h-[300px] w-[300px] rounded-full bg-secondary/8 blur-[80px]" />
+      <section className="relative py-24 overflow-hidden section-dark">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <motion.div
+            className="h-[400px] w-[400px] rounded-full bg-secondary/8 blur-[100px]"
+            animate={{ scale: [1, 1.3, 1] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          />
         </div>
         <div className="container relative z-10 text-center">
-          <motion.h1 className="font-heading text-3xl font-black uppercase tracking-wider md:text-5xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.h1 className="font-heading text-3xl font-black uppercase tracking-wider md:text-5xl lg:text-6xl" variants={textReveal} initial="hidden" animate="visible" custom={0}>
             Juego del <span className="text-gradient-teal">Robot</span>
           </motion.h1>
-          <motion.p className="mt-4 font-subtitle text-lg text-muted-foreground" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>Diseño, construcción y estrategia de nuestro robot</motion.p>
+          <motion.p className="mt-5 font-subtitle text-lg text-muted-foreground/80" initial={{ opacity: 0, filter: "blur(6px)" }} animate={{ opacity: 1, filter: "blur(0px)" }} transition={{ delay: 0.4 }}>
+            Diseño, construcción y estrategia de nuestro robot
+          </motion.p>
         </div>
       </section>
 
-      <section className="section-darker py-16">
+      <SectionDivider variant="teal" />
+
+      <section className="section-darker py-20">
         <div className="container">
-          <div className="mb-10 flex flex-wrap justify-center gap-2">
+          <motion.div
+            className="mb-12 flex flex-wrap justify-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             {tabs.map((tab) => (
-              <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`rounded-full px-5 py-2 font-subtitle text-sm font-semibold uppercase tracking-wider transition-all duration-300 ${activeTab === tab.id ? "bg-primary text-primary-foreground glow-gold" : "border border-primary/20 bg-primary/5 text-muted-foreground hover:bg-primary/10 hover:text-primary"}`}>
+              <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`rounded-full px-5 py-2 font-subtitle text-sm font-semibold uppercase tracking-wider transition-all duration-300 ${activeTab === tab.id ? "bg-primary text-primary-foreground glow-gold scale-105" : "border border-primary/20 bg-primary/5 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:scale-105"}`}>
                 {tab.label}
               </button>
             ))}
-          </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="space-y-6">
-              {currentTab.sections.map((s, i) => (
-                <motion.div key={s.title} className="glass-card p-6" variants={fadeUp} initial="hidden" animate="visible" custom={i}>
-                  <h3 className="mb-2 font-heading text-sm font-bold uppercase tracking-wider text-secondary">{s.title}</h3>
-                  <p className="font-subtitle text-sm text-muted-foreground">{s.desc}</p>
+          </motion.div>
+          <div className="grid gap-10 md:grid-cols-2">
+            <motion.div
+              className="space-y-6"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+              key={activeTab}
+            >
+              {currentTab.sections.map((s) => (
+                <motion.div key={s.title} className="glass-card p-6 group" variants={staggerItem}>
+                  <h3 className="mb-3 font-heading text-sm font-bold uppercase tracking-wider text-secondary">{s.title}</h3>
+                  <p className="font-subtitle text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
                 </motion.div>
               ))}
-            </div>
-            <div className="space-y-6">
+            </motion.div>
+            <motion.div
+              className="space-y-6"
+              variants={slideFromRight}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={0}
+            >
               <PhotoPlaceholder aspectRatio="video" label="📷 Foto del robot aquí" />
               <PhotoPlaceholder aspectRatio="video" label="📷 Diagrama / plano aquí" />
               <VideoPlaceholder label="🎥 Video del robot en acción" />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
+
+      <SectionDivider variant="gradient" />
       <Footer />
     </div>
   );

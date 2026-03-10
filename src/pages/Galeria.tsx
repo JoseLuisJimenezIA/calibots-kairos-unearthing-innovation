@@ -4,8 +4,10 @@ import { X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
+import SectionDivider from "@/components/SectionDivider";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import VideoPlaceholder from "@/components/VideoPlaceholder";
+import { textReveal, scaleReveal } from "@/lib/animations";
 
 const filters = ["Todo", "Proyecto", "Equipo", "Robot", "Competencia", "Investigación"];
 
@@ -34,30 +36,56 @@ const Galeria = () => {
       <Navbar />
       <BackButton />
 
-      <section className="relative py-20 overflow-hidden section-dark">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="h-[300px] w-[300px] rounded-full bg-primary/8 blur-[80px]" />
+      <section className="relative py-24 overflow-hidden section-dark">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <motion.div
+            className="h-[400px] w-[400px] rounded-full bg-primary/8 blur-[100px]"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          />
         </div>
         <div className="container relative z-10 text-center">
-          <motion.h1 className="font-heading text-3xl font-black uppercase tracking-wider md:text-5xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+          <motion.h1 className="font-heading text-3xl font-black uppercase tracking-wider md:text-5xl lg:text-6xl" variants={textReveal} initial="hidden" animate="visible" custom={0}>
             <span className="text-gradient-gold">Galería</span>
           </motion.h1>
-          <motion.p className="mt-4 font-subtitle text-lg text-muted-foreground" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>Momentos, logros y registros de CaliBots Kairos</motion.p>
+          <motion.p className="mt-5 font-subtitle text-lg text-muted-foreground/80" initial={{ opacity: 0, filter: "blur(6px)" }} animate={{ opacity: 1, filter: "blur(0px)" }} transition={{ delay: 0.4 }}>
+            Momentos, logros y registros de CaliBots Kairos
+          </motion.p>
         </div>
       </section>
 
-      <section className="section-darker py-16">
+      <SectionDivider variant="gold" />
+
+      <section className="section-darker py-20">
         <div className="container">
-          <div className="mb-10 flex flex-wrap justify-center gap-2">
+          <motion.div
+            className="mb-12 flex flex-wrap justify-center gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             {filters.map((f) => (
-              <button key={f} onClick={() => setActive(f)} className={`rounded-full px-5 py-2 font-subtitle text-sm font-semibold uppercase tracking-wider transition-all duration-300 ${active === f ? "bg-primary text-primary-foreground glow-gold" : "border border-primary/20 bg-primary/5 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:scale-105"}`}>{f}</button>
+              <button key={f} onClick={() => setActive(f)} className={`rounded-full px-5 py-2 font-subtitle text-sm font-semibold uppercase tracking-wider transition-all duration-300 ${active === f ? "bg-primary text-primary-foreground glow-gold scale-105" : "border border-primary/20 bg-primary/5 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:scale-105"}`}>{f}</button>
             ))}
-          </div>
-          <motion.div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" layout>
+          </motion.div>
+          <motion.div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" layout>
             <AnimatePresence mode="popLayout">
               {filtered.map((item) => (
-                <motion.div key={item.id} layout initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} transition={{ duration: 0.3 }} className="cursor-pointer glass-card-hover" onClick={() => item.type === "photo" && setLightbox(item.id)}>
-                  {item.type === "photo" ? <PhotoPlaceholder aspectRatio="video" label={item.label} /> : <VideoPlaceholder label={item.label} />}
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="cursor-pointer glass-card-hover group"
+                  onClick={() => item.type === "photo" && setLightbox(item.id)}
+                >
+                  <div className="relative overflow-hidden rounded-xl">
+                    {item.type === "photo" ? <PhotoPlaceholder aspectRatio="video" label={item.label} /> : <VideoPlaceholder label={item.label} />}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -68,13 +96,15 @@ const Galeria = () => {
       <AnimatePresence>
         {lightbox !== null && (
           <motion.div className="fixed inset-0 z-50 flex items-center justify-center bg-background/90 backdrop-blur-xl" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setLightbox(null)}>
-            <motion.div className="relative mx-4 w-full max-w-2xl" initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.8, opacity: 0 }} onClick={(e) => e.stopPropagation()}>
+            <motion.div className="relative mx-4 w-full max-w-2xl" initial={{ scale: 0.7, opacity: 0, filter: "blur(10px)" }} animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }} exit={{ scale: 0.7, opacity: 0, filter: "blur(10px)" }} transition={{ ease: [0.16, 1, 0.3, 1] }} onClick={(e) => e.stopPropagation()}>
               <button onClick={() => setLightbox(null)} className="absolute -top-12 right-0 text-foreground transition-opacity hover:opacity-70" aria-label="Cerrar"><X className="h-8 w-8" /></button>
               <PhotoPlaceholder aspectRatio="video" label={galleryItems.find((g) => g.id === lightbox)?.label || "📷 Foto aquí"} className="text-lg" />
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <SectionDivider variant="gradient" />
       <Footer />
     </div>
   );
