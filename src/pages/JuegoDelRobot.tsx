@@ -33,37 +33,45 @@ const JuegoDelRobot = () => {
   const currentTab = tabs.find((t) => t.id === activeTab)!;
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-background">
       <Navbar />
       <BackButton />
-      <section className="bg-foreground py-20 text-background">
-        <div className="container text-center">
-          <motion.h1 className="font-heading text-3xl font-black md:text-5xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>Juego del Robot</motion.h1>
-          <motion.p className="mt-4 text-lg opacity-70" initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} transition={{ delay: 0.3 }}>Diseño, construcción y estrategia de nuestro robot</motion.p>
+
+      <section className="relative py-20 overflow-hidden section-dark">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="h-[300px] w-[300px] rounded-full bg-secondary/8 blur-[80px]" />
+        </div>
+        <div className="container relative z-10 text-center">
+          <motion.h1 className="font-heading text-3xl font-black uppercase tracking-wider md:text-5xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            Juego del <span className="text-gradient-teal">Robot</span>
+          </motion.h1>
+          <motion.p className="mt-4 font-subtitle text-lg text-muted-foreground" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>Diseño, construcción y estrategia de nuestro robot</motion.p>
         </div>
       </section>
 
-      <section className="container py-16">
-        <div className="mb-10 flex flex-wrap justify-center gap-2">
-          {tabs.map((tab) => (
-            <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`rounded-full px-5 py-2 text-sm font-semibold transition-colors ${activeTab === tab.id ? "bg-primary text-primary-foreground shadow-md" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}>
-              {tab.label}
-            </button>
-          ))}
-        </div>
-        <div className="grid gap-8 md:grid-cols-2">
-          <div className="space-y-6">
-            {currentTab.sections.map((s, i) => (
-              <motion.div key={s.title} className="rounded-lg border border-border bg-card p-6" variants={fadeUp} initial="hidden" animate="visible" custom={i}>
-                <h3 className="mb-2 font-heading text-lg font-bold text-secondary">{s.title}</h3>
-                <p className="text-sm text-muted-foreground">{s.desc}</p>
-              </motion.div>
+      <section className="section-darker py-16">
+        <div className="container">
+          <div className="mb-10 flex flex-wrap justify-center gap-2">
+            {tabs.map((tab) => (
+              <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`rounded-full px-5 py-2 font-subtitle text-sm font-semibold uppercase tracking-wider transition-all duration-300 ${activeTab === tab.id ? "bg-primary text-primary-foreground glow-gold" : "border border-primary/20 bg-primary/5 text-muted-foreground hover:bg-primary/10 hover:text-primary"}`}>
+                {tab.label}
+              </button>
             ))}
           </div>
-          <div className="space-y-6">
-            <PhotoPlaceholder aspectRatio="video" label="📷 Foto del robot aquí" />
-            <PhotoPlaceholder aspectRatio="video" label="📷 Diagrama / plano aquí" />
-            <VideoPlaceholder label="🎥 Video del robot en acción" />
+          <div className="grid gap-8 md:grid-cols-2">
+            <div className="space-y-6">
+              {currentTab.sections.map((s, i) => (
+                <motion.div key={s.title} className="glass-card p-6" variants={fadeUp} initial="hidden" animate="visible" custom={i}>
+                  <h3 className="mb-2 font-heading text-sm font-bold uppercase tracking-wider text-secondary">{s.title}</h3>
+                  <p className="font-subtitle text-sm text-muted-foreground">{s.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+            <div className="space-y-6">
+              <PhotoPlaceholder aspectRatio="video" label="📷 Foto del robot aquí" />
+              <PhotoPlaceholder aspectRatio="video" label="📷 Diagrama / plano aquí" />
+              <VideoPlaceholder label="🎥 Video del robot en acción" />
+            </div>
           </div>
         </div>
       </section>

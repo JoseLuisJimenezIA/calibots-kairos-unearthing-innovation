@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["Montserrat", "sans-serif"],
-        subtitle: ["Poppins", "sans-serif"],
+        heading: ["Orbitron", "sans-serif"],
+        subtitle: ["Rajdhani", "sans-serif"],
         body: ["Inter", "sans-serif"],
       },
       colors: {

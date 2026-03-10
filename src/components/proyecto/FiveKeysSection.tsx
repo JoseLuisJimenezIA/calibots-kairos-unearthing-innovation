@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { HelpCircle, Lightbulb, Cog, MapPin, TrendingUp } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { fadeUp } from "@/lib/animations";
 
 const fiveKeys = [
@@ -12,23 +11,21 @@ const fiveKeys = [
 ];
 
 const FiveKeysSection = () => (
-  <section className="bg-dark-brown/95 py-16 text-primary-foreground border-t border-primary/10">
+  <section className="section-darker py-16 border-t border-primary/10">
     <div className="container">
-      <motion.h2 className="mb-10 text-center font-heading text-2xl font-bold" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
-        ARGOS en 5 Claves
+      <motion.h2 className="mb-10 text-center font-heading text-2xl font-bold uppercase tracking-wider" variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
+        ARGOS en <span className="text-gradient-gold">5 Claves</span>
       </motion.h2>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {fiveKeys.map((key, i) => (
           <motion.div key={key.label} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i + 1}>
-            <Card className="h-full border-primary/20 bg-primary-foreground/5 backdrop-blur text-primary-foreground shadow-lg">
-              <CardContent className="flex flex-col items-center gap-3 p-5 text-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">
-                  <key.icon className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="font-heading text-sm font-bold uppercase tracking-wide text-primary">{key.label}</h3>
-                <p className="text-xs leading-relaxed opacity-80">{key.text}</p>
-              </CardContent>
-            </Card>
+            <div className="glass-card-hover h-full p-5 text-center">
+              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-primary/15">
+                <key.icon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="mb-2 font-heading text-xs font-bold uppercase tracking-[0.15em] text-primary">{key.label}</h3>
+              <p className="font-subtitle text-xs leading-relaxed text-muted-foreground">{key.text}</p>
+            </div>
           </motion.div>
         ))}
       </div>
