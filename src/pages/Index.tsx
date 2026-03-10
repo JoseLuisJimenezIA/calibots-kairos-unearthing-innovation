@@ -21,23 +21,15 @@ const Index = () => {
         <div className="absolute inset-0 grid-bg opacity-50" />
 
         <div className="container relative z-10 flex flex-col items-center gap-8 text-center">
-          {/* LEGO Explorer 3D */}
+          {/* LEGO Explorer 3D Model */}
           <motion.div
-            className="relative"
-            initial={{ opacity: 0, scale: 0.5, rotateY: -30 }}
-            animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+            className="relative w-full max-w-lg mx-auto"
+            initial={{ opacity: 0, scale: 0.7 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            <div className="animate-float" style={{ perspective: "1000px" }}>
-              <img
-                src={legoExplorer}
-                alt="LEGO Explorer CaliBots Kairos"
-                className="h-48 w-auto drop-shadow-[0_20px_60px_hsl(40_76%_50%/0.4)] md:h-64 lg:h-72"
-                style={{ filter: "drop-shadow(0 0 40px hsl(40 76% 50% / 0.3))" }}
-              />
-            </div>
-            {/* Glow ring */}
-            <div className="absolute -inset-8 rounded-full animate-glow-pulse opacity-50" />
+            <LegoModel3D className="h-[340px] md:h-[420px] lg:h-[500px] w-full" />
+            <p className="text-center text-xs text-muted-foreground/50 mt-2 font-subtitle">Arrastra para girar el modelo 3D</p>
           </motion.div>
 
           <motion.span
