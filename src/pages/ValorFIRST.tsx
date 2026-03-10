@@ -72,11 +72,11 @@ const ValorFIRST = () => {
 
   if (!valor) {
     return (
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col bg-background">
         <Navbar />
         <BackButton />
         <div className="container flex flex-1 flex-col items-center justify-center gap-4 py-20">
-          <h1 className="font-heading text-2xl font-bold">Valor no encontrado</h1>
+          <h1 className="font-heading text-2xl font-bold uppercase tracking-wider">Valor no encontrado</h1>
           <Button asChild><Link to="/quienes-somos">Volver</Link></Button>
         </div>
         <Footer />
@@ -86,63 +86,66 @@ const ValorFIRST = () => {
 
   const IconComp = valor.icon;
   const colorClass = valor.color === "accent" ? "text-accent" : valor.color === "secondary" ? "text-secondary" : "text-primary";
-  const bgColorClass = valor.color === "accent" ? "bg-accent/10" : valor.color === "secondary" ? "bg-secondary/10" : "bg-primary/10";
+  const bgColorClass = valor.color === "accent" ? "bg-accent/15" : valor.color === "secondary" ? "bg-secondary/15" : "bg-primary/15";
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-background">
       <Navbar />
       <BackButton />
 
       {/* Hero */}
-      <section className="bg-dark-brown py-16 text-primary-foreground">
-        <div className="container text-center">
+      <section className="relative py-16 overflow-hidden section-dark">
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className={`h-[300px] w-[300px] rounded-full ${valor.color === "accent" ? "bg-accent/8" : valor.color === "secondary" ? "bg-secondary/8" : "bg-primary/8"} blur-[80px]`} />
+        </div>
+        <div className="container relative z-10 text-center">
           <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
             <div className={`mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full ${bgColorClass}`}>
               <IconComp className={`h-10 w-10 ${colorClass}`} />
             </div>
           </motion.div>
-          <motion.h1 className="font-heading text-3xl font-black md:text-5xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+          <motion.h1 className="font-heading text-3xl font-black uppercase tracking-wider md:text-5xl" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
             {valor.title}
           </motion.h1>
-          <motion.p className="mt-2 font-subtitle text-sm uppercase tracking-widest opacity-60" initial={{ opacity: 0 }} animate={{ opacity: 0.6 }} transition={{ delay: 0.4 }}>
+          <motion.p className="mt-2 font-subtitle text-sm uppercase tracking-[0.2em] text-muted-foreground" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}>
             Valores FIRST en Acción
           </motion.p>
         </div>
       </section>
 
       {/* Content */}
-      <section className="container py-16">
-        <div className="mx-auto max-w-3xl space-y-12">
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
-            <h2 className="mb-4 font-heading text-xl font-bold">¿Qué significa este valor?</h2>
-            <p className="text-muted-foreground leading-relaxed">{valor.description}</p>
-          </motion.div>
+      <section className="section-darker py-16">
+        <div className="container">
+          <div className="mx-auto max-w-3xl space-y-12">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
+              <h2 className="mb-4 font-heading text-lg font-bold uppercase tracking-wider">¿Qué significa este valor?</h2>
+              <p className="font-subtitle text-muted-foreground leading-relaxed">{valor.description}</p>
+            </motion.div>
 
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={1} className="rounded-xl border border-border bg-card p-6">
-            <h2 className="mb-4 font-heading text-xl font-bold">Cómo lo aplicamos en CaliBots Kairos</h2>
-            <p className="text-muted-foreground leading-relaxed">{valor.howWeApply}</p>
-          </motion.div>
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={1} className="glass-card p-6">
+              <h2 className="mb-4 font-heading text-lg font-bold uppercase tracking-wider">Cómo lo aplicamos en CaliBots Kairos</h2>
+              <p className="font-subtitle text-muted-foreground leading-relaxed">{valor.howWeApply}</p>
+            </motion.div>
 
-          {/* Gallery */}
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={2}>
-            <h2 className="mb-6 font-heading text-xl font-bold">Evidencia Visual</h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <PhotoPlaceholder aspectRatio="video" label={`📷 ${valor.title} - Foto 1`} />
-              <PhotoPlaceholder aspectRatio="video" label={`📷 ${valor.title} - Foto 2`} />
-              <PhotoPlaceholder aspectRatio="video" label={`📷 ${valor.title} - Foto 3`} />
-              <PhotoPlaceholder aspectRatio="video" label={`📷 ${valor.title} - Foto 4`} />
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={2}>
+              <h2 className="mb-6 font-heading text-lg font-bold uppercase tracking-wider">Evidencia Visual</h2>
+              <div className="grid gap-4 sm:grid-cols-2">
+                <PhotoPlaceholder aspectRatio="video" label={`📷 ${valor.title} - Foto 1`} />
+                <PhotoPlaceholder aspectRatio="video" label={`📷 ${valor.title} - Foto 2`} />
+                <PhotoPlaceholder aspectRatio="video" label={`📷 ${valor.title} - Foto 3`} />
+                <PhotoPlaceholder aspectRatio="video" label={`📷 ${valor.title} - Foto 4`} />
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={3} className="glass-card p-8 text-center glow-gold">
+              <p className="font-subtitle text-lg italic text-muted-foreground">{valor.quote}</p>
+            </motion.div>
+
+            <div className="text-center">
+              <Button asChild variant="outline" className="gap-2 border-primary/30 font-subtitle uppercase tracking-wider hover:bg-primary/10">
+                <Link to="/quienes-somos"><ArrowLeft className="h-4 w-4" /> Volver a Quiénes Somos</Link>
+              </Button>
             </div>
-          </motion.div>
-
-          {/* Quote */}
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={3} className="rounded-xl bg-dark-brown p-8 text-center text-primary-foreground">
-            <p className="font-subtitle text-lg italic opacity-80">{valor.quote}</p>
-          </motion.div>
-
-          <div className="text-center">
-            <Button asChild variant="outline" className="gap-2">
-              <Link to="/quienes-somos"><ArrowLeft className="h-4 w-4" /> Volver a Quiénes Somos</Link>
-            </Button>
           </div>
         </div>
       </section>

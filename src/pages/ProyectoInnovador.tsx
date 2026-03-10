@@ -17,7 +17,7 @@ import TimelineSection from "@/components/proyecto/TimelineSection";
 
 const ProyectoInnovador = () => {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-background">
       <Navbar />
       <BackButton />
       <HeroSection />

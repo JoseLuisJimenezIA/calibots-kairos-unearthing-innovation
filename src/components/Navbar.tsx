@@ -17,11 +17,11 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-lg">
+    <header className="sticky top-0 z-50 w-full border-b border-primary/10 bg-background/70 backdrop-blur-2xl">
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Calibots Kairos" className="h-10 w-auto" />
-          <span className="hidden font-heading text-lg font-bold text-foreground sm:inline">
+        <Link to="/" className="flex items-center gap-3">
+          <img src="/logo.png" alt="Calibots Kairos" className="h-10 w-auto drop-shadow-[0_0_10px_hsl(40_76%_50%/0.4)]" />
+          <span className="hidden font-heading text-sm font-bold tracking-wider text-foreground sm:inline uppercase">
             Calibots Kairos
           </span>
         </Link>
@@ -32,10 +32,10 @@ const Navbar = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-primary/10 hover:text-primary ${
+              className={`rounded-md px-3 py-2 font-subtitle text-sm font-medium uppercase tracking-wide transition-all duration-300 ${
                 location.pathname === item.path
-                  ? "bg-primary/10 text-primary font-semibold"
-                  : "text-muted-foreground"
+                  ? "text-primary glow-gold bg-primary/10"
+                  : "text-muted-foreground hover:text-primary hover:bg-primary/5"
               }`}
             >
               {item.label}
@@ -43,11 +43,10 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Mobile toggle */}
         <Button
           variant="ghost"
           size="icon"
-          className="lg:hidden"
+          className="lg:hidden text-foreground"
           onClick={() => setOpen(!open)}
           aria-label="Menú"
         >
@@ -55,18 +54,17 @@ const Navbar = () => {
         </Button>
       </div>
 
-      {/* Mobile nav */}
       {open && (
-        <nav className="border-t border-border bg-background px-4 pb-4 lg:hidden">
+        <nav className="border-t border-primary/10 bg-background/95 backdrop-blur-xl px-4 pb-4 lg:hidden">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
               onClick={() => setOpen(false)}
-              className={`block rounded-md px-3 py-3 text-sm font-medium transition-colors hover:bg-primary/10 ${
+              className={`block rounded-md px-3 py-3 font-subtitle text-sm font-medium uppercase tracking-wide transition-all duration-300 ${
                 location.pathname === item.path
-                  ? "text-primary font-semibold"
-                  : "text-muted-foreground"
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-primary"
               }`}
             >
               {item.label}
