@@ -1,11 +1,13 @@
 // @ts-nocheck
-import { Suspense, useRef, lazy } from "react";
+import { Suspense, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment, ContactShadows } from "@react-three/drei";
 import * as THREE from "three";
 
+const MODEL_PATH = "/models/lego.glb";
+
 const LegoModel = () => {
-  const { scene } = useGLTF("/models/lego.glb");
+  const { scene } = useGLTF(MODEL_PATH);
   const ref = useRef<THREE.Group>(null);
 
   useFrame((_, delta) => {
@@ -21,12 +23,9 @@ const LegoModel = () => {
   );
 };
 
-useGLTF.preload("/models/lego.glb");
-
 const LegoModel3D = ({ className = "" }: { className?: string }) => {
   return (
     <div className={`relative ${className}`}>
-      {/* Glow behind model */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="h-[60%] w-[60%] rounded-full bg-primary/20 blur-[80px] animate-glow-pulse" />
       </div>
