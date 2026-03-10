@@ -5,7 +5,7 @@ import { Users, Mountain, Eye, Shield, Lightbulb, Gamepad2, Heart } from "lucide
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { fadeUp } from "@/lib/animations";
-import legoExplorer from "@/assets/lego-explorer.png";
+import LegoModel3D from "@/components/LegoModel3D";
 
 const Index = () => {
   return (
