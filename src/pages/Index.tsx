@@ -118,8 +118,58 @@ const Index = () => {
 
       <SectionDivider variant="gold" />
 
-      {/* ¿Qué hacemos? */}
+      {/* Cómo vivimos FIRST LEGO League */}
       <section className="section-darker py-24">
+        <div className="container">
+          <motion.div className="mb-4 text-center" variants={textReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
+            <h2 className="font-heading text-2xl font-bold uppercase tracking-wider md:text-4xl">
+              Cómo Vivimos <span className="text-gradient-teal">FIRST LEGO League</span>
+            </h2>
+          </motion.div>
+          <motion.p
+            className="mb-14 text-center font-subtitle text-base text-muted-foreground/70"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            Nuestra experiencia integra investigación, robótica, valores y aprendizaje
+          </motion.p>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { icon: Lightbulb, title: "Proyecto Innovador", desc: "ARGOS nació de una investigación real sobre los riesgos en la exploración arqueológica subterránea.", link: "/proyecto-innovador" },
+              { icon: Gamepad2, title: "Juego del Robot", desc: "Diseñamos, construimos y programamos soluciones robóticas para los desafíos de la temporada UNEARTHED.", link: "/juego-del-robot" },
+              { icon: Heart, title: "Valores FIRST", desc: "Descubrimiento, innovación, impacto, inclusión, trabajo en equipo y diversión guían cada paso.", link: "/quienes-somos" },
+              { icon: Users, title: "Aprendizaje del Equipo", desc: "Cada integrante crece en habilidades técnicas, sociales y de liderazgo a lo largo de la temporada.", link: "/quienes-somos" },
+            ].map((item, i) => (
+              <motion.div
+                key={item.title}
+                variants={flipIn}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={i}
+              >
+                <Link to={item.link} className="group block h-full glass-card-hover p-6 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700" />
+                  <div className="relative">
+                    <motion.div whileHover={{ scale: 1.15, rotate: 5 }} transition={{ duration: 0.3 }}>
+                      <item.icon className="mb-4 h-8 w-8 text-primary" />
+                    </motion.div>
+                    <h3 className="mb-2 font-heading text-xs font-bold uppercase tracking-wider">{item.title}</h3>
+                    <p className="font-subtitle text-sm text-muted-foreground">{item.desc}</p>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider variant="teal" />
+
+      {/* ¿Qué hacemos? */}
+      <section className="section-dark py-24">
         <div className="container">
           <motion.div
             className="mb-16 text-center"
@@ -161,57 +211,6 @@ const Index = () => {
               </motion.div>
             ))}
           </motion.div>
-        </div>
-      </section>
-
-      <SectionDivider variant="teal" />
-
-      {/* Cómo vivimos FIRST LEGO League */}
-      <section className="section-dark py-24">
-        <div className="container">
-          <motion.div className="mb-4 text-center" variants={textReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
-            <h2 className="font-heading text-2xl font-bold uppercase tracking-wider md:text-4xl">
-              Cómo Vivimos <span className="text-gradient-teal">FIRST LEGO League</span>
-            </h2>
-          </motion.div>
-          <motion.p
-            className="mb-14 text-center font-subtitle text-base text-muted-foreground/70"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            Nuestra experiencia integra investigación, robótica, valores y aprendizaje
-          </motion.p>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { icon: Lightbulb, title: "Proyecto Innovador", desc: "ARGOS nació de una investigación real sobre los riesgos en la exploración arqueológica subterránea.", link: "/proyecto-innovador" },
-              { icon: Gamepad2, title: "Juego del Robot", desc: "Diseñamos, construimos y programamos soluciones robóticas para los desafíos de la temporada UNEARTHED.", link: "/juego-del-robot" },
-              { icon: Heart, title: "Valores FIRST", desc: "Descubrimiento, innovación, impacto, inclusión, trabajo en equipo y diversión guían cada paso.", link: "/quienes-somos" },
-              { icon: Users, title: "Aprendizaje del Equipo", desc: "Cada integrante crece en habilidades técnicas, sociales y de liderazgo a lo largo de la temporada.", link: "/quienes-somos" },
-            ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                variants={flipIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-              >
-                <Link to={item.link} className="group block h-full glass-card-hover p-6 relative overflow-hidden">
-                  {/* Hover glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700" />
-                  <div className="relative">
-                    <motion.div whileHover={{ scale: 1.15, rotate: 5 }} transition={{ duration: 0.3 }}>
-                      <item.icon className="mb-4 h-8 w-8 text-primary" />
-                    </motion.div>
-                    <h3 className="mb-2 font-heading text-xs font-bold uppercase tracking-wider">{item.title}</h3>
-                    <p className="font-subtitle text-sm text-muted-foreground">{item.desc}</p>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
