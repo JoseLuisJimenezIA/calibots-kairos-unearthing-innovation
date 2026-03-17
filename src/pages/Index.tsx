@@ -15,32 +15,39 @@ const Index = () => {
       <Navbar />
 
       {/* Hero — cinematic */}
-      <section className="relative flex min-h-[95vh] items-center justify-center overflow-hidden section-dark">
+      <section className="relative flex min-h-[95vh] items-center justify-center overflow-hidden">
+        {/* Video background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover"
+            src="https://videos.pexels.com/video-files/3015531/3015531-hd_1920_1080_24fps.mp4"
+          />
+          {/* Dark overlay for readability */}
+          <div className="absolute inset-0 bg-background/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/60" />
+        </div>
+
         {/* Animated radial glows */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
           <motion.div
             className="h-[600px] w-[600px] rounded-full bg-primary/8 blur-[150px]"
             animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
-        <motion.div
-          className="absolute top-20 -right-40 h-[300px] w-[300px] rounded-full bg-secondary/5 blur-[100px]"
-          animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <div className="absolute inset-0 grid-bg opacity-40" />
 
         {/* Scan line effect */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
           <motion.div
             className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
             animate={{ y: ["-100%", "100vh"] }}
             transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
           />
         </div>
-
-        {/* 3D LEGO — large background */}
 
         <div className="container relative z-10 flex flex-col items-center gap-6 text-center">
           <motion.span
