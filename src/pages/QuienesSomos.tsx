@@ -9,7 +9,9 @@ import PhotoPlaceholder from "@/components/PhotoPlaceholder";
 import { Users, Lightbulb, Heart, Search, Zap, PartyPopper, ArrowRight } from "lucide-react";
 import { fadeUp, textReveal, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, flipIn } from "@/lib/animations";
 
-const students = [
+const teamMembers = [
+  { name: "Richard Suarez", role: "Profesor / Coach" },
+  { name: "Diego Peña", role: "Profesor / Coach" },
   { name: "Jose Luis Jiménez", role: "Integrante" },
   { name: "Sebastián Sánchez", role: "Integrante" },
   { name: "Samuel Monzalve", role: "Integrante" },
@@ -20,11 +22,6 @@ const students = [
   { name: "Sofia Vasco Riaño", role: "Integrante" },
   { name: "Bramdon Vizcaíno", role: "Integrante" },
   { name: "Ericka A. V. Viafara", role: "Integrante" },
-];
-
-const coaches = [
-  { name: "Richard Suarez", role: "Profesor / Coach" },
-  { name: "Diego Peña", role: "Profesor / Coach" },
 ];
 
 const valoresFIRST = [
