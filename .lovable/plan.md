@@ -1,33 +1,57 @@
 
 
-## Plan: Hacer las gemas del GemPit mas realistas
+## Aplicar nueva paleta de colores
 
-### Cambios en `src/components/GemPit.tsx`
+Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
 
-**1. Geometria mas realista — forma de diamante tallado**
-- Reemplazar `OctahedronGeometry(1, 0)` por una geometria compuesta: un cono superior (corona) + cono inferior invertido (pabellon), simulando un corte "brilliant cut". Se construira con `ConeGeometry` combinados via `BufferGeometryUtils.mergeGeometries`, o alternativamente usar `IcosahedronGeometry(1, 1)` con escalado no-uniforme en Y para aplanar y dar forma de gema.
-- Opcion mas simple y efectiva: usar `OctahedronGeometry(1, 2)` (mas subdivisiones) con escala no-uniforme `(1, 0.6, 1)` para aplanar, dando aspecto de gema pulida.
+### Mapeo de colores
 
-**2. Material mas realista**
-- Aumentar `transmission: 0.8` (mas transparente/cristalino)
-- Aumentar `ior: 2.42` (indice de refraccion del diamante real)
-- Agregar `thickness: 1.5` (mas profundidad de refraccion)
-- Reducir `metalness: 0.05` (gemas reales no son metalicas)
-- Agregar `specularIntensity: 1` y `specularColor: 0xffffff`
-- Reducir `roughness: 0.02` (superficie ultra-pulida)
-- Agregar `attenuationDistance: 0.5` y `attenuationColor` (color de absorcion interna) que cambie segun esmeralda/rubi
+| Hex | HSL | Uso en el sitio |
+|-----|-----|-----------------|
+| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
+| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
+| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
+| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
+| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
+| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
 
-**3. Iluminacion mejorada**
-- Agregar una segunda `PointLight` desde otro angulo para crear mas reflejos/destellos
-- Aumentar `lightIntensity` a 300
-- Agregar `DirectionalLight` suave para brillos consistentes
+### Cambios por archivo
 
-**4. Rotacion mas organica**
-- Agregar rotacion individual almacenada por gema (velocidad angular aleatoria) en vez de derivarla de la posicion, para movimiento mas natural
+**`src/index.css`** - Actualizar todas las variables CSS:
 
-**5. Escala no-uniforme por gema**
-- Variar la proporcion X/Y/Z ligeramente por cada instancia para que no todas las gemas se vean identicas
+- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
+- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
+- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
+- `--card-foreground`: `31 54% 22%`
+- `--primary`: `40 64% 55%` (dorado `#D6A340`)
+- `--primary-foreground`: `0 0% 100%`
+- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
+- `--secondary-foreground`: `0 0% 100%`
+- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
+- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
+- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
+- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
+- `--border`: `49 25% 65%`
+- `--ring`: `40 64% 55%`
+- `--sand`: `49 38% 74%`
+- `--teal`: `124 24% 38%`
+- `--mustard`: `40 64% 55%`
+- `--crimson`: `31 54% 35%`
+- `--dark-brown`: `31 54% 35%`
 
-### Archivos a modificar
-- `src/components/GemPit.tsx` — todos los cambios descritos arriba
+**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
+- Fondo: `bg-dark-brown` (usando `#8B5B29`)
 
+**`src/components/Footer.tsx`** - Mismo fondo oscuro:
+- Fondo: `bg-dark-brown`
+
+**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
+- Fondo: `bg-dark-brown`
+
+### Resultado
+
+- Paleta mas fresca y variada con la introduccion del azul cielo como acento
+- El verde bosque se mantiene como secondary para badges y botones
+- El dorado como primary da presencia a los CTAs
+- El verde salvia como muted aporta suavidad a fondos pasivos
+- Fondo khaki calido que armoniza todos los colores
