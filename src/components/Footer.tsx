@@ -25,20 +25,6 @@ const Footer = () => {
     },
   ];
 
-  const logoItems = [
-    {
-      icon: <img src="/logo.png" alt="Calibots Kairos" className="h-8 w-auto drop-shadow-[0_0_10px_hsl(40_76%_50%/0.4)]" />,
-      label: "Calibots Kairos",
-    },
-    {
-      icon: (
-        <span className="font-heading text-[0.5rem] font-bold uppercase tracking-widest text-primary">
-          FLL
-        </span>
-      ),
-      label: "FIRST LEGO League",
-    },
-  ];
 
   return (
     <footer className="border-t border-primary/10 bg-background">

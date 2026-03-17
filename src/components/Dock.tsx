@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
-import { Children, cloneElement, useEffect, useMemo, useRef, useState, ReactElement } from 'react';
+import { Children, cloneElement, useEffect, useRef, useState, ReactElement } from 'react';
 import './Dock.css';
 
 interface DockItemData {
