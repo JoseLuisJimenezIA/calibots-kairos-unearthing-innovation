@@ -146,38 +146,6 @@ const QuienesSomos = () => {
         </div>
       </section>
 
-      <SectionDivider variant="crimson" />
-
-      {/* Coaches */}
-      <section className="section-darker py-20">
-        <div className="container">
-          <motion.h2
-            className="mb-4 text-center font-heading text-2xl font-bold uppercase tracking-wider md:text-3xl"
-            variants={textReveal}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={0}
-          >
-            Nuestros <span className="text-gradient-crimson">Coaches</span>
-          </motion.h2>
-          <motion.div className="mx-auto mb-12 h-1 w-16 rounded-full bg-accent" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
-          <div className="mx-auto grid max-w-lg gap-6 sm:grid-cols-2">
-            {coaches.map((coach, i) => (
-              <motion.div key={coach.name} variants={i === 0 ? slideFromLeft : slideFromRight} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
-                <div className="glass-card-hover overflow-hidden group">
-                  <PhotoPlaceholder aspectRatio="portrait" className="rounded-none" />
-                  <div className="p-4 text-center">
-                    <h3 className="font-heading text-xs font-bold uppercase tracking-wider">{coach.name}</h3>
-                    <span className="mt-1 inline-block rounded-full border border-accent/30 bg-accent/10 px-3 py-0.5 font-subtitle text-xs font-semibold text-accent">{coach.role}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <SectionDivider variant="teal" />
 
       {/* Recorrido */}
