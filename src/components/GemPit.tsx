@@ -572,19 +572,34 @@ class GemInstancedMesh extends InstancedMesh {
     this.hoverFactor += (this.targetHover - this.hoverFactor) * 0.03;
     this.setGemColors(this.hoverFactor);
 
+    // Update attenuation color based on hover
+    const mat = this.material as MeshPhysicalMaterial;
+    if (mat.attenuationColor) {
+      const emeraldAtten = new Color(0x0D7D4E);
+      const rubyAtten = new Color(0x922B21);
+      mat.attenuationColor.lerpColors(emeraldAtten, rubyAtten, this.hoverFactor);
+    }
+
     this.physics.update(time);
     for (let i = 0; i < this.count; i++) {
-      dummyObj.position.fromArray(this.physics.positionData, 3 * i);
-      // Random-ish rotation based on position for gem variety
+      const b = 3 * i;
+      dummyObj.position.fromArray(this.physics.positionData, b);
+      // Use stored per-gem rotation for organic movement
       dummyObj.rotation.set(
-        dummyObj.position.x * 0.5 + time.elapsed * 0.1,
-        dummyObj.position.y * 0.3 + time.elapsed * 0.15,
-        dummyObj.position.z * 0.4
+        this.physics.rotationData[b],
+        this.physics.rotationData[b + 1],
+        this.physics.rotationData[b + 2]
       );
       if (i === 0 && this.config.followCursor === false) {
-        dummyObj.scale.setScalar(0);
+        dummyObj.scale.set(0, 0, 0);
       } else {
-        dummyObj.scale.setScalar(this.physics.sizeData[i]);
+        const s = this.physics.sizeData[i];
+        // Non-uniform scale per gem for variety
+        dummyObj.scale.set(
+          s * this.physics.scaleRatioData[b],
+          s * this.physics.scaleRatioData[b + 1],
+          s * this.physics.scaleRatioData[b + 2]
+        );
       }
       dummyObj.updateMatrix();
       this.setMatrixAt(i, dummyObj.matrix);
