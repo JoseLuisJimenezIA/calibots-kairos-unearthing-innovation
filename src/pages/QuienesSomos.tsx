@@ -142,7 +142,7 @@ const QuienesSomos = () => {
             borderRadius={0.05}
             scrollSpeed={1}
             scrollEase={0.03}
-            autoRotateSpeed={0.15}
+            autoRotateSpeed={0.08}
           />
         </div>
       </section>

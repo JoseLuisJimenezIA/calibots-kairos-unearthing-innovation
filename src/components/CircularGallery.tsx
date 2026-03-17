@@ -14,7 +14,7 @@ function lerp(p1: number, p2: number, t: number) {
   return p1 + (p2 - p1) * t;
 }
 
-function createTextTexture(gl: any, text: string, font = 'bold 30px monospace', color = 'black') {
+function createTextTexture(gl: any, text: string, font = "bold 28px 'Orbitron', monospace", color = 'black') {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d')!;
   context.font = font;
