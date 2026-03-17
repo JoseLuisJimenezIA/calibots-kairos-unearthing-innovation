@@ -8,11 +8,10 @@ import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
-import { fadeUp, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, textReveal, flipIn } from "@/lib/animations";
+import { scaleReveal, staggerContainer, staggerItem, textReveal } from "@/lib/animations";
 
 // Lazy load heavy WebGL components
 const Orb = lazy(() => import("@/components/Orb"));
-const GemPit = lazy(() => import("@/components/GemPit"));
 
 /** Defers rendering children until after first paint */
 const DeferredRender = ({ children }: { children: React.ReactNode }) => {
