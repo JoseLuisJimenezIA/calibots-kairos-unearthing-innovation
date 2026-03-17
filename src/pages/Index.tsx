@@ -37,7 +37,7 @@ const Index = () => {
         <div className="absolute inset-0 z-[1] pointer-events-none flex items-center justify-center">
           <div className="pointer-events-auto" style={{ width: '500px', height: '500px' }}>
             <Orb
-              hue={35}
+              hue={0}
               hoverIntensity={1.5}
               rotateOnHover
               forceHoverState={false}

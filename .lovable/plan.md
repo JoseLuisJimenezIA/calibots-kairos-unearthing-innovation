@@ -1,20 +1,57 @@
 
 
-## Plan: Ajustar colores del Orb a la paleta CaliBots (dorado/ámbar)
+## Aplicar nueva paleta de colores
 
-### Problema
-El `hue={35}` solo rota los colores base del shader (púrpura y cian), lo que produce tonos azul-verdosos en lugar del dorado CaliBots deseado. Una simple rotación de hue no puede convertir púrpura en dorado de forma precisa.
+Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
 
-### Solución
-Modificar directamente los **colores base del shader GLSL** en `src/components/Orb.tsx` para usar la paleta CaliBots:
+### Mapeo de colores
 
-- `baseColor1`: cambiar de púrpura `(0.612, 0.263, 0.996)` → dorado `(0.784, 0.588, 0.176)` (~`#C8962D`, el primary de CaliBots)
-- `baseColor2`: cambiar de cian `(0.298, 0.761, 0.914)` → ámbar claro `(0.933, 0.745, 0.302)` (~`#EFBE4D`)
-- `baseColor3`: cambiar de azul oscuro `(0.063, 0.078, 0.600)` → marrón oscuro `(0.180, 0.120, 0.040)` (~el fondo CaliBots)
+| Hex | HSL | Uso en el sitio |
+|-----|-----|-----------------|
+| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
+| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
+| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
+| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
+| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
+| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
 
-También poner `hue={0}` en `Index.tsx` ya que los colores base ya serán correctos y no necesitan rotación.
+### Cambios por archivo
 
-### Archivos a modificar
-1. **`src/components/Orb.tsx`** — Cambiar las 3 constantes `baseColor` en el fragment shader
-2. **`src/pages/Index.tsx`** — Cambiar `hue={35}` a `hue={0}`
+**`src/index.css`** - Actualizar todas las variables CSS:
 
+- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
+- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
+- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
+- `--card-foreground`: `31 54% 22%`
+- `--primary`: `40 64% 55%` (dorado `#D6A340`)
+- `--primary-foreground`: `0 0% 100%`
+- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
+- `--secondary-foreground`: `0 0% 100%`
+- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
+- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
+- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
+- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
+- `--border`: `49 25% 65%`
+- `--ring`: `40 64% 55%`
+- `--sand`: `49 38% 74%`
+- `--teal`: `124 24% 38%`
+- `--mustard`: `40 64% 55%`
+- `--crimson`: `31 54% 35%`
+- `--dark-brown`: `31 54% 35%`
+
+**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
+- Fondo: `bg-dark-brown` (usando `#8B5B29`)
+
+**`src/components/Footer.tsx`** - Mismo fondo oscuro:
+- Fondo: `bg-dark-brown`
+
+**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
+- Fondo: `bg-dark-brown`
+
+### Resultado
+
+- Paleta mas fresca y variada con la introduccion del azul cielo como acento
+- El verde bosque se mantiene como secondary para badges y botones
+- El dorado como primary da presencia a los CTAs
+- El verde salvia como muted aporta suavidad a fondos pasivos
+- Fondo khaki calido que armoniza todos los colores
