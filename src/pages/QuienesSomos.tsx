@@ -20,7 +20,7 @@ const teamMembers = [
   { name: "Luisa F. Ávila", role: "Integrante" },
   { name: "Maria A. Zúñiga", role: "Integrante" },
   { name: "Sofia Vasco Riaño", role: "Integrante" },
-  { name: "Bramdon Vizcaíno", role: "Integrante" },
+  
   { name: "Ericka A. V. Viafara", role: "Integrante" },
 ];
 
