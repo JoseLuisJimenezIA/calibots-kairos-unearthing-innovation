@@ -1,3 +1,4 @@
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -5,53 +6,77 @@ import { Users, Mountain, Eye, Shield, Lightbulb, Gamepad2, Heart, ChevronDown }
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
-import Orb from "@/components/Orb";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
-import GemPit from "@/components/GemPit";
 import { fadeUp, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, textReveal, flipIn } from "@/lib/animations";
 
+// Lazy load heavy WebGL components
+const Orb = lazy(() => import("@/components/Orb"));
+const GemPit = lazy(() => import("@/components/GemPit"));
+
+/** Defers rendering children until after first paint */
+const DeferredRender = ({ children }: { children: React.ReactNode }) => {
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const id = requestIdleCallback?.(() => setReady(true)) ?? setTimeout(() => setReady(true), 100);
+    return () => {
+      if (typeof id === "number" && requestIdleCallback) cancelIdleCallback(id);
+    };
+  }, []);
+  return ready ? <>{children}</> : null;
+};
 
 const Index = () => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      {/* GemPit interactive background layer */}
-      <div className="fixed inset-0 z-0 opacity-30 pointer-events-auto" style={{ minHeight: '100vh' }}>
-        <GemPit count={50} gravity={0.005} friction={0.998} followCursor />
-      </div>
+      {/* GemPit interactive background layer — deferred & reduced particles */}
+      <DeferredRender>
+        <Suspense fallback={null}>
+          <div className="fixed inset-0 z-0 opacity-30 pointer-events-auto" style={{ minHeight: '100vh' }}>
+            <GemPit count={25} gravity={0.005} friction={0.998} followCursor />
+          </div>
+        </Suspense>
+      </DeferredRender>
 
       <div className="relative z-10">
       <Navbar />
 
       {/* Hero — cinematic */}
       <section className="relative flex min-h-[95vh] items-center justify-center overflow-hidden">
-        {/* Video background */}
+        {/* Video background — lazy loaded */}
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover"
-            src="https://videos.pexels.com/video-files/3015531/3015531-hd_1920_1080_24fps.mp4"
-          />
+          <DeferredRender>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="none"
+              className="h-full w-full object-cover"
+              src="https://videos.pexels.com/video-files/3015531/3015531-hd_1920_1080_24fps.mp4"
+            />
+          </DeferredRender>
           {/* Dark overlay for readability */}
           <div className="absolute inset-0 bg-background/70" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/60" />
         </div>
 
-        {/* Orb WebGL background */}
-        <div className="absolute inset-0 z-[1] pointer-events-none flex items-center justify-center">
-          <div className="pointer-events-auto" style={{ width: '500px', height: '500px' }}>
-            <Orb
-              hue={0}
-              hoverIntensity={1.5}
-              rotateOnHover
-              forceHoverState={false}
-              backgroundColor="#0F0B07"
-            />
-          </div>
-        </div>
+        {/* Orb WebGL background — deferred */}
+        <DeferredRender>
+          <Suspense fallback={null}>
+            <div className="absolute inset-0 z-[1] pointer-events-none flex items-center justify-center">
+              <div className="pointer-events-auto" style={{ width: '500px', height: '500px' }}>
+                <Orb
+                  hue={0}
+                  hoverIntensity={1.5}
+                  rotateOnHover
+                  forceHoverState={false}
+                  backgroundColor="#0F0B07"
+                />
+              </div>
+            </div>
+          </Suspense>
+        </DeferredRender>
 
         {/* Scan line effect */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
