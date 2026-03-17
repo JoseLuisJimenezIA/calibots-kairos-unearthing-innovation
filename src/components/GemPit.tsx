@@ -331,7 +331,7 @@ class GemPhysics {
   }
 
   update(time: any) {
-    const { config: c, positionData: p, velocityData: v, sizeData: s } = this;
+    const { config: c, positionData: p, velocityData: v, sizeData: s, rotationData: r, angularVelData: av } = this;
     let start = 0;
     if (c.controlSphere0) {
       start = 1;
@@ -348,6 +348,10 @@ class GemPhysics {
       tmpV2.add(tmpV5);
       tmpV2.toArray(p, b);
       tmpV5.toArray(v, b);
+      // Update rotation with individual angular velocity
+      r[b] += av[b] * time.delta;
+      r[b + 1] += av[b + 1] * time.delta;
+      r[b + 2] += av[b + 2] * time.delta;
     }
     // collisions
     for (let i = start; i < c.count; i++) {
