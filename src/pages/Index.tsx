@@ -138,7 +138,7 @@ const Index = () => {
       <SectionDivider variant="gold" />
 
       {/* ScrollStack Section */}
-      <section className="py-24 section-darker">
+      <section className="py-12 sm:py-24 section-darker">
         <div className="container">
           <motion.div className="mb-4 text-center" variants={textReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
             <h2 className="font-heading text-2xl font-bold uppercase tracking-wider md:text-4xl">
