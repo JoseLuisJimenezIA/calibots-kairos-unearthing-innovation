@@ -135,13 +135,14 @@ const QuienesSomos = () => {
           <CircularGallery
             items={teamMembers.map((m, i) => ({
               image: `https://picsum.photos/seed/member${i}/800/600`,
-              text: `${m.name}${m.role.includes("Coach") ? " ⭐" : ""}`
+              text: `${m.name}${m.role.includes("Coach") ? " — Profesor" : ""}`
             }))}
             bend={1}
             textColor="#ffffff"
             borderRadius={0.05}
-            scrollSpeed={2}
-            scrollEase={0.05}
+            scrollSpeed={1}
+            scrollEase={0.03}
+            autoRotateSpeed={0.15}
           />
         </div>
       </section>
