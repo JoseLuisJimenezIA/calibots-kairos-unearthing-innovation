@@ -184,7 +184,7 @@ const Index = () => {
       <SectionDivider variant="teal" />
 
       {/* ¿Qué hacemos? */}
-      <section className="section-dark py-24">
+      <section className="section-dark py-12 sm:py-24">
         <div className="container">
           <motion.div
             className="mb-16 text-center"

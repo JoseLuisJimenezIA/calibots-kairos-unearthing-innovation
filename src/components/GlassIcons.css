@@ -103,6 +103,21 @@
   transform: translateY(20%);
 }
 
+@media (max-width: 479px) {
+  .icon-btns {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5em;
+    padding: 1em 0;
+  }
+  .icon-btn {
+    width: 3.5em;
+    height: 3.5em;
+  }
+  .icon-btn__label {
+    font-size: 0.7em;
+  }
+}
+
 @media (min-width: 768px) {
   .icon-btns {
     grid-template-columns: repeat(3, 1fr);

@@ -217,7 +217,7 @@ const QuienesSomos = () => {
       <SectionDivider variant="gold" />
 
       {/* Valores FIRST */}
-      <section className="section-darker py-20">
+      <section className="section-darker py-12 sm:py-20">
         <div className="container">
           <motion.h2
             className="mb-4 text-center font-heading text-2xl font-bold uppercase tracking-wider md:text-3xl"

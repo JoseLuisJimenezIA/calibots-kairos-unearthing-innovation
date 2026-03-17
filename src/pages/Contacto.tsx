@@ -36,7 +36,7 @@ const Contacto = () => {
 
       <SectionDivider variant="crimson" />
 
-      <section className="section-darker py-20">
+      <section className="section-darker py-12 sm:py-20">
         <div className="container">
           <div className="grid gap-12 md:grid-cols-2">
             <motion.div variants={slideFromLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
