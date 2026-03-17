@@ -1,57 +1,25 @@
 
 
-## Aplicar nueva paleta de colores
+## Plan: Ajustar galería circular — etiquetas de rol y velocidad
 
-Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
+### Cambios en `src/pages/QuienesSomos.tsx`
 
-### Mapeo de colores
+1. **Etiquetas de rol visibles**: Cambiar el texto de los coaches de `"Richard Suarez ⭐"` a `"Richard Suarez — Profesor"` (o "Trainer") para que sea claro su rol. Los estudiantes se muestran solo con su nombre.
 
-| Hex | HSL | Uso en el sitio |
-|-----|-----|-----------------|
-| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
-| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
-| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
-| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
-| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
-| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
+2. **Reducir velocidad**: Bajar `autoRotateSpeed` de `0.5` a `0.15` y `scrollSpeed` de `2` a `1` para que el giro automático sea más lento y controlable.
 
-### Cambios por archivo
+```tsx
+// Línea 138 — texto con rol
+text: `${m.name}${m.role.includes("Coach") ? " — Profesor" : ""}`
 
-**`src/index.css`** - Actualizar todas las variables CSS:
+// Líneas 140-144 — velocidades reducidas
+scrollSpeed={1}
+scrollEase={0.03}
+autoRotateSpeed={0.15}
+```
 
-- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
-- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
-- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
-- `--card-foreground`: `31 54% 22%`
-- `--primary`: `40 64% 55%` (dorado `#D6A340`)
-- `--primary-foreground`: `0 0% 100%`
-- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
-- `--secondary-foreground`: `0 0% 100%`
-- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
-- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
-- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
-- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
-- `--border`: `49 25% 65%`
-- `--ring`: `40 64% 55%`
-- `--sand`: `49 38% 74%`
-- `--teal`: `124 24% 38%`
-- `--mustard`: `40 64% 55%`
-- `--crimson`: `31 54% 35%`
-- `--dark-brown`: `31 54% 35%`
+### Verificación
+- El orden ya es correcto: Richard Suarez primero, Diego Peña segundo (líneas 13-14 del array `teamMembers`).
+- La auto-rotación y pausa por interacción ya están implementadas en `CircularGallery.tsx`.
+- Solo se ajustan parámetros de velocidad y formato de texto.
 
-**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
-- Fondo: `bg-dark-brown` (usando `#8B5B29`)
-
-**`src/components/Footer.tsx`** - Mismo fondo oscuro:
-- Fondo: `bg-dark-brown`
-
-**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
-- Fondo: `bg-dark-brown`
-
-### Resultado
-
-- Paleta mas fresca y variada con la introduccion del azul cielo como acento
-- El verde bosque se mantiene como secondary para badges y botones
-- El dorado como primary da presencia a los CTAs
-- El verde salvia como muted aporta suavidad a fondos pasivos
-- Fondo khaki calido que armoniza todos los colores
