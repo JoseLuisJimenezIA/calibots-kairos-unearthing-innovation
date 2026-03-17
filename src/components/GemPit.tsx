@@ -490,16 +490,20 @@ class GemInstancedMesh extends InstancedMesh {
       count: 60,
       colors: EMERALD_COLORS,
       ambientColor: 0xffffff,
-      ambientIntensity: 0.8,
-      lightIntensity: 150,
+      ambientIntensity: 1.0,
+      lightIntensity: 300,
       materialParams: {
-        metalness: 0.3,
-        roughness: 0.1,
+        metalness: 0.05,
+        roughness: 0.02,
         clearcoat: 1,
-        clearcoatRoughness: 0.05,
-        transmission: 0.3,
-        ior: 2.4, // diamond-like refraction
-        thickness: 0.5,
+        clearcoatRoughness: 0.01,
+        transmission: 0.8,
+        ior: 2.42,
+        thickness: 1.5,
+        specularIntensity: 1,
+        specularColor: 0xffffff,
+        attenuationDistance: 0.5,
+        attenuationColor: 0x0D7D4E,
       },
       minSize: 0.3,
       maxSize: 0.8,
@@ -518,8 +522,8 @@ class GemInstancedMesh extends InstancedMesh {
 
     const envScene = new RoomEnvironment();
     const envMap = new PMREMGenerator(renderer).fromScene(envScene).texture;
-    // Use OctahedronGeometry for faceted gem look
-    const geo = new OctahedronGeometry(1, 0);
+    // OctahedronGeometry with more subdivisions for smoother facets
+    const geo = new OctahedronGeometry(1, 2);
     const mat = new GemMaterial({ envMap, ...config.materialParams });
     (mat as any).envMapRotation = { x: -Math.PI / 2 };
 
