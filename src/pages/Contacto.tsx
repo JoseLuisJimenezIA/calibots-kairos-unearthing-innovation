@@ -16,7 +16,7 @@ const Contacto = () => {
       <Navbar />
       <BackButton />
 
-      <section className="relative py-24 overflow-hidden section-dark">
+      <section className="relative py-16 sm:py-24 overflow-hidden section-dark">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <motion.div
             className="h-[400px] w-[400px] rounded-full bg-accent/8 blur-[100px]"
