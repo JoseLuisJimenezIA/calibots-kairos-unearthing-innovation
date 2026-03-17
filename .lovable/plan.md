@@ -1,57 +1,52 @@
 
 
-## Aplicar nueva paleta de colores
+## Plan: GemPit -- Fondo interactivo de gemas para toda la página
 
-Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
+### Concepto
+Crear un componente `GemPit` basado en el código Ballpit proporcionado, pero con **geometrías facetadas** (octaedros/icosaedros) que parezcan gemas/piedras preciosas, y un efecto de **cambio de color esmeralda → rubí** al pasar el mouse. Se colocará como fondo fijo detrás de todo el contenido de la página Index.
 
-### Mapeo de colores
+### Archivos a crear
 
-| Hex | HSL | Uso en el sitio |
-|-----|-----|-----------------|
-| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
-| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
-| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
-| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
-| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
-| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
+**`src/components/GemPit.tsx`**
+- Adaptar el código Ballpit completo (clases `x`, `W`, `Z`, `Y`, helpers de interacción)
+- Cambios clave vs Ballpit original:
+  - **Geometría**: Reemplazar `SphereGeometry` por `OctahedronGeometry(1, 0)` (facetas visibles = aspecto de gema)
+  - **Colores base**: Gradiente de esmeraldas (`#0D7D4E`, `#2ECC71`, `#1ABC9C`) 
+  - **Color hover**: Transición suave a rubíes (`#C0392B`, `#E74C3C`, `#922B21`) usando interpolación en el loop de render
+  - **Material**: `clearcoat: 1`, `metalness: 0.3`, `roughness: 0.1`, `transmission: 0.3` para efecto cristalino/refractivo
+  - **Config**: `count: 60`, `gravity: 0.005`, `friction: 0.998`, `maxVelocity: 0.08` (más lento y elegante)
+  - **followCursor**: activado para que las gemas reaccionen al mouse
+- Exponer props: `className`, `count`, `gravity`, `friction`, `followCursor`
 
-### Cambios por archivo
+### Archivos a modificar
 
-**`src/index.css`** - Actualizar todas las variables CSS:
+**`src/pages/Index.tsx`**
+- Importar `GemPit`
+- Agregar como capa fija detrás de todo el contenido:
+```tsx
+<div className="flex min-h-screen flex-col bg-background">
+  {/* GemPit background layer */}
+  <div className="fixed inset-0 z-0 opacity-40 pointer-events-auto">
+    <GemPit count={50} gravity={0.005} friction={0.998} followCursor />
+  </div>
+  
+  <div className="relative z-10"> {/* Wrap all existing content */}
+    <Navbar />
+    {/* ... rest of sections ... */}
+    <Footer />
+  </div>
+</div>
+```
+- `opacity-40` para que no compita con el contenido pero sea visible
+- `pointer-events-auto` para que responda al mouse a través del contenido
 
-- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
-- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
-- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
-- `--card-foreground`: `31 54% 22%`
-- `--primary`: `40 64% 55%` (dorado `#D6A340`)
-- `--primary-foreground`: `0 0% 100%`
-- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
-- `--secondary-foreground`: `0 0% 100%`
-- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
-- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
-- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
-- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
-- `--border`: `49 25% 65%`
-- `--ring`: `40 64% 55%`
-- `--sand`: `49 38% 74%`
-- `--teal`: `124 24% 38%`
-- `--mustard`: `40 64% 55%`
-- `--crimson`: `31 54% 35%`
-- `--dark-brown`: `31 54% 35%`
+### Efecto de color hover
+En el loop de render, interpolar los colores de las instancias entre el set esmeralda y el set rubí según la proximidad del cursor:
+- Sin hover: tonos verdes/esmeralda
+- Con hover: transición gradual a rojos/rubí
+- Velocidad de transición: `lerp` con factor 0.03 (cambio suave)
 
-**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
-- Fondo: `bg-dark-brown` (usando `#8B5B29`)
+### Dependencias
+- `three` 0.160.0 ya instalado
+- `three/examples/jsm/environments/RoomEnvironment.js` ya disponible
 
-**`src/components/Footer.tsx`** - Mismo fondo oscuro:
-- Fondo: `bg-dark-brown`
-
-**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
-- Fondo: `bg-dark-brown`
-
-### Resultado
-
-- Paleta mas fresca y variada con la introduccion del azul cielo como acento
-- El verde bosque se mantiene como secondary para badges y botones
-- El dorado como primary da presencia a los CTAs
-- El verde salvia como muted aporta suavidad a fondos pasivos
-- Fondo khaki calido que armoniza todos los colores
