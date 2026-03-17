@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import CircularGallery from "@/components/CircularGallery";
 import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
 import PhotoPlaceholder from "@/components/PhotoPlaceholder";
+import GlassIcons from "@/components/GlassIcons";
 import { Users, Lightbulb, Heart, Search, Zap, PartyPopper, ArrowRight } from "lucide-react";
 import { fadeUp, textReveal, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, flipIn } from "@/lib/animations";
 
