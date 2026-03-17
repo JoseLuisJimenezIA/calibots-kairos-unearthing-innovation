@@ -281,17 +281,18 @@ interface CircularGalleryProps {
   font?: string;
   scrollSpeed?: number;
   scrollEase?: number;
+  autoRotateSpeed?: number;
 }
 
 export default function CircularGallery({
   items, bend = 3, textColor = '#ffffff', borderRadius = 0.05,
-  font = 'bold 30px Figtree', scrollSpeed = 2, scrollEase = 0.05
+  font = 'bold 30px Figtree', scrollSpeed = 2, scrollEase = 0.05, autoRotateSpeed = 0.5
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!containerRef.current) return;
-    const app = new GalleryApp(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase });
+    const app = new GalleryApp(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, autoRotateSpeed });
     return () => { app.destroy(); };
-  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, autoRotateSpeed]);
   return <div className="circular-gallery" ref={containerRef} />;
 }
