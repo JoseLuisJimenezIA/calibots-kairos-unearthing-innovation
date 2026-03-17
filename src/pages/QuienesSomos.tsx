@@ -110,7 +110,7 @@ const QuienesSomos = () => {
 
       <SectionDivider variant="teal" />
 
-      {/* Estudiantes */}
+      {/* Estudiantes - Circular Gallery */}
       <section className="section-dark py-20">
         <div className="container">
           <motion.h2
@@ -123,29 +123,29 @@ const QuienesSomos = () => {
           >
             Nuestro <span className="text-gradient-gold">Equipo</span>
           </motion.h2>
-          <motion.div className="mx-auto mb-12 h-1 w-16 rounded-full bg-primary" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
-          <motion.div
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
+          <motion.div className="mx-auto mb-8 h-1 w-16 rounded-full bg-primary" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
+          <motion.p
+            className="mb-8 text-center font-subtitle text-sm text-muted-foreground/70"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
           >
-            {students.map((member) => (
-              <motion.div key={member.name} variants={staggerItem}>
-                <div className="glass-card-hover overflow-hidden group">
-                  <div className="relative overflow-hidden">
-                    <PhotoPlaceholder aspectRatio="portrait" className="rounded-none" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </div>
-                  <div className="p-4 text-center">
-                    <h3 className="font-heading text-xs font-bold uppercase tracking-wider">{member.name}</h3>
-                    <span className="mt-1 inline-block rounded-full border border-secondary/30 bg-secondary/10 px-3 py-0.5 font-subtitle text-xs font-semibold text-secondary">{member.role}</span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+            Arrastra o usa el scroll para explorar a nuestros integrantes
+          </motion.p>
+        </div>
+        <div style={{ height: '600px', position: 'relative' }}>
+          <CircularGallery
+            items={students.map((s, i) => ({
+              image: `https://picsum.photos/seed/calibot${i + 1}/800/600`,
+              text: s.name
+            }))}
+            bend={1}
+            textColor="#ffffff"
+            borderRadius={0.05}
+            scrollSpeed={2}
+            scrollEase={0.05}
+          />
         </div>
       </section>
 
