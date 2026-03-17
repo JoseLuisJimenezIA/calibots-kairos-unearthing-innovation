@@ -80,7 +80,7 @@ const Index = () => {
           </motion.span>
 
           <motion.h1
-            className="max-w-3xl font-heading text-3xl font-black leading-tight tracking-tight md:text-5xl lg:text-6xl drop-shadow-[0_2px_20px_hsl(0_0%_0%/0.8)]"
+            className="max-w-3xl font-heading text-2xl font-black leading-tight tracking-tight sm:text-3xl md:text-5xl lg:text-6xl drop-shadow-[0_2px_20px_hsl(0_0%_0%/0.8)]"
             variants={textReveal}
             initial="hidden"
             animate="visible"
