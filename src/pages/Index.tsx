@@ -28,15 +28,6 @@ const DeferredRender = ({ children }: { children: React.ReactNode }) => {
 const Index = () => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      {/* GemPit interactive background layer — deferred & reduced particles */}
-      <DeferredRender>
-        <Suspense fallback={null}>
-          <div className="fixed inset-0 z-0 opacity-30 pointer-events-auto" style={{ minHeight: '100vh' }}>
-            <GemPit count={25} gravity={0.005} friction={0.998} followCursor />
-          </div>
-        </Suspense>
-      </DeferredRender>
-
       <div className="relative z-10">
       <Navbar />
 
