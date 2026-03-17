@@ -5,6 +5,7 @@ import { Users, Mountain, Eye, Shield, Lightbulb, Gamepad2, Heart, ChevronDown }
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
+import Orb from "@/components/Orb";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import { fadeUp, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, textReveal, flipIn } from "@/lib/animations";
@@ -32,13 +33,17 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/60" />
         </div>
 
-        {/* Animated radial glows */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]">
-          <motion.div
-            className="h-[600px] w-[600px] rounded-full bg-primary/8 blur-[150px]"
-            animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          />
+        {/* Orb WebGL background */}
+        <div className="absolute inset-0 z-[1] pointer-events-none flex items-center justify-center">
+          <div className="pointer-events-auto" style={{ width: '500px', height: '500px' }}>
+            <Orb
+              hue={35}
+              hoverIntensity={1.5}
+              rotateOnHover
+              forceHoverState={false}
+              backgroundColor="#0F0B07"
+            />
+          </div>
         </div>
 
         {/* Scan line effect */}
