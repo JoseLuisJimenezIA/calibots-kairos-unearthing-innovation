@@ -68,14 +68,6 @@ const Index = () => {
           </Suspense>
         </DeferredRender>
 
-        {/* Scan line effect */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
-          <motion.div
-            className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-            animate={{ y: ["-100%", "100vh"] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
-          />
-        </div>
 
         <div className="container relative z-10 flex flex-col items-center gap-6 text-center">
           <motion.span
