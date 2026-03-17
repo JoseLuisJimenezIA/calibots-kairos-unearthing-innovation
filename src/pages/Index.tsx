@@ -5,6 +5,7 @@ import { Users, Mountain, Eye, Shield, Lightbulb, Gamepad2, Heart, ChevronDown }
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
+import Orb from "@/components/Orb";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import { fadeUp, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, textReveal, flipIn } from "@/lib/animations";
