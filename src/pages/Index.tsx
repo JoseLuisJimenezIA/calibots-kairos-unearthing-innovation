@@ -92,7 +92,7 @@ const Index = () => {
           </motion.h1>
 
           <motion.p
-            className="max-w-xl font-subtitle text-lg text-muted-foreground/80 md:text-xl drop-shadow-[0_2px_10px_hsl(0_0%_0%/0.6)]"
+            className="max-w-xl font-subtitle text-base text-muted-foreground/80 sm:text-lg md:text-xl drop-shadow-[0_2px_10px_hsl(0_0%_0%/0.6)]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
