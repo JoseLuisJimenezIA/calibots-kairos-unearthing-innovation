@@ -234,14 +234,8 @@
   100% { --bgrotate: 360deg; }
 }
 
-@keyframes pc-holo-bg {
-  0% {
-    background-position: 0 var(--pc-background-y), 0 0, center;
-  }
-  100% {
-    background-position: 0 var(--pc-background-y), 90% 90%, center;
-  }
-}
+
+
 
 @media (max-width: 768px) {
   .pc-card {
