@@ -12,33 +12,30 @@ export const fadeUp: Variants = {
 
 // Cinematic slide from left
 export const slideFromLeft: Variants = {
-  hidden: { opacity: 0, x: -80, filter: "blur(8px)" },
+  hidden: { opacity: 0, x: -80 },
   visible: (i: number = 0) => ({
     opacity: 1,
     x: 0,
-    filter: "blur(0px)",
     transition: { delay: i * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
 // Cinematic slide from right
 export const slideFromRight: Variants = {
-  hidden: { opacity: 0, x: 80, filter: "blur(8px)" },
+  hidden: { opacity: 0, x: 80 },
   visible: (i: number = 0) => ({
     opacity: 1,
     x: 0,
-    filter: "blur(0px)",
     transition: { delay: i * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
 // Scale up with blur (cinematic reveal)
 export const scaleReveal: Variants = {
-  hidden: { opacity: 0, scale: 0.8, filter: "blur(12px)" },
+  hidden: { opacity: 0, scale: 0.8 },
   visible: (i: number = 0) => ({
     opacity: 1,
     scale: 1,
-    filter: "blur(0px)",
     transition: { delay: i * 0.15, duration: 0.9, ease: [0.16, 1, 0.3, 1] },
   }),
 };
@@ -54,11 +51,10 @@ export const staggerContainer: Variants = {
 
 // Stagger item
 export const staggerItem: Variants = {
-  hidden: { opacity: 0, y: 25, filter: "blur(4px)" },
+  hidden: { opacity: 0, y: 25 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
   },
 };

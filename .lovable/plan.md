@@ -1,64 +1,57 @@
 
 
-## Plan: Optimizar fluidez de la página reduciendo efectos pesados
+## Aplicar nueva paleta de colores
 
-### Diagnóstico
+Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
 
-La página carga **3 contextos WebGL simultáneos** (SplashCursor, Orb, GemPit) + Lenis smooth scroll + múltiples animaciones Framer Motion con `filter: blur()`. Esto causa:
+### Mapeo de colores
 
-- **GPU saturada**: 3 canvases WebGL compitiendo por recursos
-- **CPU ocupada**: SplashCursor ejecuta simulación de fluidos a resolución 1440, GemPit anima 25 partículas, Lenis mantiene RAF loop constante
-- **Repaints costosos**: animaciones con `filter: blur()` fuerzan composición pesada en cada frame
-- **FCP**: 4.5s (54 scripts en dev mode)
+| Hex | HSL | Uso en el sitio |
+|-----|-----|-----------------|
+| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
+| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
+| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
+| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
+| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
+| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
 
-### Cambios propuestos
+### Cambios por archivo
 
-#### 1. Eliminar GemPit del Index (mayor impacto)
-El fondo de partículas WebGL cubre toda la pantalla con `position: fixed` y compite directamente con SplashCursor. Eliminarlo libera un contexto WebGL completo.
+**`src/index.css`** - Actualizar todas las variables CSS:
 
-**Archivo**: `src/pages/Index.tsx`
-- Eliminar import de GemPit y el bloque `<DeferredRender>` que lo envuelve
+- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
+- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
+- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
+- `--card-foreground`: `31 54% 22%`
+- `--primary`: `40 64% 55%` (dorado `#D6A340`)
+- `--primary-foreground`: `0 0% 100%`
+- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
+- `--secondary-foreground`: `0 0% 100%`
+- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
+- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
+- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
+- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
+- `--border`: `49 25% 65%`
+- `--ring`: `40 64% 55%`
+- `--sand`: `49 38% 74%`
+- `--teal`: `124 24% 38%`
+- `--mustard`: `40 64% 55%`
+- `--crimson`: `31 54% 35%`
+- `--dark-brown`: `31 54% 35%`
 
-#### 2. Reducir SplashCursor
-Bajar `DYE_RESOLUTION` de 1440 a 512 y `SIM_RESOLUTION` de 128 a 64 para reducir la carga GPU del efecto fluido global.
+**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
+- Fondo: `bg-dark-brown` (usando `#8B5B29`)
 
-**Archivo**: `src/App.tsx`
-- Pasar props reducidos a `<SplashCursor />`
+**`src/components/Footer.tsx`** - Mismo fondo oscuro:
+- Fondo: `bg-dark-brown`
 
-**Archivo**: `src/components/SplashCursor.tsx`
-- Ajustar defaults: `DYE_RESOLUTION = 512`, `SIM_RESOLUTION = 64`
+**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
+- Fondo: `bg-dark-brown`
 
-#### 3. Eliminar animaciones con blur en Framer Motion
-Los `filter: "blur(Xpx)"` en las variantes de animación causan repaints costosos en cada frame de transición.
+### Resultado
 
-**Archivo**: `src/lib/animations.ts`
-- Quitar `filter: "blur(...)"` de `slideFromLeft`, `slideFromRight`, `scaleReveal`, `staggerItem`
-
-**Archivo**: `src/pages/Index.tsx`
-- Quitar `filter: "blur(Xpx)"` de las animaciones inline del hero
-
-#### 4. Reducir Orb del hero
-Bajar el tamaño del contenedor de 500x500 a 350x350 para reducir píxeles renderizados por el shader.
-
-**Archivo**: `src/pages/Index.tsx`
-- Cambiar dimensiones del div contenedor del Orb
-
-#### 5. Eliminar Lenis de ScrollStack
-Lenis agrega un RAF loop constante para smooth scroll que compite con los demás loops de animación. El scroll nativo del navegador es suficiente.
-
-**Archivo**: `src/components/ScrollStack.tsx`
-- Reemplazar Lenis por un simple `scroll` event listener nativo con `requestAnimationFrame` throttling
-
-#### 6. Eliminar scan line animation del hero
-La animación CSS infinita del scan line fuerza repaints continuos.
-
-**Archivo**: `src/pages/Index.tsx`
-- Eliminar el bloque de la línea de escaneo animada
-
-### Resultado esperado
-- De 3 contextos WebGL a 2 (SplashCursor + Orb)
-- GPU ~40% más libre por reducción de resoluciones y eliminación de GemPit
-- Sin animaciones con blur filter (elimina repaints costosos)
-- Sin RAF loop de Lenis
-- Scroll y navegación notablemente más fluidos
-
+- Paleta mas fresca y variada con la introduccion del azul cielo como acento
+- El verde bosque se mantiene como secondary para badges y botones
+- El dorado como primary da presencia a los CTAs
+- El verde salvia como muted aporta suavidad a fondos pasivos
+- Fondo khaki calido que armoniza todos los colores

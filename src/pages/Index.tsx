@@ -8,11 +8,10 @@ import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
-import { fadeUp, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, textReveal, flipIn } from "@/lib/animations";
+import { scaleReveal, staggerContainer, staggerItem, textReveal } from "@/lib/animations";
 
 // Lazy load heavy WebGL components
 const Orb = lazy(() => import("@/components/Orb"));
-const GemPit = lazy(() => import("@/components/GemPit"));
 
 /** Defers rendering children until after first paint */
 const DeferredRender = ({ children }: { children: React.ReactNode }) => {
@@ -29,15 +28,6 @@ const DeferredRender = ({ children }: { children: React.ReactNode }) => {
 const Index = () => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      {/* GemPit interactive background layer — deferred & reduced particles */}
-      <DeferredRender>
-        <Suspense fallback={null}>
-          <div className="fixed inset-0 z-0 opacity-30 pointer-events-auto" style={{ minHeight: '100vh' }}>
-            <GemPit count={25} gravity={0.005} friction={0.998} followCursor />
-          </div>
-        </Suspense>
-      </DeferredRender>
-
       <div className="relative z-10">
       <Navbar />
 
@@ -65,7 +55,7 @@ const Index = () => {
         <DeferredRender>
           <Suspense fallback={null}>
             <div className="absolute inset-0 z-[1] pointer-events-none flex items-center justify-center">
-              <div className="pointer-events-auto" style={{ width: '500px', height: '500px' }}>
+              <div className="pointer-events-auto" style={{ width: '350px', height: '350px' }}>
                 <Orb
                   hue={0}
                   hoverIntensity={1.5}
@@ -78,20 +68,12 @@ const Index = () => {
           </Suspense>
         </DeferredRender>
 
-        {/* Scan line effect */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
-          <motion.div
-            className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-            animate={{ y: ["-100%", "100vh"] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
-          />
-        </div>
 
         <div className="container relative z-10 flex flex-col items-center gap-6 text-center">
           <motion.span
             className="inline-block rounded-full border border-primary/30 bg-primary/10 px-5 py-1.5 font-subtitle text-xs font-semibold uppercase tracking-[0.25em] text-primary backdrop-blur-sm"
-            initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             Temporada UNEARTHED · FIRST LEGO League
@@ -111,8 +93,8 @@ const Index = () => {
 
           <motion.p
             className="max-w-xl font-subtitle text-lg text-muted-foreground/80 md:text-xl drop-shadow-[0_2px_10px_hsl(0_0%_0%/0.6)]"
-            initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
           >
             Conoce a <span className="text-primary font-semibold">ARGOS</span>, nuestro robot explorador diseñado para la seguridad en espeleología y arqueología
