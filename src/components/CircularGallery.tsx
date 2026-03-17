@@ -175,9 +175,10 @@ class GalleryApp {
   autoRotateSpeed: number; wheelTimeout: any;
   boundOnResize: any; boundOnWheel: any; boundOnTouchDown: any; boundOnTouchMove: any; boundOnTouchUp: any;
 
-  constructor(container: HTMLElement, { items, bend, textColor = '#ffffff', borderRadius = 0, font = 'bold 30px Figtree', scrollSpeed = 2, scrollEase = 0.05 }: any = {}) {
+  constructor(container: HTMLElement, { items, bend, textColor = '#ffffff', borderRadius = 0, font = 'bold 30px Figtree', scrollSpeed = 2, scrollEase = 0.05, autoRotateSpeed = 0.5 }: any = {}) {
     this.container = container;
     this.scrollSpeed = scrollSpeed;
+    this.autoRotateSpeed = autoRotateSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
     this.mediasImages = []; this.medias = []; this.raf = 0;
