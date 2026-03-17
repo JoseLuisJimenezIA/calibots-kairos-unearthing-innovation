@@ -3,6 +3,7 @@ import {
   Vector3,
   MeshPhysicalMaterial,
   InstancedMesh,
+  DirectionalLight,
   Clock,
   AmbientLight,
   OctahedronGeometry,
