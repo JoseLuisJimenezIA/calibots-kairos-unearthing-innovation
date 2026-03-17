@@ -9,6 +9,7 @@ import Orb from "@/components/Orb";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import GemPit from "@/components/GemPit";
+import GridScan from "@/components/GridScan";
 import { fadeUp, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, textReveal, flipIn } from "@/lib/animations";
 
 
@@ -53,12 +54,19 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Scan line effect */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
-          <motion.div
-            className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
-            animate={{ y: ["-100%", "100vh"] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 2 }}
+        {/* GridScan overlay */}
+        <div className="absolute inset-0 z-[1] pointer-events-auto opacity-60">
+          <GridScan
+            sensitivity={0.55}
+            lineThickness={1}
+            linesColor="#D4A017"
+            scanColor="#D44B2C"
+            gridScale={0.1}
+            scanOpacity={0.4}
+            enablePost
+            bloomIntensity={0.6}
+            chromaticAberration={0.002}
+            noiseIntensity={0.01}
           />
         </div>
 
