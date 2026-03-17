@@ -172,6 +172,7 @@ class GalleryApp {
   renderer: any; gl: any; camera: any; scene: any; planeGeometry: any;
   mediasImages: any[]; medias: Media[]; screen: any; viewport: any;
   raf: number; isDown = false; start = 0;
+  autoRotateSpeed: number; wheelTimeout: any;
   boundOnResize: any; boundOnWheel: any; boundOnTouchDown: any; boundOnTouchMove: any; boundOnTouchUp: any;
 
   constructor(container: HTMLElement, { items, bend, textColor = '#ffffff', borderRadius = 0, font = 'bold 30px Figtree', scrollSpeed = 2, scrollEase = 0.05 }: any = {}) {
