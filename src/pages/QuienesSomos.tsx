@@ -20,6 +20,7 @@ import raulImg from "@/assets/team/raul1.png";
 import luisaImg from "@/assets/team/luisa.png";
 import mariaImg from "@/assets/team/maria_alejandra.png";
 import sofiaImg from "@/assets/team/sofia.png";
+import erickaImg from "@/assets/team/ericka.png";
 
 const teamMembers = [
   { name: "Richard Suarez", role: "Profesor / Coach", avatarUrl: richardImg },
@@ -32,7 +33,7 @@ const teamMembers = [
   { name: "Luisa F. Ávila", role: "Integrante", avatarUrl: luisaImg },
   { name: "Maria A. Zúñiga", role: "Integrante", avatarUrl: mariaImg },
   { name: "Sofia Vasco Riaño", role: "Integrante", avatarUrl: sofiaImg },
-  { name: "Ericka A. V. Viafara", role: "Integrante" },
+  { name: "Ericka A. V. Viafara", role: "Integrante", avatarUrl: erickaImg },
 ];
 
 const valoresFIRST = [
