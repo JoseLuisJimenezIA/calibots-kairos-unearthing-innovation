@@ -1,7 +1,45 @@
 import { Link } from "react-router-dom";
 import { Instagram, Youtube } from "lucide-react";
+import Dock from "./Dock";
 
 const Footer = () => {
+  const socialItems = [
+    {
+      icon: <Instagram className="h-6 w-6" />,
+      label: "Instagram",
+      onClick: () => window.open("https://www.instagram.com/calibots_?igsh=cjh4ZHlpZXE5bG4z", "_blank"),
+    },
+    {
+      icon: (
+        <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.73a8.19 8.19 0 004.76 1.52V6.8a4.84 4.84 0 01-1-.11z" />
+        </svg>
+      ),
+      label: "TikTok",
+      onClick: () => window.open("#", "_blank"),
+    },
+    {
+      icon: <Youtube className="h-6 w-6" />,
+      label: "YouTube",
+      onClick: () => window.open("#", "_blank"),
+    },
+  ];
+
+  const logoItems = [
+    {
+      icon: <img src="/logo.png" alt="Calibots Kairos" className="h-8 w-auto drop-shadow-[0_0_10px_hsl(40_76%_50%/0.4)]" />,
+      label: "Calibots Kairos",
+    },
+    {
+      icon: (
+        <span className="font-heading text-[0.5rem] font-bold uppercase tracking-widest text-primary">
+          FLL
+        </span>
+      ),
+      label: "FIRST LEGO League",
+    },
+  ];
+
   return (
     <footer className="border-t border-primary/10 bg-background">
       <div className="container py-12">
@@ -32,24 +70,24 @@ const Footer = () => {
 
           <div>
             <h4 className="mb-3 font-heading text-xs font-bold uppercase tracking-[0.2em] text-primary">Redes Sociales</h4>
-            <div className="flex gap-3">
-              <a href="https://www.instagram.com/calibots_?igsh=cjh4ZHlpZXE5bG4z" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="rounded-full border border-primary/20 bg-primary/5 p-2.5 transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:glow-gold">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" aria-label="TikTok" className="rounded-full border border-primary/20 bg-primary/5 p-2.5 transition-all duration-300 hover:bg-primary hover:text-primary-foreground">
-                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.73a8.19 8.19 0 004.76 1.52V6.8a4.84 4.84 0 01-1-.11z"/></svg>
-              </a>
-              <a href="#" aria-label="YouTube" className="rounded-full border border-primary/20 bg-primary/5 p-2.5 transition-all duration-300 hover:bg-primary hover:text-primary-foreground">
-                <Youtube className="h-5 w-5" />
-              </a>
-            </div>
+            <Dock
+              items={socialItems}
+              baseItemSize={45}
+              magnification={65}
+              panelHeight={58}
+              distance={150}
+            />
           </div>
         </div>
 
         <div className="mt-10 border-t border-primary/10 pt-8 flex flex-col items-center gap-4">
-          <div className="rounded-xl border border-primary/10 bg-primary/5 px-8 py-4 backdrop-blur">
-            <img src="/logo.png" alt="Calibots Kairos" className="h-20 w-auto drop-shadow-[0_0_20px_hsl(40_76%_50%/0.3)]" />
-          </div>
+          <Dock
+            items={logoItems}
+            baseItemSize={55}
+            magnification={80}
+            panelHeight={68}
+            distance={150}
+          />
           <p className="font-subtitle text-sm text-muted-foreground/60">
             © {new Date().getFullYear()} Calibots Kairos. Todos los derechos reservados.
           </p>
