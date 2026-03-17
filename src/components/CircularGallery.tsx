@@ -212,8 +212,8 @@ class GalleryApp {
 
   onTouchDown(e: any) { this.isDown = true; this.scroll.position = this.scroll.current; this.start = e.touches ? e.touches[0].clientX : e.clientX; }
   onTouchMove(e: any) { if (!this.isDown) return; const x = e.touches ? e.touches[0].clientX : e.clientX; this.scroll.target = this.scroll.position + (this.start - x) * (this.scrollSpeed * 0.025); }
-  onTouchUp() { this.isDown = false; this.onCheck(); }
-  onWheel(e: any) { const delta = e.deltaY || e.wheelDelta || e.detail; this.scroll.target += (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2; this.onCheckDebounce(); }
+  onTouchUp() { this.isDown = false; }
+  onWheel(e: any) { const delta = e.deltaY || e.wheelDelta || e.detail; this.scroll.target += (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2; this.isDown = true; clearTimeout(this.wheelTimeout); this.wheelTimeout = setTimeout(() => { this.isDown = false; }, 800); }
   onCheck() { if (!this.medias?.[0]) return; const w = this.medias[0].width; const idx = Math.round(Math.abs(this.scroll.target) / w); this.scroll.target = this.scroll.target < 0 ? -(w * idx) : w * idx; }
 
   onResize() {
