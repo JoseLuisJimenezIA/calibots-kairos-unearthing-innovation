@@ -55,7 +55,7 @@ const Index = () => {
         <DeferredRender>
           <Suspense fallback={null}>
             <div className="absolute inset-0 z-[1] pointer-events-none flex items-center justify-center">
-              <div className="pointer-events-auto" style={{ width: '350px', height: '350px' }}>
+              <div className="pointer-events-auto w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[350px] md:h-[350px]">
                 <Orb
                   hue={0}
                   hoverIntensity={1.5}
