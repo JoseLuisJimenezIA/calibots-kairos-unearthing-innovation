@@ -10,18 +10,28 @@ import GlassIcons from "@/components/GlassIcons";
 import { Users, Lightbulb, Heart, Search, Zap, PartyPopper, ArrowRight } from "lucide-react";
 import { fadeUp, textReveal, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, flipIn } from "@/lib/animations";
 
+import richardImg from "@/assets/team/richard.png";
+import diegoImg from "@/assets/team/diego.png";
+import joseLuisImg from "@/assets/team/jose_luis.png";
+import sebastianImg from "@/assets/team/sebastian.png";
+import monsalveImg from "@/assets/team/monsalve.png";
+import gutierrezImg from "@/assets/team/gutierrez.png";
+import raulImg from "@/assets/team/raul1.png";
+import luisaImg from "@/assets/team/luisa.png";
+import mariaImg from "@/assets/team/maria_alejandra.png";
+import sofiaImg from "@/assets/team/sofia.png";
+
 const teamMembers = [
-  { name: "Richard Suarez", role: "Profesor / Coach" },
-  { name: "Diego Peña", role: "Profesor / Coach" },
-  { name: "Jose Luis Jiménez", role: "Integrante" },
-  { name: "Sebastián Sánchez", role: "Integrante" },
-  { name: "Samuel Monzalve", role: "Integrante" },
-  { name: "Juan E. Gutiérrez", role: "Integrante" },
-  { name: "Raúl A. Castillo", role: "Integrante" },
-  { name: "Luisa F. Ávila", role: "Integrante" },
-  { name: "Maria A. Zúñiga", role: "Integrante" },
-  { name: "Sofia Vasco Riaño", role: "Integrante" },
-  
+  { name: "Richard Suarez", role: "Profesor / Coach", avatarUrl: richardImg },
+  { name: "Diego Peña", role: "Profesor / Coach", avatarUrl: diegoImg },
+  { name: "Jose Luis Jiménez", role: "Integrante", avatarUrl: joseLuisImg },
+  { name: "Sebastián Sánchez", role: "Integrante", avatarUrl: sebastianImg },
+  { name: "Samuel Monzalve", role: "Integrante", avatarUrl: monsalveImg },
+  { name: "Juan E. Gutiérrez", role: "Integrante", avatarUrl: gutierrezImg },
+  { name: "Raúl A. Castillo", role: "Integrante", avatarUrl: raulImg },
+  { name: "Luisa F. Ávila", role: "Integrante", avatarUrl: luisaImg },
+  { name: "Maria A. Zúñiga", role: "Integrante", avatarUrl: mariaImg },
+  { name: "Sofia Vasco Riaño", role: "Integrante", avatarUrl: sofiaImg },
   { name: "Ericka A. V. Viafara", role: "Integrante" },
 ];
 
