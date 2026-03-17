@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  touch-action: pan-y;
 }
 
 .cpg-container:active {
@@ -69,23 +70,27 @@
   height: 5px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
+  .cpg-container {
+    perspective: 900px;
+  }
+
   .cpg-rotator {
-    width: 160px;
-    height: 260px;
+    width: 170px;
+    height: 270px;
   }
 
   .cpg-item .pc-card-wrapper {
-    width: 160px;
+    width: 170px;
   }
 
   .cpg-item .pc-card {
-    max-height: 240px;
-    height: 240px;
+    max-height: 255px;
+    height: 255px;
   }
 
   .cpg-item .pc-details h3 {
-    font-size: 0.75em;
+    font-size: 0.8em;
   }
 
   .cpg-item .pc-details p {
@@ -93,26 +98,90 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 767px) {
+  .cpg-container {
+    perspective: 700px;
+  }
+
   .cpg-rotator {
-    width: 140px;
+    width: 145px;
     height: 230px;
   }
 
   .cpg-item .pc-card-wrapper {
-    width: 140px;
+    width: 145px;
   }
 
   .cpg-item .pc-card {
-    max-height: 210px;
-    height: 210px;
+    max-height: 215px;
+    height: 215px;
+  }
+
+  .cpg-item .pc-details {
+    top: 0.8em;
   }
 
   .cpg-item .pc-details h3 {
-    font-size: 0.65em;
+    font-size: 0.7em;
   }
 
   .cpg-item .pc-details p {
     font-size: 7px;
+  }
+
+  .cpg-item .pc-role-badge {
+    padding: 2px 8px;
+    bottom: 8px;
+  }
+
+  .cpg-item .pc-role-badge span {
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 479px) {
+  .cpg-container {
+    perspective: 500px;
+  }
+
+  .cpg-rotator {
+    width: 120px;
+    height: 195px;
+  }
+
+  .cpg-item .pc-card-wrapper {
+    width: 120px;
+  }
+
+  .cpg-item .pc-card {
+    max-height: 180px;
+    height: 180px;
+  }
+
+  .cpg-item .pc-details {
+    top: 0.6em;
+  }
+
+  .cpg-item .pc-details h3 {
+    font-size: 0.6em;
+  }
+
+  .cpg-item .pc-details p {
+    font-size: 6px;
+    top: -1px;
+  }
+
+  .cpg-item .pc-role-badge {
+    padding: 2px 6px;
+    bottom: 6px;
+  }
+
+  .cpg-item .pc-role-badge span {
+    font-size: 6px;
+  }
+
+  .cpg-item .pc-role-badge .pc-role-dot {
+    width: 4px;
+    height: 4px;
   }
 }

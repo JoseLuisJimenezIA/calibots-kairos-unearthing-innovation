@@ -55,7 +55,7 @@ const Index = () => {
         <DeferredRender>
           <Suspense fallback={null}>
             <div className="absolute inset-0 z-[1] pointer-events-none flex items-center justify-center">
-              <div className="pointer-events-auto" style={{ width: '350px', height: '350px' }}>
+              <div className="pointer-events-auto w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[350px] md:h-[350px]">
                 <Orb
                   hue={0}
                   hoverIntensity={1.5}
@@ -80,7 +80,7 @@ const Index = () => {
           </motion.span>
 
           <motion.h1
-            className="max-w-3xl font-heading text-3xl font-black leading-tight tracking-tight md:text-5xl lg:text-6xl drop-shadow-[0_2px_20px_hsl(0_0%_0%/0.8)]"
+            className="max-w-3xl font-heading text-2xl font-black leading-tight tracking-tight sm:text-3xl md:text-5xl lg:text-6xl drop-shadow-[0_2px_20px_hsl(0_0%_0%/0.8)]"
             variants={textReveal}
             initial="hidden"
             animate="visible"
@@ -92,7 +92,7 @@ const Index = () => {
           </motion.h1>
 
           <motion.p
-            className="max-w-xl font-subtitle text-lg text-muted-foreground/80 md:text-xl drop-shadow-[0_2px_10px_hsl(0_0%_0%/0.6)]"
+            className="max-w-xl font-subtitle text-base text-muted-foreground/80 sm:text-lg md:text-xl drop-shadow-[0_2px_10px_hsl(0_0%_0%/0.6)]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
@@ -106,10 +106,10 @@ const Index = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <Button asChild size="lg" className="bg-primary text-primary-foreground px-8 font-subtitle text-base font-bold uppercase tracking-wider shadow-lg glow-gold transition-all duration-300 hover:scale-105">
+            <Button asChild size="lg" className="bg-primary text-primary-foreground px-6 sm:px-8 font-subtitle text-sm sm:text-base font-bold uppercase tracking-wider shadow-lg glow-gold transition-all duration-300 hover:scale-105">
               <Link to="/proyecto-innovador">Conoce ARGOS</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-secondary/50 text-secondary px-8 font-subtitle text-base font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:bg-secondary/10 hover:border-secondary">
+            <Button asChild size="lg" variant="outline" className="border-secondary/50 text-secondary px-6 sm:px-8 font-subtitle text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:bg-secondary/10 hover:border-secondary">
               <Link to="/quienes-somos">Nuestro equipo</Link>
             </Button>
           </motion.div>
@@ -138,7 +138,7 @@ const Index = () => {
       <SectionDivider variant="gold" />
 
       {/* ScrollStack Section */}
-      <section className="py-24 section-darker">
+      <section className="py-12 sm:py-24 section-darker">
         <div className="container">
           <motion.div className="mb-4 text-center" variants={textReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
             <h2 className="font-heading text-2xl font-bold uppercase tracking-wider md:text-4xl">
@@ -184,7 +184,7 @@ const Index = () => {
       <SectionDivider variant="teal" />
 
       {/* ¿Qué hacemos? */}
-      <section className="section-dark py-24">
+      <section className="section-dark py-12 sm:py-24">
         <div className="container">
           <motion.div
             className="mb-16 text-center"

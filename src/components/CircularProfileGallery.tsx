@@ -16,10 +16,29 @@ interface CircularProfileGalleryProps {
   className?: string;
 }
 
+const useResponsiveRadius = (baseRadius: number) => {
+  const [radius, setRadius] = useState(baseRadius);
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      if (w < 480) setRadius(Math.min(baseRadius, 160));
+      else if (w < 768) setRadius(Math.min(baseRadius, 220));
+      else if (w < 1024) setRadius(Math.min(baseRadius, 320));
+      else setRadius(baseRadius);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, [baseRadius]);
+
+  return radius;
+};
+
 const CircularProfileGallery: React.FC<CircularProfileGalleryProps> = ({
   items,
   autoRotateSpeed = 0.15,
-  radius = 450,
+  radius: baseRadius = 450,
   className = '',
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -31,6 +50,7 @@ const CircularProfileGallery: React.FC<CircularProfileGalleryProps> = ({
   const lastXRef = useRef(0);
   const velocityRef = useRef(0);
 
+  const radius = useResponsiveRadius(baseRadius);
   const itemCount = items.length;
   const angleStep = 360 / itemCount;
 
@@ -39,32 +59,24 @@ const CircularProfileGallery: React.FC<CircularProfileGalleryProps> = ({
     rotatorRef.current.style.transform = `rotateY(${angleRef.current}deg)`;
   }, []);
 
-  // Auto-rotate loop
   useEffect(() => {
     const animate = () => {
       if (!pausedRef.current && !draggingRef.current) {
         angleRef.current += autoRotateSpeed;
       }
-
-      // Apply drag velocity decay
       if (!draggingRef.current && Math.abs(velocityRef.current) > 0.01) {
         angleRef.current += velocityRef.current;
         velocityRef.current *= 0.95;
       } else if (!draggingRef.current) {
         velocityRef.current = 0;
       }
-
       applyTransform();
       rafRef.current = requestAnimationFrame(animate);
     };
-
     rafRef.current = requestAnimationFrame(animate);
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
+    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
   }, [autoRotateSpeed, applyTransform]);
 
-  // Pointer drag handlers
   const handlePointerDown = useCallback((e: React.PointerEvent) => {
     draggingRef.current = true;
     lastXRef.current = e.clientX;

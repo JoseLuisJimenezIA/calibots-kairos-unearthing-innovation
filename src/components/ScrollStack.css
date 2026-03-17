@@ -3,6 +3,7 @@
   height: 100vh;
   overflow-y: auto;
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 .scroll-stack-scroller.use-window {
@@ -26,4 +27,13 @@
 .scroll-stack-end {
   height: 50vh;
   pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .scroll-stack-scroller {
+    height: 70vh;
+  }
+  .scroll-stack-end {
+    height: 30vh;
+  }
 }

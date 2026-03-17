@@ -16,7 +16,7 @@ const Contacto = () => {
       <Navbar />
       <BackButton />
 
-      <section className="relative py-24 overflow-hidden section-dark">
+      <section className="relative py-16 sm:py-24 overflow-hidden section-dark">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <motion.div
             className="h-[400px] w-[400px] rounded-full bg-accent/8 blur-[100px]"
@@ -36,7 +36,7 @@ const Contacto = () => {
 
       <SectionDivider variant="crimson" />
 
-      <section className="section-darker py-20">
+      <section className="section-darker py-12 sm:py-20">
         <div className="container">
           <div className="grid gap-12 md:grid-cols-2">
             <motion.div variants={slideFromLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
@@ -77,12 +77,12 @@ const Contacto = () => {
               </div>
               <motion.div initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.5 }}>
                 <h3 className="mb-4 font-heading text-sm font-bold uppercase tracking-wider">Redes Sociales</h3>
-                <div className="flex gap-3">
-                  <a href="https://www.instagram.com/calibots_?igsh=cjh4ZHlpZXE5bG4z" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 font-subtitle text-sm font-medium transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105"><Instagram className="h-4 w-4" /> Instagram</a>
-                  <a href="#" className="flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 font-subtitle text-sm font-medium transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105">
+                <div className="flex flex-wrap gap-3">
+                  <a href="https://www.instagram.com/calibots_?igsh=cjh4ZHlpZXE5bG4z" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 sm:px-4 py-2 font-subtitle text-xs sm:text-sm font-medium transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105"><Instagram className="h-4 w-4" /> Instagram</a>
+                  <a href="#" className="flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 sm:px-4 py-2 font-subtitle text-xs sm:text-sm font-medium transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105">
                     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.73a8.19 8.19 0 004.76 1.52V6.8a4.84 4.84 0 01-1-.11z"/></svg> TikTok
                   </a>
-                  <a href="#" className="flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 font-subtitle text-sm font-medium transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105"><Youtube className="h-4 w-4" /> YouTube</a>
+                  <a href="#" className="flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 sm:px-4 py-2 font-subtitle text-xs sm:text-sm font-medium transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-105"><Youtube className="h-4 w-4" /> YouTube</a>
                 </div>
               </motion.div>
               <motion.div

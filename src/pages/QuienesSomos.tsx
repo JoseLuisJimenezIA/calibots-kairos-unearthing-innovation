@@ -70,7 +70,7 @@ const QuienesSomos = () => {
       <BackButton />
 
       {/* Hero */}
-      <section className="relative py-24 overflow-hidden section-dark">
+      <section className="relative py-16 sm:py-24 overflow-hidden section-dark">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <motion.div
             className="h-[400px] w-[400px] rounded-full bg-primary/8 blur-[100px]"
@@ -80,7 +80,7 @@ const QuienesSomos = () => {
         </div>
         <div className="container relative z-10 text-center">
           <motion.h1
-            className="font-heading text-3xl font-black uppercase tracking-wider md:text-5xl lg:text-6xl"
+            className="font-heading text-2xl font-black uppercase tracking-wider sm:text-3xl md:text-5xl lg:text-6xl"
             variants={textReveal}
             initial="hidden"
             animate="visible"
@@ -102,7 +102,7 @@ const QuienesSomos = () => {
       <SectionDivider variant="gold" />
 
       {/* Historia */}
-      <section className="section-darker py-20">
+      <section className="section-darker py-12 sm:py-20">
         <div className="container">
           <div className="grid items-center gap-12 md:grid-cols-2">
             <motion.div variants={slideFromLeft} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
@@ -126,7 +126,7 @@ const QuienesSomos = () => {
       <SectionDivider variant="teal" />
 
       {/* Equipo - Profile Cards */}
-      <section className="section-dark py-20">
+      <section className="section-dark py-12 sm:py-20">
         <div className="container">
           <motion.h2
             className="mb-4 text-center font-heading text-2xl font-bold uppercase tracking-wider md:text-3xl"
@@ -140,15 +140,16 @@ const QuienesSomos = () => {
           </motion.h2>
           <motion.div className="mx-auto mb-8 h-1 w-16 rounded-full bg-primary" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
           <motion.p
-            className="mb-8 text-center font-subtitle text-sm text-muted-foreground/70"
+            className="mb-8 text-center font-subtitle text-xs sm:text-sm text-muted-foreground/70"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            Arrastra para girar · Pasa el cursor para pausar
+            <span className="hidden sm:inline">Arrastra para girar · Pasa el cursor para pausar</span>
+            <span className="sm:hidden">Desliza para girar</span>
           </motion.p>
-          <div className="h-[480px] md:h-[520px]">
+          <div className="h-[320px] sm:h-[400px] md:h-[480px] lg:h-[520px]">
             <CircularProfileGallery
               items={teamMembers.map(m => ({
                 name: m.name,
@@ -166,7 +167,7 @@ const QuienesSomos = () => {
       <SectionDivider variant="teal" />
 
       {/* Recorrido */}
-      <section className="section-dark py-20">
+      <section className="section-dark py-12 sm:py-20">
         <div className="container">
           <motion.h2
             className="mb-4 text-center font-heading text-2xl font-bold uppercase tracking-wider md:text-3xl"
@@ -216,7 +217,7 @@ const QuienesSomos = () => {
       <SectionDivider variant="gold" />
 
       {/* Valores FIRST */}
-      <section className="section-darker py-20">
+      <section className="section-darker py-12 sm:py-20">
         <div className="container">
           <motion.h2
             className="mb-4 text-center font-heading text-2xl font-bold uppercase tracking-wider md:text-3xl"
