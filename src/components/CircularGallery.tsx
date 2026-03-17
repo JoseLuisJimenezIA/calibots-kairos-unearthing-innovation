@@ -23,13 +23,21 @@ function createTextTexture(gl: any, text: string, font = "bold 28px 'Orbitron', 
   const fontSizeMatch = font.match(/(\d+)px/);
   const fontSize = fontSizeMatch ? parseInt(fontSizeMatch[1], 10) : 28;
   const textHeight = Math.ceil(fontSize * 1.2);
-  canvas.width = textWidth + 20;
-  canvas.height = textHeight + 20;
+  canvas.width = textWidth + 40;
+  canvas.height = textHeight + 40;
   context.font = font;
-  context.fillStyle = color;
   context.textBaseline = 'middle';
   context.textAlign = 'center';
   context.clearRect(0, 0, canvas.width, canvas.height);
+  // Glow effect
+  context.shadowColor = color;
+  context.shadowBlur = 12;
+  context.shadowOffsetX = 0;
+  context.shadowOffsetY = 0;
+  context.fillStyle = color;
+  context.fillText(text, canvas.width / 2, canvas.height / 2);
+  // Second pass for stronger glow
+  context.shadowBlur = 6;
   context.fillText(text, canvas.width / 2, canvas.height / 2);
   const texture = new Texture(gl, { generateMipmaps: false });
   texture.image = canvas;
