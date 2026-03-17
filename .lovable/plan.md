@@ -1,21 +1,57 @@
 
 
-## Plan: Quitar efecto de brillo/shine/glare de las ProfileCards
+## Aplicar nueva paleta de colores
 
-Solo se eliminarán las capas visuales de brillo holográfico que aparecen al pasar el mouse. El carrusel 3D, el tilt y todo lo demás se mantienen exactamente igual.
+Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
 
-### Cambios
+### Mapeo de colores
 
-**`src/components/ProfileCard.tsx`** (líneas 270-271):
-- Eliminar `<div className="pc-shine" />` y `<div className="pc-glare" />` del JSX
-- Eliminar `<div className="pc-behind" />` (el glow difuso detrás de la tarjeta, línea 266)
+| Hex | HSL | Uso en el sitio |
+|-----|-----|-----------------|
+| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
+| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
+| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
+| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
+| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
+| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
 
-**`src/components/ProfileCard.css`**:
-- Eliminar todas las reglas CSS de `.pc-shine`, `.pc-shine::before`, `.pc-shine::after`, `.pc-glare`, `.pc-behind` y las animaciones `pc-holo-bg`
-- Mantener todo lo demás (`.pc-card`, `.pc-avatar-content`, `.pc-details`, tilt transforms, etc.)
+### Cambios por archivo
+
+**`src/index.css`** - Actualizar todas las variables CSS:
+
+- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
+- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
+- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
+- `--card-foreground`: `31 54% 22%`
+- `--primary`: `40 64% 55%` (dorado `#D6A340`)
+- `--primary-foreground`: `0 0% 100%`
+- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
+- `--secondary-foreground`: `0 0% 100%`
+- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
+- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
+- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
+- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
+- `--border`: `49 25% 65%`
+- `--ring`: `40 64% 55%`
+- `--sand`: `49 38% 74%`
+- `--teal`: `124 24% 38%`
+- `--mustard`: `40 64% 55%`
+- `--crimson`: `31 54% 35%`
+- `--dark-brown`: `31 54% 35%`
+
+**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
+- Fondo: `bg-dark-brown` (usando `#8B5B29`)
+
+**`src/components/Footer.tsx`** - Mismo fondo oscuro:
+- Fondo: `bg-dark-brown`
+
+**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
+- Fondo: `bg-dark-brown`
 
 ### Resultado
-- Las tarjetas siguen girando en el carrusel 3D con tilt interactivo
-- Se elimina el efecto holográfico de colores y el brillo que aparece al acercar el mouse
-- Las tarjetas quedan con su fondo oscuro, avatar, nombre y badge — aspecto limpio
 
+- Paleta mas fresca y variada con la introduccion del azul cielo como acento
+- El verde bosque se mantiene como secondary para badges y botones
+- El dorado como primary da presencia a los CTAs
+- El verde salvia como muted aporta suavidad a fondos pasivos
+- Fondo khaki calido que armoniza todos los colores

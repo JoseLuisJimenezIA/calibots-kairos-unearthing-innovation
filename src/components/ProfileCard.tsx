@@ -263,12 +263,12 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 
   return (
     <div ref={wrapRef} className={`pc-card-wrapper ${className}`} style={cardStyle}>
-      {behindGlowEnabled && <div className="pc-behind" />}
+      
       <div ref={shellRef} className="pc-card-shell">
         <div className="pc-card">
           <div className="pc-inside" />
-          <div className="pc-shine" />
-          <div className="pc-glare" />
+
+
           <div className="pc-avatar-content">
             {avatarUrl && (
               <img
