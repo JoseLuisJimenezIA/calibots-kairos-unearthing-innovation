@@ -114,7 +114,7 @@ const QuienesSomos = () => {
 
       <SectionDivider variant="teal" />
 
-      {/* Estudiantes - Circular Gallery */}
+      {/* Equipo - Profile Cards */}
       <section className="section-dark py-20">
         <div className="container">
           <motion.h2
@@ -129,28 +129,39 @@ const QuienesSomos = () => {
           </motion.h2>
           <motion.div className="mx-auto mb-8 h-1 w-16 rounded-full bg-primary" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
           <motion.p
-            className="mb-8 text-center font-subtitle text-sm text-muted-foreground/70"
+            className="mb-12 text-center font-subtitle text-sm text-muted-foreground/70"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            Arrastra o usa el scroll para explorar a nuestros integrantes
+            Pasa el cursor sobre cada tarjeta para ver el efecto holográfico
           </motion.p>
-        </div>
-        <div style={{ height: '600px', position: 'relative' }}>
-          <CircularGallery
-            items={teamMembers.map((m, i) => ({
-              image: `https://picsum.photos/seed/member${i}/800/600`,
-              text: `${m.name}${m.role.includes("Coach") ? " — Profesor" : ""}`
-            }))}
-            bend={1}
-            textColor="#ffffff"
-            borderRadius={0.05}
-            scrollSpeed={1}
-            scrollEase={0.03}
-            autoRotateSpeed={0.08}
-          />
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
+            {teamMembers.map((m, i) => (
+              <motion.div
+                key={m.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.5 }}
+              >
+                <ProfileCard
+                  name={m.name}
+                  title={m.role}
+                  isCoach={m.role.includes("Coach")}
+                  avatarUrl=""
+                  enableTilt={true}
+                  enableMobileTilt={false}
+                  behindGlowColor={
+                    m.role.includes("Coach")
+                      ? "hsla(8, 70%, 52%, 0.4)"
+                      : "hsla(40, 76%, 50%, 0.4)"
+                  }
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
