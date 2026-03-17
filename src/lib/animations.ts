@@ -12,11 +12,10 @@ export const fadeUp: Variants = {
 
 // Cinematic slide from left
 export const slideFromLeft: Variants = {
-  hidden: { opacity: 0, x: -80, filter: "blur(8px)" },
+  hidden: { opacity: 0, x: -80 },
   visible: (i: number = 0) => ({
     opacity: 1,
     x: 0,
-    filter: "blur(0px)",
     transition: { delay: i * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] },
   }),
 };
