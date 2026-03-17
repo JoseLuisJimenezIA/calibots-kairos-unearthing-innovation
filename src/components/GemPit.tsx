@@ -417,11 +417,10 @@ class GemMaterial extends MeshPhysicalMaterial {
         }
         void main() {`
       );
-      const replaced = ShaderChunk.lights_fragment_begin.split(
-        'RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );',
-        `RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );
-          RE_Direct_Scattering(directLight, vUv, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, reflectedLight);`
-      );
+      const searchStr = 'RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );';
+      const replaceStr = `RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );
+          RE_Direct_Scattering(directLight, vUv, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, reflectedLight);`;
+      const replaced = ShaderChunk.lights_fragment_begin.split(searchStr).join(replaceStr);
       shader.fragmentShader = shader.fragmentShader.replace('#include <lights_fragment_begin>', replaced);
       if (this.onBeforeCompile2) this.onBeforeCompile2(shader);
     };
