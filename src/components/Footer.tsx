@@ -25,20 +25,6 @@ const Footer = () => {
     },
   ];
 
-  const logoItems = [
-    {
-      icon: <img src="/logo.png" alt="Calibots Kairos" className="h-8 w-auto drop-shadow-[0_0_10px_hsl(40_76%_50%/0.4)]" />,
-      label: "Calibots Kairos",
-    },
-    {
-      icon: (
-        <span className="font-heading text-[0.5rem] font-bold uppercase tracking-widest text-primary">
-          FLL
-        </span>
-      ),
-      label: "FIRST LEGO League",
-    },
-  ];
 
   return (
     <footer className="border-t border-primary/10 bg-background">
@@ -81,13 +67,16 @@ const Footer = () => {
         </div>
 
         <div className="mt-10 border-t border-primary/10 pt-8 flex flex-col items-center gap-4">
-          <Dock
-            items={logoItems}
-            baseItemSize={55}
-            magnification={80}
-            panelHeight={68}
-            distance={150}
-          />
+          <div className="flex items-center gap-4">
+            <div className="flex items-center justify-center rounded-xl border border-primary/15 bg-background p-3">
+              <img src="/logo.png" alt="Calibots Kairos" className="h-8 w-auto drop-shadow-[0_0_10px_hsl(40_76%_50%/0.4)]" />
+            </div>
+            <div className="flex items-center justify-center rounded-xl border border-primary/15 bg-background px-4 py-3">
+              <span className="font-heading text-xs font-bold uppercase tracking-widest text-primary">
+                FLL
+              </span>
+            </div>
+          </div>
           <p className="font-subtitle text-sm text-muted-foreground/60">
             © {new Date().getFullYear()} Calibots Kairos. Todos los derechos reservados.
           </p>
