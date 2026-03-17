@@ -417,7 +417,7 @@ class GemMaterial extends MeshPhysicalMaterial {
         }
         void main() {`
       );
-      const replaced = ShaderChunk.lights_fragment_begin.replaceAll(
+      const replaced = ShaderChunk.lights_fragment_begin.split(
         'RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );',
         `RE_Direct( directLight, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, material, reflectedLight );
           RE_Direct_Scattering(directLight, vUv, geometryPosition, geometryNormal, geometryViewDir, geometryClearcoatNormal, reflectedLight);`
