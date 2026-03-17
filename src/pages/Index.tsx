@@ -118,8 +118,8 @@ const Index = () => {
 
       <SectionDivider variant="gold" />
 
-      {/* Cómo vivimos FIRST LEGO League */}
-      <section className="section-darker py-24">
+      {/* ScrollStack Section */}
+      <section className="py-24 section-darker">
         <div className="container">
           <motion.div className="mb-4 text-center" variants={textReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
             <h2 className="font-heading text-2xl font-bold uppercase tracking-wider md:text-4xl">
@@ -135,34 +135,30 @@ const Index = () => {
           >
             Nuestra experiencia integra investigación, robótica, valores y aprendizaje
           </motion.p>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+          <ScrollStack itemDistance={120} itemScale={0.04} itemStackDistance={25} baseScale={0.88} blurAmount={2}>
             {[
-              { icon: Lightbulb, title: "Proyecto Innovador", desc: "ARGOS nació de una investigación real sobre los riesgos en la exploración arqueológica subterránea.", link: "/proyecto-innovador" },
-              { icon: Gamepad2, title: "Juego del Robot", desc: "Diseñamos, construimos y programamos soluciones robóticas para los desafíos de la temporada UNEARTHED.", link: "/juego-del-robot" },
-              { icon: Heart, title: "Valores FIRST", desc: "Descubrimiento, innovación, impacto, inclusión, trabajo en equipo y diversión guían cada paso.", link: "/quienes-somos" },
-              { icon: Users, title: "Aprendizaje del Equipo", desc: "Cada integrante crece en habilidades técnicas, sociales y de liderazgo a lo largo de la temporada.", link: "/quienes-somos" },
-            ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                variants={flipIn}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                custom={i}
-              >
-                <Link to={item.link} className="group block h-full glass-card-hover p-6 relative overflow-hidden">
+              { icon: Lightbulb, title: "Proyecto Innovador", desc: "ARGOS nació de una investigación real sobre los riesgos en la exploración arqueológica subterránea.", link: "/proyecto-innovador", gradient: "gold" },
+              { icon: Gamepad2, title: "Juego del Robot", desc: "Diseñamos, construimos y programamos soluciones robóticas para los desafíos de la temporada UNEARTHED.", link: "/juego-del-robot", gradient: "teal" },
+              { icon: Heart, title: "Valores FIRST", desc: "Descubrimiento, innovación, impacto, inclusión, trabajo en equipo y diversión guían cada paso.", link: "/quienes-somos", gradient: "crimson" },
+              { icon: Users, title: "Aprendizaje del Equipo", desc: "Cada integrante crece en habilidades técnicas, sociales y de liderazgo a lo largo de la temporada.", link: "/quienes-somos", gradient: "gold" },
+            ].map((item) => (
+              <ScrollStackItem key={item.title}>
+                <Link to={item.link} className="group block glass-card-hover p-8 md:p-12 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700" />
-                  <div className="relative">
-                    <motion.div whileHover={{ scale: 1.15, rotate: 5 }} transition={{ duration: 0.3 }}>
-                      <item.icon className="mb-4 h-8 w-8 text-primary" />
-                    </motion.div>
-                    <h3 className="mb-2 font-heading text-xs font-bold uppercase tracking-wider">{item.title}</h3>
-                    <p className="font-subtitle text-sm text-muted-foreground">{item.desc}</p>
+                  <div className="relative flex flex-col md:flex-row items-start gap-6">
+                    <div className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl ${item.gradient === "gold" ? "bg-primary/15" : item.gradient === "teal" ? "bg-secondary/15" : "bg-accent/15"}`}>
+                      <item.icon className={`h-8 w-8 ${item.gradient === "gold" ? "text-primary" : item.gradient === "teal" ? "text-secondary" : "text-accent"}`} />
+                    </div>
+                    <div>
+                      <h3 className="mb-2 font-heading text-sm font-bold uppercase tracking-wider md:text-base">{item.title}</h3>
+                      <p className="font-subtitle text-sm text-muted-foreground md:text-base">{item.desc}</p>
+                    </div>
                   </div>
                 </Link>
-              </motion.div>
+              </ScrollStackItem>
             ))}
-          </div>
+          </ScrollStack>
         </div>
       </section>
 
