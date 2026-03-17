@@ -535,6 +535,14 @@ class GemInstancedMesh extends InstancedMesh {
     this.add(this.ambientLight);
     this.light = new PointLight(config.colors[0], config.lightIntensity);
     this.add(this.light);
+    // Second point light from opposite angle
+    this.light2 = new PointLight(config.colors[2], config.lightIntensity * 0.6);
+    this.light2.position.set(-5, 3, -2);
+    this.add(this.light2);
+    // Directional light for consistent highlights
+    this.dirLight = new DirectionalLight(0xffffff, 1.5);
+    this.dirLight.position.set(2, 5, 3);
+    this.add(this.dirLight);
 
     this.emeraldGradient = createColorGradient(EMERALD_COLORS);
     this.rubyGradient = createColorGradient(RUBY_COLORS);
