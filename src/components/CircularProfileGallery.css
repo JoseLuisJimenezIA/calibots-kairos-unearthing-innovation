@@ -1,0 +1,118 @@
+.cpg-container {
+  width: 100%;
+  height: 100%;
+  perspective: 1200px;
+  overflow: hidden;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.cpg-container:active {
+  cursor: grabbing;
+}
+
+.cpg-rotator {
+  position: relative;
+  width: 200px;
+  height: 320px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.cpg-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Scale down ProfileCards inside the gallery */
+.cpg-item .pc-card-wrapper {
+  width: 200px;
+}
+
+.cpg-item .pc-card {
+  max-height: 300px;
+  height: 300px;
+}
+
+.cpg-item .pc-details {
+  top: 1.2em;
+}
+
+.cpg-item .pc-details h3 {
+  font-size: 0.9em;
+}
+
+.cpg-item .pc-details p {
+  font-size: 9px;
+}
+
+.cpg-item .pc-role-badge {
+  padding: 3px 10px;
+  bottom: 10px;
+}
+
+.cpg-item .pc-role-badge span {
+  font-size: 8px;
+}
+
+.cpg-item .pc-role-badge .pc-role-dot {
+  width: 5px;
+  height: 5px;
+}
+
+@media (max-width: 768px) {
+  .cpg-rotator {
+    width: 160px;
+    height: 260px;
+  }
+
+  .cpg-item .pc-card-wrapper {
+    width: 160px;
+  }
+
+  .cpg-item .pc-card {
+    max-height: 240px;
+    height: 240px;
+  }
+
+  .cpg-item .pc-details h3 {
+    font-size: 0.75em;
+  }
+
+  .cpg-item .pc-details p {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cpg-rotator {
+    width: 140px;
+    height: 230px;
+  }
+
+  .cpg-item .pc-card-wrapper {
+    width: 140px;
+  }
+
+  .cpg-item .pc-card {
+    max-height: 210px;
+    height: 210px;
+  }
+
+  .cpg-item .pc-details h3 {
+    font-size: 0.65em;
+  }
+
+  .cpg-item .pc-details p {
+    font-size: 7px;
+  }
+}

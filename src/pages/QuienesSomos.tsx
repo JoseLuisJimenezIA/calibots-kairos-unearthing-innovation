@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
-import ProfileCard from "@/components/ProfileCard";
+import CircularProfileGallery from "@/components/CircularProfileGallery";
 import BackButton from "@/components/BackButton";
 import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
