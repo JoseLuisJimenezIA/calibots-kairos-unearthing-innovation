@@ -126,7 +126,7 @@ const QuienesSomos = () => {
       <SectionDivider variant="teal" />
 
       {/* Equipo - Profile Cards */}
-      <section className="section-dark py-20">
+      <section className="section-dark py-12 sm:py-20">
         <div className="container">
           <motion.h2
             className="mb-4 text-center font-heading text-2xl font-bold uppercase tracking-wider md:text-3xl"
