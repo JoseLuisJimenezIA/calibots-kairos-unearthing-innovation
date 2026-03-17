@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import GooeyNav from "./GooeyNav";
 
 const navItems = [
   { label: "Inicio", path: "/" },
@@ -16,6 +17,13 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
+  const gooeyItems = navItems.map((item) => ({
+    label: item.label,
+    href: item.path,
+  }));
+
+  const activeIndex = navItems.findIndex((item) => item.path === location.pathname);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-primary/10 bg-background/70 backdrop-blur-2xl">
       <div className="container flex h-16 items-center justify-between">
@@ -26,22 +34,14 @@ const Navbar = () => {
           </span>
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 lg:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`rounded-md px-3 py-2 font-subtitle text-sm font-medium uppercase tracking-wide transition-all duration-300 ${
-                location.pathname === item.path
-                  ? "text-primary glow-gold bg-primary/10"
-                  : "text-muted-foreground hover:text-primary hover:bg-primary/5"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        {/* Desktop nav - GooeyNav */}
+        <div className="hidden lg:block">
+          <GooeyNav
+            items={gooeyItems}
+            initialActiveIndex={activeIndex >= 0 ? activeIndex : 0}
+            colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+          />
+        </div>
 
         <Button
           variant="ghost"
