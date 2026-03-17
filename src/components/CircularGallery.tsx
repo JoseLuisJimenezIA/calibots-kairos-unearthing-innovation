@@ -227,6 +227,7 @@ class GalleryApp {
   }
 
   update() {
+    if (!this.isDown) { this.scroll.target += this.autoRotateSpeed; }
     this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
     const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
     this.medias?.forEach(m => m.update(this.scroll, direction));
