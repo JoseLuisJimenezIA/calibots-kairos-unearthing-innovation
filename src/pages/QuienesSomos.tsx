@@ -85,16 +85,10 @@ const QuienesSomos = () => {
               <h2 className="mb-6 font-heading text-2xl font-bold uppercase tracking-wider md:text-3xl">Nuestra <span className="text-gradient-teal">Esencia</span></h2>
               <div className="space-y-4">
                 <p className="font-subtitle text-muted-foreground leading-relaxed">
-                  Somos CaliBots Kairos, un equipo de FIRST LEGO League Challenge de Cali, Colombia, estudiantes con orgullo de Comfandi.
+                  Somos CaliBots Kairos, un equipo de FIRST LEGO League Challenge de Cali, Colombia. Representamos a nuestro colegio <strong className="text-primary">Comfandi El Prado</strong> con una propuesta que une investigación, robótica, diseño y trabajo en equipo. Nuestro nombre refleja una idea que nos identifica: el <strong className="text-primary">kairos</strong>, el momento oportuno para aprender, crear y actuar frente a un desafío real.
                 </p>
                 <p className="font-subtitle text-muted-foreground leading-relaxed">
-                  Nuestro nombre define nuestra esencia: creemos en el <strong className="text-primary">Kairos</strong>, el momento exacto para aprender, crear e innovar frente a los desafíos tecnológicos de hoy.
-                </p>
-                <p className="font-subtitle text-muted-foreground leading-relaxed">
-                  En la temporada <strong className="text-primary">Unearthed</strong> nos sumergimos en el presente para redescubrir los tesoros del pasado.
-                </p>
-                <p className="font-subtitle text-muted-foreground leading-relaxed">
-                  En CaliBots Kairos cada reto es la oportunidad perfecta para dejar huella y demostrar que desde nuestra región también se construye el futuro.
+                  En la temporada <strong className="text-primary">UNEARTHED</strong>, decidimos conectar tecnología y patrimonio desde una pregunta concreta: ¿cómo puede la robótica ayudar a explorar primero, reducir riesgos y aportar información antes del ingreso humano?
                 </p>
               </div>
             </motion.div>
