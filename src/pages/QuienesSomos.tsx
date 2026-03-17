@@ -129,38 +129,24 @@ const QuienesSomos = () => {
           </motion.h2>
           <motion.div className="mx-auto mb-8 h-1 w-16 rounded-full bg-primary" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
           <motion.p
-            className="mb-12 text-center font-subtitle text-sm text-muted-foreground/70"
+            className="mb-8 text-center font-subtitle text-sm text-muted-foreground/70"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            Pasa el cursor sobre cada tarjeta para ver el efecto holográfico
+            Arrastra para girar · Pasa el cursor para pausar
           </motion.p>
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 justify-items-center">
-            {teamMembers.map((m, i) => (
-              <motion.div
-                key={m.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08, duration: 0.5 }}
-              >
-                <ProfileCard
-                  name={m.name}
-                  title={m.role}
-                  isCoach={m.role.includes("Coach")}
-                  avatarUrl=""
-                  enableTilt={true}
-                  enableMobileTilt={false}
-                  behindGlowColor={
-                    m.role.includes("Coach")
-                      ? "hsla(8, 70%, 52%, 0.4)"
-                      : "hsla(40, 76%, 50%, 0.4)"
-                  }
-                />
-              </motion.div>
-            ))}
+          <div className="h-[480px] md:h-[520px]">
+            <CircularProfileGallery
+              items={teamMembers.map(m => ({
+                name: m.name,
+                role: m.role,
+                isCoach: m.role.includes("Coach"),
+              }))}
+              autoRotateSpeed={0.12}
+              radius={480}
+            />
           </div>
         </div>
       </section>
