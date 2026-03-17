@@ -36,25 +36,8 @@
   touch-action: none;
 }
 
-.pc-behind {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at var(--pc-pointer-x) var(--pc-pointer-y),
-    var(--pc-behind-glow-color) 0%,
-    transparent var(--pc-behind-glow-size)
-  );
-  filter: blur(50px) saturate(1.1);
-  opacity: calc(0.8 * var(--pc-card-opacity));
-  transition: opacity 200ms ease;
-}
 
-.pc-card-wrapper:hover,
-.pc-card-wrapper.active {
-  --pc-card-opacity: 1;
-}
+
 
 .pc-card {
   height: 80svh;
