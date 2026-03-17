@@ -1,57 +1,31 @@
 
 
-## Aplicar nueva paleta de colores
+## Plan: Asignar fotos PNG a cada integrante en la galería circular
 
-Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
+### Archivos a copiar (10 fotos)
+Copiar cada imagen subida a `src/assets/team/`:
 
-### Mapeo de colores
+| Archivo | Integrante |
+|---------|-----------|
+| `richard.png` | Richard Suarez (Coach) |
+| `diego.png` | Diego Peña (Coach) |
+| `jose_luis.png` | Jose Luis Jiménez |
+| `sebastian.png` | Sebastián Sánchez |
+| `monsalve.png` | Samuel Monzalve |
+| `gutierrez.png` | Juan E. Gutiérrez |
+| `raul1.png` | Raúl A. Castillo |
+| `Luisa.png` | Luisa F. Ávila |
+| `maria_alejandra.png` | Maria A. Zúñiga |
+| `sofia.png` | Sofia Vasco Riaño |
 
-| Hex | HSL | Uso en el sitio |
-|-----|-----|-----------------|
-| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
-| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
-| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
-| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
-| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
-| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
+Ericka A. V. Viafara queda sin foto por ahora (se asignara cuando la envies).
 
-### Cambios por archivo
+### Cambios en `src/pages/QuienesSomos.tsx`
 
-**`src/index.css`** - Actualizar todas las variables CSS:
+1. Agregar imports de cada imagen desde `@/assets/team/`
+2. Actualizar el array `teamMembers` para incluir el campo `avatarUrl` con la imagen importada correspondiente
+3. Ericka quedara con `avatarUrl` vacio hasta que se suba su foto
 
-- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
-- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
-- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
-- `--card-foreground`: `31 54% 22%`
-- `--primary`: `40 64% 55%` (dorado `#D6A340`)
-- `--primary-foreground`: `0 0% 100%`
-- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
-- `--secondary-foreground`: `0 0% 100%`
-- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
-- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
-- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
-- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
-- `--border`: `49 25% 65%`
-- `--ring`: `40 64% 55%`
-- `--sand`: `49 38% 74%`
-- `--teal`: `124 24% 38%`
-- `--mustard`: `40 64% 55%`
-- `--crimson`: `31 54% 35%`
-- `--dark-brown`: `31 54% 35%`
+### Sin otros cambios
+La galeria circular y las ProfileCards ya estan configuradas para recibir `avatarUrl` -- solo falta asignar las imagenes.
 
-**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
-- Fondo: `bg-dark-brown` (usando `#8B5B29`)
-
-**`src/components/Footer.tsx`** - Mismo fondo oscuro:
-- Fondo: `bg-dark-brown`
-
-**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
-- Fondo: `bg-dark-brown`
-
-### Resultado
-
-- Paleta mas fresca y variada con la introduccion del azul cielo como acento
-- El verde bosque se mantiene como secondary para badges y botones
-- El dorado como primary da presencia a los CTAs
-- El verde salvia como muted aporta suavidad a fondos pasivos
-- Fondo khaki calido que armoniza todos los colores
