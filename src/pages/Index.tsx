@@ -225,6 +225,7 @@ const Index = () => {
       <SectionDivider variant="gradient" />
 
       <Footer />
+      </div>
     </div>
   );
 };
