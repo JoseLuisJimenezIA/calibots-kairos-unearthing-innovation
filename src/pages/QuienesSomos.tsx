@@ -140,15 +140,16 @@ const QuienesSomos = () => {
           </motion.h2>
           <motion.div className="mx-auto mb-8 h-1 w-16 rounded-full bg-primary" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
           <motion.p
-            className="mb-8 text-center font-subtitle text-sm text-muted-foreground/70"
+            className="mb-8 text-center font-subtitle text-xs sm:text-sm text-muted-foreground/70"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            Arrastra para girar · Pasa el cursor para pausar
+            <span className="hidden sm:inline">Arrastra para girar · Pasa el cursor para pausar</span>
+            <span className="sm:hidden">Desliza para girar</span>
           </motion.p>
-          <div className="h-[480px] md:h-[520px]">
+          <div className="h-[320px] sm:h-[400px] md:h-[480px] lg:h-[520px]">
             <CircularProfileGallery
               items={teamMembers.map(m => ({
                 name: m.name,
