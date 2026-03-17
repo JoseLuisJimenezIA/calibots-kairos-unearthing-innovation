@@ -11,12 +11,14 @@ import Galeria from "./pages/Galeria";
 import Contacto from "./pages/Contacto";
 import ValorFIRST from "./pages/ValorFIRST";
 import NotFound from "./pages/NotFound";
+import SplashCursor from "./components/SplashCursor";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <SplashCursor />
       <Toaster />
       <Sonner />
       <BrowserRouter>
