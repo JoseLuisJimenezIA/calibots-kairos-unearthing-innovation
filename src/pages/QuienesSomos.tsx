@@ -118,7 +118,7 @@ const QuienesSomos = () => {
             viewport={{ once: true }}
             custom={0}
           >
-            Nuestro <span className="text-gradient-gold">Equipo</span>
+            Nuestro <span className="text-gradient-gold">Equipo</span> y <span className="text-gradient-crimson">Coaches</span>
           </motion.h2>
           <motion.div className="mx-auto mb-8 h-1 w-16 rounded-full bg-primary" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
           <motion.p
