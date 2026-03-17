@@ -41,14 +41,6 @@ const Index = () => {
         </div>
 
         {/* 3D LEGO — large background */}
-        <motion.div
-          className="absolute inset-0 z-0 opacity-60"
-          initial={{ opacity: 0, scale: 0.6 }}
-          animate={{ opacity: 0.6, scale: 1 }}
-          transition={{ duration: 2, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <LegoModel3D className="h-full w-full" />
-        </motion.div>
 
         <div className="container relative z-10 flex flex-col items-center gap-6 text-center">
           <motion.span
