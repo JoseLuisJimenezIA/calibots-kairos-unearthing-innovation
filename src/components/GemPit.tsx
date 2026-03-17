@@ -478,6 +478,8 @@ class GemInstancedMesh extends InstancedMesh {
   physics: GemPhysics;
   ambientLight: AmbientLight;
   light: PointLight;
+  light2: PointLight;
+  dirLight: DirectionalLight;
   emeraldGradient: any;
   rubyGradient: any;
   hoverFactor = 0;
