@@ -296,6 +296,9 @@ class GemPhysics {
   positionData: Float32Array;
   velocityData: Float32Array;
   sizeData: Float32Array;
+  rotationData: Float32Array;
+  angularVelData: Float32Array;
+  scaleRatioData: Float32Array;
   center = new Vector3();
 
   constructor(config: any) {
@@ -303,12 +306,25 @@ class GemPhysics {
     this.positionData = new Float32Array(3 * config.count).fill(0);
     this.velocityData = new Float32Array(3 * config.count).fill(0);
     this.sizeData = new Float32Array(config.count).fill(1);
+    this.rotationData = new Float32Array(3 * config.count).fill(0);
+    this.angularVelData = new Float32Array(3 * config.count).fill(0);
+    this.scaleRatioData = new Float32Array(3 * config.count).fill(1);
     this.center.toArray(this.positionData, 0);
-    for (let i = 1; i < config.count; i++) {
+    for (let i = 0; i < config.count; i++) {
       const b = 3 * i;
-      this.positionData[b] = randFloatSpread(2 * config.maxX);
-      this.positionData[b + 1] = randFloatSpread(2 * config.maxY);
-      this.positionData[b + 2] = randFloatSpread(2 * config.maxZ);
+      if (i > 0) {
+        this.positionData[b] = randFloatSpread(2 * config.maxX);
+        this.positionData[b + 1] = randFloatSpread(2 * config.maxY);
+        this.positionData[b + 2] = randFloatSpread(2 * config.maxZ);
+      }
+      // Random angular velocities for organic rotation
+      this.angularVelData[b] = randFloatSpread(1.5);
+      this.angularVelData[b + 1] = randFloatSpread(1.5);
+      this.angularVelData[b + 2] = randFloatSpread(1.5);
+      // Non-uniform scale ratios per gem
+      this.scaleRatioData[b] = randFloat(0.85, 1.15);
+      this.scaleRatioData[b + 1] = randFloat(0.5, 0.75); // flattened Y for gem shape
+      this.scaleRatioData[b + 2] = randFloat(0.85, 1.15);
     }
     this.sizeData[0] = config.size0;
     for (let i = 1; i < config.count; i++) this.sizeData[i] = randFloat(config.minSize, config.maxSize);
