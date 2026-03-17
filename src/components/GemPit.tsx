@@ -3,7 +3,6 @@ import {
   Vector3,
   MeshPhysicalMaterial,
   InstancedMesh,
-  DirectionalLight,
   Clock,
   AmbientLight,
   OctahedronGeometry,
@@ -296,9 +295,6 @@ class GemPhysics {
   positionData: Float32Array;
   velocityData: Float32Array;
   sizeData: Float32Array;
-  rotationData: Float32Array;
-  angularVelData: Float32Array;
-  scaleRatioData: Float32Array;
   center = new Vector3();
 
   constructor(config: any) {
@@ -306,32 +302,19 @@ class GemPhysics {
     this.positionData = new Float32Array(3 * config.count).fill(0);
     this.velocityData = new Float32Array(3 * config.count).fill(0);
     this.sizeData = new Float32Array(config.count).fill(1);
-    this.rotationData = new Float32Array(3 * config.count).fill(0);
-    this.angularVelData = new Float32Array(3 * config.count).fill(0);
-    this.scaleRatioData = new Float32Array(3 * config.count).fill(1);
     this.center.toArray(this.positionData, 0);
-    for (let i = 0; i < config.count; i++) {
+    for (let i = 1; i < config.count; i++) {
       const b = 3 * i;
-      if (i > 0) {
-        this.positionData[b] = randFloatSpread(2 * config.maxX);
-        this.positionData[b + 1] = randFloatSpread(2 * config.maxY);
-        this.positionData[b + 2] = randFloatSpread(2 * config.maxZ);
-      }
-      // Random angular velocities for organic rotation
-      this.angularVelData[b] = randFloatSpread(1.5);
-      this.angularVelData[b + 1] = randFloatSpread(1.5);
-      this.angularVelData[b + 2] = randFloatSpread(1.5);
-      // Non-uniform scale ratios per gem
-      this.scaleRatioData[b] = randFloat(0.85, 1.15);
-      this.scaleRatioData[b + 1] = randFloat(0.5, 0.75); // flattened Y for gem shape
-      this.scaleRatioData[b + 2] = randFloat(0.85, 1.15);
+      this.positionData[b] = randFloatSpread(2 * config.maxX);
+      this.positionData[b + 1] = randFloatSpread(2 * config.maxY);
+      this.positionData[b + 2] = randFloatSpread(2 * config.maxZ);
     }
     this.sizeData[0] = config.size0;
     for (let i = 1; i < config.count; i++) this.sizeData[i] = randFloat(config.minSize, config.maxSize);
   }
 
   update(time: any) {
-    const { config: c, positionData: p, velocityData: v, sizeData: s, rotationData: r, angularVelData: av } = this;
+    const { config: c, positionData: p, velocityData: v, sizeData: s } = this;
     let start = 0;
     if (c.controlSphere0) {
       start = 1;
@@ -348,10 +331,6 @@ class GemPhysics {
       tmpV2.add(tmpV5);
       tmpV2.toArray(p, b);
       tmpV5.toArray(v, b);
-      // Update rotation with individual angular velocity
-      r[b] += av[b] * time.delta;
-      r[b + 1] += av[b + 1] * time.delta;
-      r[b + 2] += av[b + 2] * time.delta;
     }
     // collisions
     for (let i = start; i < c.count; i++) {
@@ -478,8 +457,6 @@ class GemInstancedMesh extends InstancedMesh {
   physics: GemPhysics;
   ambientLight: AmbientLight;
   light: PointLight;
-  light2: PointLight;
-  dirLight: DirectionalLight;
   emeraldGradient: any;
   rubyGradient: any;
   hoverFactor = 0;
@@ -490,20 +467,16 @@ class GemInstancedMesh extends InstancedMesh {
       count: 60,
       colors: EMERALD_COLORS,
       ambientColor: 0xffffff,
-      ambientIntensity: 1.0,
-      lightIntensity: 300,
+      ambientIntensity: 0.8,
+      lightIntensity: 150,
       materialParams: {
-        metalness: 0.05,
-        roughness: 0.02,
+        metalness: 0.3,
+        roughness: 0.1,
         clearcoat: 1,
-        clearcoatRoughness: 0.01,
-        transmission: 0.8,
-        ior: 2.42,
-        thickness: 1.5,
-        specularIntensity: 1,
-        specularColor: 0xffffff,
-        attenuationDistance: 0.5,
-        attenuationColor: 0x0D7D4E,
+        clearcoatRoughness: 0.05,
+        transmission: 0.3,
+        ior: 2.4, // diamond-like refraction
+        thickness: 0.5,
       },
       minSize: 0.3,
       maxSize: 0.8,
@@ -522,8 +495,8 @@ class GemInstancedMesh extends InstancedMesh {
 
     const envScene = new RoomEnvironment();
     const envMap = new PMREMGenerator(renderer).fromScene(envScene).texture;
-    // OctahedronGeometry with more subdivisions for smoother facets
-    const geo = new OctahedronGeometry(1, 2);
+    // Use OctahedronGeometry for faceted gem look
+    const geo = new OctahedronGeometry(1, 0);
     const mat = new GemMaterial({ envMap, ...config.materialParams });
     (mat as any).envMapRotation = { x: -Math.PI / 2 };
 
@@ -535,14 +508,6 @@ class GemInstancedMesh extends InstancedMesh {
     this.add(this.ambientLight);
     this.light = new PointLight(config.colors[0], config.lightIntensity);
     this.add(this.light);
-    // Second point light from opposite angle
-    this.light2 = new PointLight(config.colors[2], config.lightIntensity * 0.6);
-    this.light2.position.set(-5, 3, -2);
-    this.add(this.light2);
-    // Directional light for consistent highlights
-    this.dirLight = new DirectionalLight(0xffffff, 1.5);
-    this.dirLight.position.set(2, 5, 3);
-    this.add(this.dirLight);
 
     this.emeraldGradient = createColorGradient(EMERALD_COLORS);
     this.rubyGradient = createColorGradient(RUBY_COLORS);
@@ -572,34 +537,19 @@ class GemInstancedMesh extends InstancedMesh {
     this.hoverFactor += (this.targetHover - this.hoverFactor) * 0.03;
     this.setGemColors(this.hoverFactor);
 
-    // Update attenuation color based on hover
-    const mat = this.material as MeshPhysicalMaterial;
-    if (mat.attenuationColor) {
-      const emeraldAtten = new Color(0x0D7D4E);
-      const rubyAtten = new Color(0x922B21);
-      mat.attenuationColor.lerpColors(emeraldAtten, rubyAtten, this.hoverFactor);
-    }
-
     this.physics.update(time);
     for (let i = 0; i < this.count; i++) {
-      const b = 3 * i;
-      dummyObj.position.fromArray(this.physics.positionData, b);
-      // Use stored per-gem rotation for organic movement
+      dummyObj.position.fromArray(this.physics.positionData, 3 * i);
+      // Random-ish rotation based on position for gem variety
       dummyObj.rotation.set(
-        this.physics.rotationData[b],
-        this.physics.rotationData[b + 1],
-        this.physics.rotationData[b + 2]
+        dummyObj.position.x * 0.5 + time.elapsed * 0.1,
+        dummyObj.position.y * 0.3 + time.elapsed * 0.15,
+        dummyObj.position.z * 0.4
       );
       if (i === 0 && this.config.followCursor === false) {
-        dummyObj.scale.set(0, 0, 0);
+        dummyObj.scale.setScalar(0);
       } else {
-        const s = this.physics.sizeData[i];
-        // Non-uniform scale per gem for variety
-        dummyObj.scale.set(
-          s * this.physics.scaleRatioData[b],
-          s * this.physics.scaleRatioData[b + 1],
-          s * this.physics.scaleRatioData[b + 2]
-        );
+        dummyObj.scale.setScalar(this.physics.sizeData[i]);
       }
       dummyObj.updateMatrix();
       this.setMatrixAt(i, dummyObj.matrix);
