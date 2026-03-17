@@ -93,8 +93,8 @@ const Index = () => {
 
           <motion.p
             className="max-w-xl font-subtitle text-lg text-muted-foreground/80 md:text-xl drop-shadow-[0_2px_10px_hsl(0_0%_0%/0.6)]"
-            initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
           >
             Conoce a <span className="text-primary font-semibold">ARGOS</span>, nuestro robot explorador diseñado para la seguridad en espeleología y arqueología
