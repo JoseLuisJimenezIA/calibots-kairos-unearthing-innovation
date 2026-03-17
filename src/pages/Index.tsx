@@ -8,12 +8,19 @@ import SectionDivider from "@/components/SectionDivider";
 import Orb from "@/components/Orb";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
+import GemPit from "@/components/GemPit";
 import { fadeUp, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, textReveal, flipIn } from "@/lib/animations";
 
 
 const Index = () => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      {/* GemPit interactive background layer */}
+      <div className="fixed inset-0 z-0 opacity-30 pointer-events-auto" style={{ minHeight: '100vh' }}>
+        <GemPit count={50} gravity={0.005} friction={0.998} followCursor />
+      </div>
+
+      <div className="relative z-10">
       <Navbar />
 
       {/* Hero — cinematic */}
