@@ -40,6 +40,18 @@ const timeline = [
   { phase: "Competencias", desc: "Participación en torneos regionales y nacionales FLL." },
 ];
 
+const ValoresGlassIcons = () => {
+  const navigate = useNavigate();
+  const glassItems = valoresFIRST.map((v) => ({
+    icon: <v.icon className="h-6 w-6" />,
+    color: v.color,
+    label: v.label,
+    onClick: () => navigate(`/valores/${v.slug}`),
+  }));
+
+  return <GlassIcons items={glassItems} />;
+};
+
 const QuienesSomos = () => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
