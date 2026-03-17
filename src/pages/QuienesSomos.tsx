@@ -133,9 +133,9 @@ const QuienesSomos = () => {
         </div>
         <div style={{ height: '600px', position: 'relative' }}>
           <CircularGallery
-            items={students.map((s, i) => ({
-              image: `https://picsum.photos/seed/calibot${i + 1}/800/600`,
-              text: s.name
+            items={teamMembers.map((m, i) => ({
+              image: `https://picsum.photos/seed/member${i}/800/600`,
+              text: `${m.name}${m.role.includes("Coach") ? " ⭐" : ""}`
             }))}
             bend={1}
             textColor="#ffffff"
