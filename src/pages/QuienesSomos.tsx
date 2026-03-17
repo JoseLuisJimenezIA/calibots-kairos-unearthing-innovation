@@ -216,42 +216,8 @@ const QuienesSomos = () => {
           >
             Haz clic en cada valor para descubrir cómo lo vivimos
           </motion.p>
-          <motion.div className="mx-auto mb-12 h-1 w-16 rounded-full bg-primary" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
-          <motion.div
-            className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {valoresFIRST.map((v) => {
-              const colorClass = v.color === "accent" ? "text-accent" : v.color === "secondary" ? "text-secondary" : "text-primary";
-              const bgClass = v.color === "accent" ? "bg-accent/15" : v.color === "secondary" ? "bg-secondary/15" : "bg-primary/15";
-              return (
-                <motion.div key={v.slug} variants={staggerItem}>
-                  <Link to={`/valores/${v.slug}`} className="group block glass-card-hover p-6 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-transparent transition-all duration-700" />
-                    <div className="relative">
-                      <div className="flex items-center gap-3 mb-3">
-                        <motion.div
-                          className={`flex h-12 w-12 items-center justify-center rounded-2xl ${bgClass}`}
-                          whileHover={{ scale: 1.15, rotate: -5 }}
-                          transition={{ type: "spring", stiffness: 300 }}
-                        >
-                          <v.icon className={`h-6 w-6 ${colorClass}`} />
-                        </motion.div>
-                        <h3 className="font-heading text-xs font-bold uppercase tracking-wider">{v.label}</h3>
-                      </div>
-                      <p className="mb-3 font-subtitle text-sm text-muted-foreground">{v.desc}</p>
-                      <span className={`inline-flex items-center gap-1 font-subtitle text-xs font-semibold ${colorClass} group-hover:gap-2 transition-all`}>
-                        Ver más <ArrowRight className="h-3 w-3" />
-                      </span>
-                    </div>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+          <motion.div className="mx-auto mb-8 h-1 w-16 rounded-full bg-primary" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
+          <ValoresGlassIcons />
         </div>
       </section>
 
