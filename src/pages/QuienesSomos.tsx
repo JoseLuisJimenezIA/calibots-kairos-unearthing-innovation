@@ -153,6 +153,7 @@ const QuienesSomos = () => {
               items={teamMembers.map(m => ({
                 name: m.name,
                 role: m.role,
+                avatarUrl: m.avatarUrl,
                 isCoach: m.role.includes("Coach"),
               }))}
               autoRotateSpeed={0.12}
