@@ -32,11 +32,10 @@ export const slideFromRight: Variants = {
 
 // Scale up with blur (cinematic reveal)
 export const scaleReveal: Variants = {
-  hidden: { opacity: 0, scale: 0.8, filter: "blur(12px)" },
+  hidden: { opacity: 0, scale: 0.8 },
   visible: (i: number = 0) => ({
     opacity: 1,
     scale: 1,
-    filter: "blur(0px)",
     transition: { delay: i * 0.15, duration: 0.9, ease: [0.16, 1, 0.3, 1] },
   }),
 };
