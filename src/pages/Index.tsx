@@ -106,10 +106,10 @@ const Index = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <Button asChild size="lg" className="bg-primary text-primary-foreground px-8 font-subtitle text-base font-bold uppercase tracking-wider shadow-lg glow-gold transition-all duration-300 hover:scale-105">
+            <Button asChild size="lg" className="bg-primary text-primary-foreground px-6 sm:px-8 font-subtitle text-sm sm:text-base font-bold uppercase tracking-wider shadow-lg glow-gold transition-all duration-300 hover:scale-105">
               <Link to="/proyecto-innovador">Conoce ARGOS</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-secondary/50 text-secondary px-8 font-subtitle text-base font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:bg-secondary/10 hover:border-secondary">
+            <Button asChild size="lg" variant="outline" className="border-secondary/50 text-secondary px-6 sm:px-8 font-subtitle text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:bg-secondary/10 hover:border-secondary">
               <Link to="/quienes-somos">Nuestro equipo</Link>
             </Button>
           </motion.div>
