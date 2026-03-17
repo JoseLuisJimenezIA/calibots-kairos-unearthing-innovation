@@ -172,11 +172,13 @@ class GalleryApp {
   renderer: any; gl: any; camera: any; scene: any; planeGeometry: any;
   mediasImages: any[]; medias: Media[]; screen: any; viewport: any;
   raf: number; isDown = false; start = 0;
+  autoRotateSpeed: number; wheelTimeout: any;
   boundOnResize: any; boundOnWheel: any; boundOnTouchDown: any; boundOnTouchMove: any; boundOnTouchUp: any;
 
-  constructor(container: HTMLElement, { items, bend, textColor = '#ffffff', borderRadius = 0, font = 'bold 30px Figtree', scrollSpeed = 2, scrollEase = 0.05 }: any = {}) {
+  constructor(container: HTMLElement, { items, bend, textColor = '#ffffff', borderRadius = 0, font = 'bold 30px Figtree', scrollSpeed = 2, scrollEase = 0.05, autoRotateSpeed = 0.5 }: any = {}) {
     this.container = container;
     this.scrollSpeed = scrollSpeed;
+    this.autoRotateSpeed = autoRotateSpeed;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck.bind(this), 200);
     this.mediasImages = []; this.medias = []; this.raf = 0;
@@ -210,8 +212,8 @@ class GalleryApp {
 
   onTouchDown(e: any) { this.isDown = true; this.scroll.position = this.scroll.current; this.start = e.touches ? e.touches[0].clientX : e.clientX; }
   onTouchMove(e: any) { if (!this.isDown) return; const x = e.touches ? e.touches[0].clientX : e.clientX; this.scroll.target = this.scroll.position + (this.start - x) * (this.scrollSpeed * 0.025); }
-  onTouchUp() { this.isDown = false; this.onCheck(); }
-  onWheel(e: any) { const delta = e.deltaY || e.wheelDelta || e.detail; this.scroll.target += (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2; this.onCheckDebounce(); }
+  onTouchUp() { this.isDown = false; }
+  onWheel(e: any) { const delta = e.deltaY || e.wheelDelta || e.detail; this.scroll.target += (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2; this.isDown = true; clearTimeout(this.wheelTimeout); this.wheelTimeout = setTimeout(() => { this.isDown = false; }, 800); }
   onCheck() { if (!this.medias?.[0]) return; const w = this.medias[0].width; const idx = Math.round(Math.abs(this.scroll.target) / w); this.scroll.target = this.scroll.target < 0 ? -(w * idx) : w * idx; }
 
   onResize() {
@@ -225,6 +227,7 @@ class GalleryApp {
   }
 
   update() {
+    if (!this.isDown) { this.scroll.target += this.autoRotateSpeed; }
     this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
     const direction = this.scroll.current > this.scroll.last ? 'right' : 'left';
     this.medias?.forEach(m => m.update(this.scroll, direction));
@@ -278,17 +281,18 @@ interface CircularGalleryProps {
   font?: string;
   scrollSpeed?: number;
   scrollEase?: number;
+  autoRotateSpeed?: number;
 }
 
 export default function CircularGallery({
   items, bend = 3, textColor = '#ffffff', borderRadius = 0.05,
-  font = 'bold 30px Figtree', scrollSpeed = 2, scrollEase = 0.05
+  font = 'bold 30px Figtree', scrollSpeed = 2, scrollEase = 0.05, autoRotateSpeed = 0.5
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!containerRef.current) return;
-    const app = new GalleryApp(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase });
+    const app = new GalleryApp(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, autoRotateSpeed });
     return () => { app.destroy(); };
-  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+  }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase, autoRotateSpeed]);
   return <div className="circular-gallery" ref={containerRef} />;
 }
