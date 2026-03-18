@@ -1,43 +1,57 @@
 
 
-## Plan: Integrar StaggeredMenu como menú móvil con identidad CaliBots
+## Aplicar nueva paleta de colores
 
-### Enfoque
-Reemplazar el menú móvil básico actual del Navbar con el componente `StaggeredMenu`, adaptado a la paleta de colores del equipo. El `StaggeredMenu` se usará como menú lateral animado en pantallas `< lg`, mientras el `GooeyNav` se mantiene en desktop.
+Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
 
-### Cambios
+### Mapeo de colores
 
-#### 1. Crear `src/components/StaggeredMenu.tsx` y `src/components/StaggeredMenu.css`
-- Adaptar el código proporcionado como componente React+TypeScript
-- Integrar con `react-router-dom` (`useNavigate`) para navegación SPA en lugar de `<a href>`
-- Colores adaptados a la identidad:
-  - `colors`: `['#1A1308', '#D4A017']` (fondo oscuro → dorado)
-  - `accentColor`: `'#D4A017'` (dorado primario)
-  - `menuButtonColor`: `'#E8E2D4'` (foreground crema)
-  - Panel background: `#0F0B07` (background oscuro) en vez de blanco
-  - Texto de items: crema/foreground en vez de negro
-  - Social links: crema con hover dorado
-- CSS: Invertir colores del panel (fondo oscuro, texto claro) para mantener coherencia con el tema dark
+| Hex | HSL | Uso en el sitio |
+|-----|-----|-----------------|
+| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
+| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
+| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
+| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
+| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
+| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
 
-#### 2. Modificar `src/components/Navbar.tsx`
-- Reemplazar el botón hamburguesa y el menú desplegable móvil por `StaggeredMenu`
-- Pasar los `navItems` como items del menú
-- Pasar las redes sociales del footer (Instagram, TikTok, YouTube) como `socialItems`
-- El `StaggeredMenu` solo se renderiza en `lg:hidden`, posicionado como overlay fixed
-- Usar `logoUrl="/logo.png"` para el logo del equipo
-- Al hacer clic en un item, navegar con router y cerrar el menú
+### Cambios por archivo
 
-#### 3. Ajustes CSS (`StaggeredMenu.css`)
-- Panel background: `#0F0B07` con backdrop-blur
-- `.sm-panel-item` color: `#E8E2D4` (crema) en vez de `#000`
-- `.sm-panel-item:hover` color: `#D4A017` (dorado)
-- `.sm-socials-title` color: `#D4A017`
-- `.sm-socials-link` color: `#E8E2D4`, hover: `#D4A017`
-- Border del panel: `border-left: 1px solid hsl(40 76% 50% / 0.15)`
-- Numbering accent: dorado
+**`src/index.css`** - Actualizar todas las variables CSS:
+
+- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
+- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
+- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
+- `--card-foreground`: `31 54% 22%`
+- `--primary`: `40 64% 55%` (dorado `#D6A340`)
+- `--primary-foreground`: `0 0% 100%`
+- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
+- `--secondary-foreground`: `0 0% 100%`
+- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
+- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
+- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
+- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
+- `--border`: `49 25% 65%`
+- `--ring`: `40 64% 55%`
+- `--sand`: `49 38% 74%`
+- `--teal`: `124 24% 38%`
+- `--mustard`: `40 64% 55%`
+- `--crimson`: `31 54% 35%`
+- `--dark-brown`: `31 54% 35%`
+
+**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
+- Fondo: `bg-dark-brown` (usando `#8B5B29`)
+
+**`src/components/Footer.tsx`** - Mismo fondo oscuro:
+- Fondo: `bg-dark-brown`
+
+**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
+- Fondo: `bg-dark-brown`
 
 ### Resultado
-- Menú móvil premium con animaciones staggered y colores de la identidad CaliBots
-- Desktop mantiene el GooeyNav sin cambios
-- Navegación SPA funcional con cierre automático al seleccionar
 
+- Paleta mas fresca y variada con la introduccion del azul cielo como acento
+- El verde bosque se mantiene como secondary para badges y botones
+- El dorado como primary da presencia a los CTAs
+- El verde salvia como muted aporta suavidad a fondos pasivos
+- Fondo khaki calido que armoniza todos los colores

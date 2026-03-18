@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import GooeyNav from "./GooeyNav";
+import StaggeredMenu from "./StaggeredMenu";
 
 const navItems = [
   { label: "Inicio", path: "/" },
@@ -13,8 +12,19 @@ const navItems = [
   { label: "Contacto", path: "/contacto" },
 ];
 
+const menuItems = navItems.map((item) => ({
+  label: item.label,
+  ariaLabel: `Ir a ${item.label}`,
+  link: item.path,
+}));
+
+const socialItems = [
+  { label: "Instagram", link: "https://www.instagram.com/calibots_?igsh=cjh4ZHlpZXE5bG4z" },
+  { label: "TikTok", link: "#" },
+  { label: "YouTube", link: "#" },
+];
+
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
   const location = useLocation();
 
   const gooeyItems = navItems.map((item) => ({
@@ -25,54 +35,49 @@ const Navbar = () => {
   const activeIndex = navItems.findIndex((item) => item.path === location.pathname);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-primary/10 bg-background/70 backdrop-blur-2xl">
-      <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
-          <img src="/logo.png" alt="Calibots Kairos" className="h-10 w-auto drop-shadow-[0_0_10px_hsl(40_76%_50%/0.4)]" />
-          <span className="hidden font-heading text-sm font-bold tracking-wider text-foreground sm:inline uppercase">
-            Calibots Kairos
-          </span>
-        </Link>
+    <>
+      <header className="sticky top-0 z-50 w-full border-b border-primary/10 bg-background/70 backdrop-blur-2xl">
+        <div className="container flex h-16 items-center justify-between">
+          <Link to="/" className="flex items-center gap-3">
+            <img src="/logo.png" alt="Calibots Kairos" className="h-10 w-auto drop-shadow-[0_0_10px_hsl(40_76%_50%/0.4)]" />
+            <span className="hidden font-heading text-sm font-bold tracking-wider text-foreground sm:inline uppercase">
+              Calibots Kairos
+            </span>
+          </Link>
 
-        {/* Desktop nav - GooeyNav */}
-        <div className="hidden lg:block">
-          <GooeyNav
-            items={gooeyItems}
-            initialActiveIndex={activeIndex >= 0 ? activeIndex : 0}
-            colors={[1, 2, 3, 1, 2, 3, 1, 4]}
-          />
+          {/* Desktop nav - GooeyNav */}
+          <div className="hidden lg:block">
+            <GooeyNav
+              items={gooeyItems}
+              initialActiveIndex={activeIndex >= 0 ? activeIndex : 0}
+              colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+            />
+          </div>
+
+          {/* Spacer for mobile - toggle is inside StaggeredMenu */}
+          <div className="lg:hidden w-10" />
         </div>
+      </header>
 
-        <Button
-          variant="ghost"
-          size="icon"
-          className="lg:hidden text-foreground"
-          onClick={() => setOpen(!open)}
-          aria-label="Menú"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </Button>
+      {/* Mobile nav - StaggeredMenu overlay */}
+      <div className="lg:hidden fixed inset-0 z-[60] pointer-events-none">
+        <StaggeredMenu
+          position="right"
+          items={menuItems}
+          socialItems={socialItems}
+          displaySocials
+          displayItemNumbering
+          menuButtonColor="#E8E2D4"
+          openMenuButtonColor="#E8E2D4"
+          changeMenuColorOnOpen
+          colors={["#1A1308", "#D4A017"]}
+          logoUrl="/logo.png"
+          accentColor="#D4A017"
+          isFixed
+          closeOnClickAway
+        />
       </div>
-
-      {open && (
-        <nav className="border-t border-primary/10 bg-background/95 backdrop-blur-xl px-4 pb-4 lg:hidden">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              onClick={() => setOpen(false)}
-              className={`block rounded-md px-3 py-3 font-subtitle text-sm font-medium uppercase tracking-wide transition-all duration-300 ${
-                location.pathname === item.path
-                  ? "text-primary"
-                  : "text-muted-foreground hover:text-primary"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      )}
-    </header>
+    </>
   );
 };
 
