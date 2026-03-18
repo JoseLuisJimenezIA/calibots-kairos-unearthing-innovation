@@ -12,6 +12,7 @@ import { scaleReveal, staggerContainer, staggerItem, textReveal } from "@/lib/an
 
 // Lazy load heavy WebGL components
 const Orb = lazy(() => import("@/components/Orb"));
+const ShapeBlur = lazy(() => import("@/components/ShapeBlur"));
 
 /** Defers rendering children until after first paint */
 const DeferredRender = ({ children }: { children: React.ReactNode }) => {
@@ -101,15 +102,30 @@ const Index = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-wrap justify-center gap-4"
+            className="relative flex flex-wrap justify-center gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <Button asChild size="lg" className="bg-primary text-primary-foreground px-6 sm:px-8 font-subtitle text-sm sm:text-base font-bold uppercase tracking-wider shadow-lg glow-gold transition-all duration-300 hover:scale-105">
+            {/* ShapeBlur decorative background */}
+            <DeferredRender>
+              <Suspense fallback={null}>
+                <div className="absolute -inset-12 sm:-inset-16 z-0 pointer-events-none opacity-40">
+                  <ShapeBlur
+                    variation={0}
+                    shapeSize={1.2}
+                    roundness={0.5}
+                    borderSize={0.05}
+                    circleSize={0.3}
+                    circleEdge={0.5}
+                  />
+                </div>
+              </Suspense>
+            </DeferredRender>
+            <Button asChild size="lg" className="relative z-10 bg-primary text-primary-foreground px-6 sm:px-8 font-subtitle text-sm sm:text-base font-bold uppercase tracking-wider shadow-lg glow-gold transition-all duration-300 hover:scale-105">
               <Link to="/proyecto-innovador">Conoce ARGOS</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-secondary/50 text-secondary px-6 sm:px-8 font-subtitle text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:bg-secondary/10 hover:border-secondary">
+            <Button asChild size="lg" variant="outline" className="relative z-10 border-secondary/50 text-secondary px-6 sm:px-8 font-subtitle text-sm sm:text-base font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:bg-secondary/10 hover:border-secondary">
               <Link to="/quienes-somos">Nuestro equipo</Link>
             </Button>
           </motion.div>
