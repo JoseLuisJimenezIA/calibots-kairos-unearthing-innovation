@@ -12,6 +12,7 @@ import { scaleReveal, staggerContainer, staggerItem, textReveal } from "@/lib/an
 
 // Lazy load heavy WebGL components
 const Orb = lazy(() => import("@/components/Orb"));
+const ShapeBlur = lazy(() => import("@/components/ShapeBlur"));
 
 /** Defers rendering children until after first paint */
 const DeferredRender = ({ children }: { children: React.ReactNode }) => {
