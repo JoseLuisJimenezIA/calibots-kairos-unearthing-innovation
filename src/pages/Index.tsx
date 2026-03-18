@@ -8,7 +8,17 @@ import Footer from "@/components/Footer";
 import SectionDivider from "@/components/SectionDivider";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
+import MagicBento, { type BentoCard } from "@/components/MagicBento";
 import { scaleReveal, staggerContainer, staggerItem, textReveal } from "@/lib/animations";
+
+const bentoCards: BentoCard[] = [
+  { title: "Exploración Segura", description: "ARGOS analiza cuevas antes de que los arqueólogos ingresen, detectando peligros invisibles.", label: "Seguridad", icon: <Shield className="h-5 w-5 text-primary" /> },
+  { title: "Sensores Avanzados", description: "Gases tóxicos, temperatura, humedad e inestabilidad estructural monitoreados en tiempo real.", label: "Tecnología", icon: <Eye className="h-5 w-5 text-secondary" /> },
+  { title: "Espeleología & Arqueología", description: "Investigamos los riesgos reales que enfrentan los profesionales en exploración subterránea.", label: "Investigación", icon: <Mountain className="h-5 w-5 text-accent" /> },
+  { title: "Trabajo en Equipo", description: "10 integrantes colaborando con roles definidos, desde programación hasta comunicación.", label: "Equipo", icon: <Users className="h-5 w-5 text-primary" /> },
+  { title: "Valores FIRST", description: "Descubrimiento, innovación, impacto, inclusión y diversión guían cada decisión.", label: "Valores", icon: <Heart className="h-5 w-5 text-accent" /> },
+  { title: "Robot Explorador", description: "Diseñado con LEGO SPIKE Prime, programado para navegar terrenos irregulares de forma autónoma.", label: "Robótica", icon: <Gamepad2 className="h-5 w-5 text-secondary" /> },
+];
 
 // Lazy load heavy WebGL components
 const Orb = lazy(() => import("@/components/Orb"));
@@ -246,6 +256,39 @@ const Index = () => {
       </section>
 
       <SectionDivider variant="gradient" />
+
+      {/* MagicBento Section */}
+      <section className="bento-section section-dark py-12 sm:py-24">
+        <div className="container">
+          <motion.div
+            className="mb-16 text-center"
+            variants={textReveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={0}
+          >
+            <h2 className="font-heading text-2xl font-bold uppercase tracking-wider md:text-4xl">
+              Nuestras <span className="text-gradient-gold">Fortalezas</span>
+            </h2>
+            <motion.div className="mx-auto mt-4 h-1 w-16 rounded-full bg-primary" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
+          </motion.div>
+          <div className="flex justify-center">
+            <MagicBento
+              cards={bentoCards}
+              glowColor="212, 160, 23"
+              enableStars
+              enableSpotlight
+              enableBorderGlow
+              enableTilt={false}
+              clickEffect
+              enableMagnetism
+            />
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider variant="crimson" />
 
       <Footer />
       </div>
