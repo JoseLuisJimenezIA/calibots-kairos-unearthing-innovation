@@ -110,14 +110,14 @@ const Index = () => {
             {/* ShapeBlur decorative background */}
             <DeferredRender>
               <Suspense fallback={null}>
-                <div className="absolute -inset-12 sm:-inset-16 z-0 pointer-events-none opacity-40">
+                <div className="absolute -inset-x-6 -inset-y-4 sm:-inset-x-8 sm:-inset-y-5 z-0 pointer-events-none opacity-50">
                   <ShapeBlur
                     variation={0}
-                    shapeSize={1.2}
-                    roundness={0.5}
-                    borderSize={0.05}
-                    circleSize={0.3}
-                    circleEdge={0.5}
+                    shapeSize={0.8}
+                    roundness={0.6}
+                    borderSize={0.08}
+                    circleSize={0.4}
+                    circleEdge={0.6}
                   />
                 </div>
               </Suspense>
