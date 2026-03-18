@@ -276,13 +276,17 @@ const Index = () => {
           <div className="flex justify-center">
             <MagicBento
               cards={bentoCards}
-              glowColor="212, 160, 23"
+              textAutoHide={true}
               enableStars
               enableSpotlight
-              enableBorderGlow
+              enableBorderGlow={true}
               enableTilt={false}
+              enableMagnetism={false}
               clickEffect
-              enableMagnetism
+              spotlightRadius={400}
+              particleCount={12}
+              glowColor="212, 160, 23"
+              disableAnimations={false}
             />
           </div>
         </div>
