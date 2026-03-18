@@ -257,6 +257,39 @@ const Index = () => {
 
       <SectionDivider variant="gradient" />
 
+      {/* MagicBento Section */}
+      <section className="bento-section section-dark py-12 sm:py-24">
+        <div className="container">
+          <motion.div
+            className="mb-16 text-center"
+            variants={textReveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            custom={0}
+          >
+            <h2 className="font-heading text-2xl font-bold uppercase tracking-wider md:text-4xl">
+              Nuestras <span className="text-gradient-gold">Fortalezas</span>
+            </h2>
+            <motion.div className="mx-auto mt-4 h-1 w-16 rounded-full bg-primary" variants={scaleReveal} initial="hidden" whileInView="visible" viewport={{ once: true }} />
+          </motion.div>
+          <div className="flex justify-center">
+            <MagicBento
+              cards={bentoCards}
+              glowColor="212, 160, 23"
+              enableStars
+              enableSpotlight
+              enableBorderGlow
+              enableTilt={false}
+              clickEffect
+              enableMagnetism
+            />
+          </div>
+        </div>
+      </section>
+
+      <SectionDivider variant="crimson" />
+
       <Footer />
       </div>
     </div>
