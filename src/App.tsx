@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -30,6 +31,7 @@ const PageFallback = () => (
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <LanguageProvider>
     <TooltipProvider>
       <Suspense fallback={null}>
         <SplashCursor />
@@ -51,6 +53,7 @@ const App = () => (
         </Suspense>
       </BrowserRouter>
     </TooltipProvider>
+    </LanguageProvider>
   </QueryClientProvider>
 );
 
