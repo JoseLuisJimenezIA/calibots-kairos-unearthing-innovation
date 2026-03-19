@@ -19,12 +19,13 @@
 .staggered-menu-header {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 2em;
+  justify-content: flex-end;
+  height: 64px;
+  padding: 0 1rem;
   background: transparent;
   pointer-events: none;
   z-index: 20;
