@@ -102,7 +102,7 @@ const Index = () => {
             className="max-w-xl font-subtitle text-base text-muted-foreground/80 sm:text-lg md:text-xl drop-shadow-[0_2px_10px_hsl(0_0%_0%/0.6)]"
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1, duration: 0.8 }}
           >
-            {t("hero.subtitle1")}<span className="text-primary font-semibold">ARGOS</span>{t("hero.subtitle2")}
+            {t("hero.subtitle1")}<img src={argosLogo} alt="ARGOS" className="inline-block h-6 sm:h-7 md:h-8 w-auto align-middle mx-1" />{t("hero.subtitle2")}
           </motion.p>
 
           <motion.div
