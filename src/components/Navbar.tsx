@@ -2,30 +2,32 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import GooeyNav from "./GooeyNav";
 import StaggeredMenu from "./StaggeredMenu";
-
-const navItems = [
-  { label: "Inicio", path: "/" },
-  { label: "Quiénes Somos", path: "/quienes-somos" },
-  { label: "Proyecto Innovador", path: "/proyecto-innovador" },
-  { label: "Juego del Robot", path: "/juego-del-robot" },
-  { label: "Galería", path: "/galeria" },
-  { label: "Contacto", path: "/contacto" },
-];
-
-const menuItems = navItems.map((item) => ({
-  label: item.label,
-  ariaLabel: `Ir a ${item.label}`,
-  link: item.path,
-}));
-
-const socialItems = [
-  { label: "Instagram", link: "https://www.instagram.com/calibots_?igsh=cjh4ZHlpZXE5bG4z" },
-  { label: "TikTok", link: "#" },
-  { label: "YouTube", link: "#" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const location = useLocation();
+  const { lang, toggleLang, t } = useLanguage();
+
+  const navItems = [
+    { label: t("nav.inicio"), path: "/" },
+    { label: t("nav.quienes"), path: "/quienes-somos" },
+    { label: t("nav.proyecto"), path: "/proyecto-innovador" },
+    { label: t("nav.juego"), path: "/juego-del-robot" },
+    { label: t("nav.galeria"), path: "/galeria" },
+    { label: t("nav.contacto"), path: "/contacto" },
+  ];
+
+  const menuItems = navItems.map((item) => ({
+    label: item.label,
+    ariaLabel: `${item.label}`,
+    link: item.path,
+  }));
+
+  const socialItems = [
+    { label: "Instagram", link: "https://www.instagram.com/calibots_?igsh=cjh4ZHlpZXE5bG4z" },
+    { label: "TikTok", link: "#" },
+    { label: "YouTube", link: "#" },
+  ];
 
   const gooeyItems = navItems.map((item) => ({
     label: item.label,
@@ -45,17 +47,33 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Desktop nav - GooeyNav */}
-          <div className="hidden lg:block">
+          {/* Desktop nav - GooeyNav + Lang toggle */}
+          <div className="hidden lg:flex items-center gap-3">
             <GooeyNav
               items={gooeyItems}
               initialActiveIndex={activeIndex >= 0 ? activeIndex : 0}
               colors={[1, 2, 3, 1, 2, 3, 1, 4]}
             />
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 font-subtitle text-xs font-bold uppercase tracking-wider text-primary transition-all duration-300 hover:bg-primary/15 hover:scale-105"
+              aria-label="Toggle language"
+            >
+              {lang === "es" ? "🇯🇵 JP" : "🇪🇸 ES"}
+            </button>
           </div>
 
-          {/* Spacer for mobile - toggle is inside StaggeredMenu */}
-          <div className="lg:hidden w-10" />
+          {/* Mobile: lang toggle + spacer for StaggeredMenu */}
+          <div className="lg:hidden flex items-center gap-2">
+            <button
+              onClick={toggleLang}
+              className="flex items-center gap-1 rounded-full border border-primary/20 bg-primary/5 px-2.5 py-1 font-subtitle text-[10px] font-bold uppercase tracking-wider text-primary transition-all duration-300 hover:bg-primary/15"
+              aria-label="Toggle language"
+            >
+              {lang === "es" ? "🇯🇵 JP" : "🇪🇸 ES"}
+            </button>
+            <div className="w-10" />
+          </div>
         </div>
       </header>
 

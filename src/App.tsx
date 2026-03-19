@@ -31,6 +31,7 @@ const PageFallback = () => (
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <LanguageProvider>
     <TooltipProvider>
       <Suspense fallback={null}>
         <SplashCursor />
@@ -52,6 +53,7 @@ const App = () => (
         </Suspense>
       </BrowserRouter>
     </TooltipProvider>
+    </LanguageProvider>
   </QueryClientProvider>
 );
 
