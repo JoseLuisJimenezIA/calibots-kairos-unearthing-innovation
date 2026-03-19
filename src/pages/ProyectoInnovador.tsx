@@ -13,6 +13,7 @@ import PaleontologiaImpactoSection from "@/components/proyecto/PaleontologiaImpa
 import CasosRealesSection from "@/components/proyecto/CasosRealesSection";
 import EvolucionSection from "@/components/proyecto/EvolucionSection";
 import TecnologiaSection from "@/components/proyecto/TecnologiaSection";
+import ArgosPortalSection from "@/components/proyecto/ArgosPortalSection";
 import JuegoSection from "@/components/proyecto/JuegoSection";
 import TimelineSection from "@/components/proyecto/TimelineSection";
 
