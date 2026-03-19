@@ -1,8 +1,9 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Radar, Cpu, Zap } from "lucide-react";
+import { ExternalLink, Zap } from "lucide-react";
 import { textReveal, scaleReveal, staggerContainer, staggerItem } from "@/lib/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
+import argosLogo from "@/assets/logo_argos.png";
 
 const ShapeBlur = lazy(() => import("@/components/ShapeBlur"));
 
@@ -117,25 +118,16 @@ const ArgosPortalSection = () => {
                   <Zap className="h-4 w-4 text-primary" />
                 </motion.div>
 
-                {/* Icons row */}
-                <motion.div variants={staggerItem} className="flex items-center gap-6 mb-8">
-                  <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.8 }}>
-                    <Cpu className="h-8 w-8 text-secondary drop-shadow-[0_0_12px_hsl(160_40%_45%/0.5)]" />
-                  </motion.div>
-                  <div className="h-8 w-[1px] bg-border" />
-                  <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.8 }}>
-                    <Radar className="h-8 w-8 text-primary drop-shadow-[0_0_12px_hsl(40_76%_50%/0.5)]" />
-                  </motion.div>
+                {/* ARGOS Logo */}
+                <motion.div variants={staggerItem} className="mb-8">
+                  <motion.img
+                    src={argosLogo}
+                    alt="ARGOS Logo"
+                    className="h-24 md:h-32 lg:h-40 w-auto drop-shadow-[0_0_20px_hsl(40_76%_50%/0.3)]"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  />
                 </motion.div>
-
-                {/* Title */}
-                <motion.h2
-                  variants={textReveal}
-                  custom={0}
-                  className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wider mb-4"
-                >
-                  <span className="text-gradient-gold">{t("argos.title")}</span>
-                </motion.h2>
 
                 {/* Subtitle */}
                 <motion.p
