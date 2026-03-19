@@ -1,57 +1,61 @@
 
 
-## Aplicar nueva paleta de colores
+## Sección interactiva "Portal ARGOS" en Proyecto Innovador
 
-Nueva paleta con 6 colores que introduce tonos mas frescos incluyendo un azul cielo y verdes salvia.
+### Objetivo
+Crear una sección visualmente impactante dentro de la página Proyecto Innovador que sirva como portal/hipervínculo hacia la web externa de ARGOS (https://argoss.lovable.app). La sección combinará efectos existentes del proyecto para crear una experiencia inmersiva.
 
-### Mapeo de colores
+### Diseño visual
 
-| Hex | HSL | Uso en el sitio |
-|-----|-----|-----------------|
-| `#D6CDA4` | `49 38% 74%` | **Background** - Fondo general (khaki claro) |
-| `#8B5B29` | `31 54% 35%` | **Foreground / Dark-brown** - Texto principal, Hero, Footer (marron terroso) |
-| `#D6A340` | `40 64% 55%` | **Primary** - Botones principales, color de marca (dorado) |
-| `#49784C` | `124 24% 38%` | **Secondary** - Badges, botones secundarios (verde bosque) |
-| `#A4C8E1` | `205 46% 76%` | **Accent** - Elementos de enfasis, highlights (azul cielo) |
-| `#A8BBA1` | `104 14% 68%` | **Muted** - Fondos suaves, elementos pasivos (verde salvia) |
+La sección será un bloque full-width con fondo oscuro premium que incluye:
 
-### Cambios por archivo
+1. **Fondo con ShapeBlur** -- el componente WebGL ya existente en el proyecto, renderizado como fondo con efecto reactivo al mouse
+2. **Partículas/líneas doradas animadas** -- usando gradientes CSS animados y pseudo-elementos
+3. **Card central tipo "portal"** -- con glass-card, borde animado con glow dorado pulsante, y el logo de ARGOS
+4. **Texto animado** -- título "ARGOS — Plataforma de Monitoreo" con efecto textReveal de framer-motion
+5. **Botón CTA principal** -- enlace externo con efecto hover glow y animación de flecha, abre en nueva pestaña
+6. **Efecto de "conexión"** -- líneas SVG animadas que conectan visualmente CaliBots con ARGOS
 
-**`src/index.css`** - Actualizar todas las variables CSS:
+```text
+┌─────────────────────────────────────────────┐
+│  ░░░░░░░ ShapeBlur background ░░░░░░░░░░░  │
+│                                             │
+│     ╔═══════════════════════════════╗       │
+│     ║  ⚡ CALIBOTS × ARGOS         ║       │
+│     ║                               ║       │
+│     ║  Plataforma de Monitoreo      ║       │
+│     ║  Ambiental Científico         ║       │
+│     ║                               ║       │
+│     ║  [🔗 Explorar ARGOS →]        ║       │
+│     ╚═══════════════════════════════╝       │
+│                                             │
+└─────────────────────────────────────────────┘
+```
 
-- `--background`: `49 38% 74%` (khaki `#D6CDA4`)
-- `--foreground`: `31 54% 22%` (version mas oscura del marron para legibilidad del texto)
-- `--card`: `49 38% 84%` (khaki mas claro para que las cards resalten)
-- `--card-foreground`: `31 54% 22%`
-- `--primary`: `40 64% 55%` (dorado `#D6A340`)
-- `--primary-foreground`: `0 0% 100%`
-- `--secondary`: `124 24% 38%` (verde bosque `#49784C`)
-- `--secondary-foreground`: `0 0% 100%`
-- `--muted`: `104 14% 68%` (verde salvia `#A8BBA1`)
-- `--muted-foreground`: `31 54% 35%` (marron `#8B5B29`)
-- `--accent`: `205 46% 76%` (azul cielo `#A4C8E1`)
-- `--accent-foreground`: `31 54% 22%` (texto oscuro sobre azul claro)
-- `--border`: `49 25% 65%`
-- `--ring`: `40 64% 55%`
-- `--sand`: `49 38% 74%`
-- `--teal`: `124 24% 38%`
-- `--mustard`: `40 64% 55%`
-- `--crimson`: `31 54% 35%`
-- `--dark-brown`: `31 54% 35%`
+### Implementación técnica
 
-**`src/pages/Index.tsx`** - Hero con fondo marron terroso:
-- Fondo: `bg-dark-brown` (usando `#8B5B29`)
+**Archivo nuevo**: `src/components/proyecto/ArgosPortalSection.tsx`
+- Importa `ShapeBlur` (lazy loaded) como fondo WebGL interactivo
+- Usa animaciones de framer-motion existentes: `textReveal`, `scaleReveal`, `flipIn`
+- Card con borde animado gradient (keyframe CSS rotate)
+- Botón `<a href="https://argoss.lovable.app" target="_blank">` con hover glow-gold
+- Iconos de Lucide: `ExternalLink`, `Radar`, `Cpu`
+- Traducciones ES/EN/JP via `useLanguage()`
 
-**`src/components/Footer.tsx`** - Mismo fondo oscuro:
-- Fondo: `bg-dark-brown`
+**Archivo modificado**: `src/pages/ProyectoInnovador.tsx`
+- Insertar `<ArgosPortalSection />` entre TecnologiaSection y JuegoSection (posición lógica: después de hablar de tecnología, antes del juego)
 
-**`src/pages/QuienesSomos.tsx`** - Secciones oscuras:
-- Fondo: `bg-dark-brown`
+**Archivo modificado**: `src/contexts/LanguageContext.tsx`
+- Agregar traducciones para la nueva sección en los 3 idiomas (`argos.badge`, `argos.title`, `argos.subtitle`, `argos.desc`, `argos.cta`)
 
-### Resultado
+**Archivo modificado**: `src/index.css`
+- Agregar keyframe `@keyframes border-rotate` para el efecto de borde giratorio con gradient
 
-- Paleta mas fresca y variada con la introduccion del azul cielo como acento
-- El verde bosque se mantiene como secondary para badges y botones
-- El dorado como primary da presencia a los CTAs
-- El verde salvia como muted aporta suavidad a fondos pasivos
-- Fondo khaki calido que armoniza todos los colores
+### Efectos interactivos incluidos
+- ShapeBlur WebGL reactivo al mouse como fondo
+- Borde con gradient rotante (CSS animation)
+- Glow pulsante dorado en hover
+- Framer-motion: reveal escalonado de elementos
+- Botón con scale + glow en hover
+- Partículas decorativas con pseudo-elementos animados
+
