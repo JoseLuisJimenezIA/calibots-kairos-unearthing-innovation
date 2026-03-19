@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
+import ClickSpark from "@/components/ClickSpark";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
