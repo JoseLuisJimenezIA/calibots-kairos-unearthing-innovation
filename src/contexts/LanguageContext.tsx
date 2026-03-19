@@ -281,7 +281,12 @@ const translations: Record<Language, Record<string, string>> = {
     "game.p2": "Este juego busca que los niños aprendan de forma interactiva y divertida sobre los desafíos que enfrentan los arqueólogos.",
     "game.cta": "Conoce el Juego del Robot",
 
-    // Timeline
+    // Argos Portal
+    "argos.badge": "CaliBots × ARGOS",
+    "argos.title": "ARGOS",
+    "argos.subtitle": "Plataforma de Monitoreo Ambiental Científico",
+    "argos.desc": "ARGOS es nuestra plataforma hermana dedicada al monitoreo ambiental en tiempo real para excavaciones arqueológicas y espeleología. Explora sus capacidades de sensores, análisis de datos y protección de equipos en campo.",
+    "argos.cta": "Explorar ARGOS",
     "tl.title1": "Avances del ",
     "tl.title2": "Proyecto",
     "tl.subtitle": "Línea de tiempo de nuestro desarrollo",
