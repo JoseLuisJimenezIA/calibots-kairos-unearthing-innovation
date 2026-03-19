@@ -1,8 +1,9 @@
 import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Radar, Cpu, Zap } from "lucide-react";
+import { ExternalLink, Zap } from "lucide-react";
 import { textReveal, scaleReveal, staggerContainer, staggerItem } from "@/lib/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
+import argosLogo from "@/assets/logo_argos.png";
 
 const ShapeBlur = lazy(() => import("@/components/ShapeBlur"));
 
