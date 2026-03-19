@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
+import ClickSpark from "@/components/ClickSpark";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -33,6 +34,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
     <TooltipProvider>
+      <ClickSpark sparkColor="#D4A017" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
       <Suspense fallback={null}>
         <SplashCursor />
       </Suspense>
@@ -52,6 +54,7 @@ const App = () => (
           </Routes>
         </Suspense>
       </BrowserRouter>
+      </ClickSpark>
     </TooltipProvider>
     </LanguageProvider>
   </QueryClientProvider>
