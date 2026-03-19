@@ -281,7 +281,12 @@ const translations: Record<Language, Record<string, string>> = {
     "game.p2": "Este juego busca que los niños aprendan de forma interactiva y divertida sobre los desafíos que enfrentan los arqueólogos.",
     "game.cta": "Conoce el Juego del Robot",
 
-    // Timeline
+    // Argos Portal
+    "argos.badge": "CaliBots × ARGOS",
+    "argos.title": "ARGOS",
+    "argos.subtitle": "Plataforma de Monitoreo Ambiental Científico",
+    "argos.desc": "ARGOS es nuestra plataforma hermana dedicada al monitoreo ambiental en tiempo real para excavaciones arqueológicas y espeleología. Explora sus capacidades de sensores, análisis de datos y protección de equipos en campo.",
+    "argos.cta": "Explorar ARGOS",
     "tl.title1": "Avances del ",
     "tl.title2": "Proyecto",
     "tl.subtitle": "Línea de tiempo de nuestro desarrollo",
@@ -619,7 +624,12 @@ const translations: Record<Language, Record<string, string>> = {
     "game.p2": "This game aims to help children learn interactively and enjoyably about the challenges archaeologists face.",
     "game.cta": "Discover the Robot Game",
 
-    // Timeline
+    // Argos Portal
+    "argos.badge": "CaliBots × ARGOS",
+    "argos.title": "ARGOS",
+    "argos.subtitle": "Scientific Environmental Monitoring Platform",
+    "argos.desc": "ARGOS is our sister platform dedicated to real-time environmental monitoring for archaeological excavations and speleology. Explore its sensor capabilities, data analysis, and field team protection.",
+    "argos.cta": "Explore ARGOS",
     "tl.title1": "Project ",
     "tl.title2": "Progress",
     "tl.subtitle": "Timeline of our development",
@@ -957,7 +967,12 @@ const translations: Record<Language, Record<string, string>> = {
     "game.p2": "このゲームは、子供たちが考古学者が直面する課題についてインタラクティブで楽しい方法で学べるようにすることを目指しています。",
     "game.cta": "ロボットゲームを見る",
 
-    // Timeline
+    // Argos Portal
+    "argos.badge": "CaliBots × ARGOS",
+    "argos.title": "ARGOS",
+    "argos.subtitle": "科学環境モニタリングプラットフォーム",
+    "argos.desc": "ARGOSは、考古学的発掘と洞窟探検のためのリアルタイム環境モニタリングに特化した姉妹プラットフォームです。センサー機能、データ分析、フィールドチームの保護をご覧ください。",
+    "argos.cta": "ARGOSを探索",
     "tl.title1": "プロジェクトの",
     "tl.title2": "進捗",
     "tl.subtitle": "開発のタイムライン",

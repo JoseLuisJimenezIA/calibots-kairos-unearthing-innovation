@@ -13,6 +13,7 @@ import PaleontologiaImpactoSection from "@/components/proyecto/PaleontologiaImpa
 import CasosRealesSection from "@/components/proyecto/CasosRealesSection";
 import EvolucionSection from "@/components/proyecto/EvolucionSection";
 import TecnologiaSection from "@/components/proyecto/TecnologiaSection";
+import ArgosPortalSection from "@/components/proyecto/ArgosPortalSection";
 import JuegoSection from "@/components/proyecto/JuegoSection";
 import TimelineSection from "@/components/proyecto/TimelineSection";
 
@@ -43,6 +44,8 @@ const ProyectoInnovador = () => {
       <SectionDivider variant="crimson" />
       <TecnologiaSection />
       <SectionDivider variant="gold" />
+      <ArgosPortalSection />
+      <SectionDivider variant="teal" />
       <JuegoSection />
       <SectionDivider variant="gradient" />
       <TimelineSection />
