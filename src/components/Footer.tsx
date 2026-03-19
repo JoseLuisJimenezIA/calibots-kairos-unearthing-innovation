@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import { Instagram, Youtube } from "lucide-react";
 import Dock from "./Dock";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   const socialItems = [
     {
       icon: <Instagram className="h-6 w-6" />,
@@ -25,6 +28,14 @@ const Footer = () => {
     },
   ];
 
+  const navLinks = [
+    { label: t("nav.inicio"), path: "/" },
+    { label: t("nav.quienes"), path: "/quienes-somos" },
+    { label: t("nav.proyecto"), path: "/proyecto-innovador" },
+    { label: t("nav.juego"), path: "/juego-del-robot" },
+    { label: t("nav.galeria"), path: "/galeria" },
+    { label: t("nav.contacto"), path: "/contacto" },
+  ];
 
   return (
     <footer className="border-t border-primary/10 bg-background">
@@ -33,20 +44,13 @@ const Footer = () => {
           <div className="flex flex-col gap-3">
             <img src="/logo.png" alt="Calibots Kairos" className="h-14 w-auto self-start drop-shadow-[0_0_15px_hsl(40_76%_50%/0.3)]" />
             <p className="font-subtitle text-sm text-muted-foreground">Calibots Kairos – FIRST LEGO League</p>
-            <p className="font-subtitle text-xs text-muted-foreground/60">Club de Robótica · Colegio Comfandi El Prado</p>
+            <p className="font-subtitle text-xs text-muted-foreground/60">{t("footer.club")}</p>
           </div>
 
           <div>
-            <h4 className="mb-3 font-heading text-xs font-bold uppercase tracking-[0.2em] text-primary">Navegación</h4>
+            <h4 className="mb-3 font-heading text-xs font-bold uppercase tracking-[0.2em] text-primary">{t("footer.nav")}</h4>
             <ul className="space-y-2 font-subtitle text-sm">
-              {[
-                { label: "Inicio", path: "/" },
-                { label: "Quiénes Somos", path: "/quienes-somos" },
-                { label: "Proyecto Innovador", path: "/proyecto-innovador" },
-                { label: "Juego del Robot", path: "/juego-del-robot" },
-                { label: "Galería", path: "/galeria" },
-                { label: "Contacto", path: "/contacto" },
-              ].map((l) => (
+              {navLinks.map((l) => (
                 <li key={l.path}>
                   <Link to={l.path} className="text-muted-foreground transition-colors hover:text-primary">{l.label}</Link>
                 </li>
@@ -55,14 +59,8 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="mb-3 font-heading text-xs font-bold uppercase tracking-[0.2em] text-primary">Redes Sociales</h4>
-            <Dock
-              items={socialItems}
-              baseItemSize={45}
-              magnification={65}
-              panelHeight={58}
-              distance={150}
-            />
+            <h4 className="mb-3 font-heading text-xs font-bold uppercase tracking-[0.2em] text-primary">{t("footer.social")}</h4>
+            <Dock items={socialItems} baseItemSize={45} magnification={65} panelHeight={58} distance={150} />
           </div>
         </div>
 
@@ -72,13 +70,11 @@ const Footer = () => {
               <img src="/logo.png" alt="Calibots Kairos" className="h-8 w-auto drop-shadow-[0_0_10px_hsl(40_76%_50%/0.4)]" />
             </div>
             <div className="flex items-center justify-center rounded-xl border border-primary/15 bg-background px-4 py-3">
-              <span className="font-heading text-xs font-bold uppercase tracking-widest text-primary">
-                FLL
-              </span>
+              <span className="font-heading text-xs font-bold uppercase tracking-widest text-primary">FLL</span>
             </div>
           </div>
           <p className="font-subtitle text-sm text-muted-foreground/60">
-            © {new Date().getFullYear()} Calibots Kairos. Todos los derechos reservados.
+            © {new Date().getFullYear()} Calibots Kairos. {t("footer.rights")}
           </p>
         </div>
       </div>
