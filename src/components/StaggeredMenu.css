@@ -35,9 +35,7 @@
 }
 
 .sm-logo {
-  display: flex;
-  align-items: center;
-  user-select: none;
+  display: none;
 }
 
 .sm-logo-img {
