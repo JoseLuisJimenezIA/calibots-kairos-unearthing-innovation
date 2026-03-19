@@ -156,4 +156,18 @@
   .animate-glow-pulse {
     animation: glow-pulse 3s ease-in-out infinite;
   }
+
+  @property --border-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  @keyframes border-rotate {
+    to { --border-angle: 360deg; }
+  }
+
+  .animate-border-rotate {
+    animation: border-rotate 4s linear infinite;
+  }
 }

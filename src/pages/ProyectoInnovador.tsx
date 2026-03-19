@@ -44,6 +44,8 @@ const ProyectoInnovador = () => {
       <SectionDivider variant="crimson" />
       <TecnologiaSection />
       <SectionDivider variant="gold" />
+      <ArgosPortalSection />
+      <SectionDivider variant="teal" />
       <JuegoSection />
       <SectionDivider variant="gradient" />
       <TimelineSection />
