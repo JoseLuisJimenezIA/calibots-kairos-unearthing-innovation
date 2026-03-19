@@ -59,7 +59,7 @@ const Navbar = () => {
               className="flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 font-subtitle text-xs font-bold uppercase tracking-wider text-primary transition-all duration-300 hover:bg-primary/15 hover:scale-105"
               aria-label="Toggle language"
             >
-              {lang === "es" ? "🇯🇵 JP" : "🇪🇸 ES"}
+              {lang === "es" ? "🇬🇧 EN" : lang === "en" ? "🇯🇵 JP" : "🇪🇸 ES"}
             </button>
           </div>
 
