@@ -69,15 +69,8 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-background/60" />
         </div>
 
-        <DeferredRender>
-          <Suspense fallback={null}>
-            <div className="absolute inset-0 z-[1] pointer-events-none flex items-center justify-center">
-              <div className="pointer-events-auto w-[200px] h-[200px] sm:w-[280px] sm:h-[280px] md:w-[350px] md:h-[350px] translate-y-16">
-                <Orb hue={0} hoverIntensity={1.5} rotateOnHover forceHoverState={false} backgroundColor="#0F0B07" />
-              </div>
-            </div>
-          </Suspense>
-        </DeferredRender>
+
+
 
         <div className="container relative z-10 flex flex-col items-center gap-6 text-center">
           <motion.span
