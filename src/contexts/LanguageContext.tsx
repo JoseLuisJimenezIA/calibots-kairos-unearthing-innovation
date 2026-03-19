@@ -700,7 +700,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [lang, setLang] = useState<Language>("es");
 
   const toggleLang = useCallback(() => {
-    setLang((prev) => (prev === "es" ? "jp" : "es"));
+    setLang((prev) => (prev === "es" ? "en" : prev === "en" ? "jp" : "es"));
   }, []);
 
   const t = useCallback(
