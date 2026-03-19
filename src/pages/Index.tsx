@@ -11,6 +11,7 @@ import ScrollStack, { ScrollStackItem } from "@/components/ScrollStack";
 import MagicBento, { type BentoCard } from "@/components/MagicBento";
 import { scaleReveal, staggerContainer, staggerItem, textReveal } from "@/lib/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
+import argosLogo from "@/assets/logo_argos.png";
 
 // Lazy load heavy WebGL components
 const Orb = lazy(() => import("@/components/Orb"));
