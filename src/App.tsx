@@ -34,6 +34,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
     <TooltipProvider>
+      <ClickSpark sparkColor="#D4A017" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
       <Suspense fallback={null}>
         <SplashCursor />
       </Suspense>
@@ -53,6 +54,7 @@ const App = () => (
           </Routes>
         </Suspense>
       </BrowserRouter>
+      </ClickSpark>
     </TooltipProvider>
     </LanguageProvider>
   </QueryClientProvider>
