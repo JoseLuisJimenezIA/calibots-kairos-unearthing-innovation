@@ -11,6 +11,7 @@ import { Users, Lightbulb, Heart, Search, Zap, PartyPopper, ArrowRight } from "l
 import { fadeUp, textReveal, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, flipIn } from "@/lib/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+import equipoFoto from "@/assets/grupo_completo_1-3.jpeg";
 import richardImg from "@/assets/team/richard.png";
 import diegoImg from "@/assets/team/diego.png";
 import joseLuisImg from "@/assets/team/jose_luis.png";
@@ -97,7 +98,7 @@ const QuienesSomos = () => {
               </div>
             </motion.div>
             <motion.div variants={slideFromRight} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
-              <PhotoPlaceholder aspectRatio="video" label="📷 Foto del equipo aquí" />
+              <img src={equipoFoto} alt="Equipo Calibots completo con mesa FLL" className="w-full rounded-2xl shadow-lg object-cover" />
             </motion.div>
           </div>
         </div>
