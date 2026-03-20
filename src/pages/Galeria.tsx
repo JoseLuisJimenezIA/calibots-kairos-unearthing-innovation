@@ -29,6 +29,14 @@ import grupoCompleto1 from "@/assets/grupo_completo_1.jpeg";
 import grupoCompleto2 from "@/assets/grupo_completo_2.jpeg";
 import grupoCompleto12 from "@/assets/grupo_completo_1-2.jpeg";
 import grupoCompleto22 from "@/assets/grupo_completo_2-2.jpeg";
+import grupo18 from "@/assets/grupo18.jpeg";
+import grupo19 from "@/assets/grupo19.jpeg";
+import grupo20 from "@/assets/grupo20.jpeg";
+import grupo21 from "@/assets/grupo21.jpeg";
+import grupo22 from "@/assets/grupo22.jpeg";
+import grupo23 from "@/assets/grupo23.jpeg";
+import grupo24 from "@/assets/grupo24.jpeg";
+import grupo25 from "@/assets/grupo25.jpeg";
 
 const galleryImages = [
   { src: grupo1, alt: "Equipo Calibots en el aula" },
@@ -50,6 +58,14 @@ const galleryImages = [
   { src: grupo15, alt: "Equipo Calibots 15" },
   { src: grupo16, alt: "Equipo Calibots 16" },
   { src: grupo17, alt: "Equipo Calibots 17" },
+  { src: grupo18, alt: "Coach con dinosaurio" },
+  { src: grupo19, alt: "Selfie del equipo" },
+  { src: grupo20, alt: "Trabajando en laptop" },
+  { src: grupo21, alt: "Coach con gafas de seguridad" },
+  { src: grupo22, alt: "Práctica en mesa FLL" },
+  { src: grupo23, alt: "Investigando en equipo" },
+  { src: grupo24, alt: "Vista del laboratorio" },
+  { src: grupo25, alt: "Coach con herramientas" },
   { src: grupo132, alt: "Práctica en mesa FLL 2" },
   { src: grupoCompleto12, alt: "Equipo completo 3" },
   { src: grupoCompleto22, alt: "Equipo completo 4" },
