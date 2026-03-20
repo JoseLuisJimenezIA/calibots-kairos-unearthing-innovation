@@ -264,6 +264,11 @@ const translations: Record<Language, Record<string, string>> = {
     "evo.v1.desc": "Primer modelo conceptual utilizado para analizar la forma general del robot y sus posibilidades de exploración.",
     "evo.v2.title": "Prototipo V2",
     "evo.v2.desc": "Versión mejorada con ruedas más grandes, suspensión y mejor estabilidad para terrenos irregulares.",
+    "evo.v3.title": "Prototipo V3",
+    "evo.v3.desc": "Rediseño estructural con chasis optimizado, mejor distribución de peso y sistema de tracción mejorado.",
+    "evo.v4.title": "Prototipo V4",
+    "evo.v4.desc": "Versión final con diseño compacto, sensores integrados y capacidad de exploración autónoma en cuevas.",
+    "evo.v4.badge": "Versión Final",
 
     // Tecnologia
     "tech.title": "Tecnología",
