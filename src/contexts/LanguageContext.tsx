@@ -960,6 +960,11 @@ const translations: Record<Language, Record<string, string>> = {
     "evo.v1.desc": "ロボットの一般的な形状と探査の可能性を分析するために使用された最初の概念モデル。",
     "evo.v2.title": "プロトタイプ V2",
     "evo.v2.desc": "不整地のためにより大きな車輪、サスペンション、より良い安定性を備えた改良版。",
+    "evo.v3.title": "プロトタイプ V3",
+    "evo.v3.desc": "最適化されたシャーシ、より良い重量分散、改良されたトラクションシステムを備えた構造的再設計。",
+    "evo.v4.title": "プロトタイプ V4",
+    "evo.v4.desc": "コンパクトなデザイン、統合センサー、自律的な洞窟探査能力を備えた最終バージョン。",
+    "evo.v4.badge": "最終バージョン",
 
     // Tecnologia
     "tech.title": "技術",
