@@ -112,6 +112,7 @@ const Galeria = () => {
 
       <section className="section-darker relative" style={{ height: "80vh", minHeight: "500px" }}>
         <DomeGallery
+          grayscale={false}
           images={galleryImages}
           fit={0.8}
           minRadius={600}
