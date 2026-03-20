@@ -612,6 +612,11 @@ const translations: Record<Language, Record<string, string>> = {
     "evo.v1.desc": "First conceptual model used to analyze the general shape of the robot and its exploration possibilities.",
     "evo.v2.title": "Prototype V2",
     "evo.v2.desc": "Improved version with larger wheels, suspension and better stability for irregular terrain.",
+    "evo.v3.title": "Prototype V3",
+    "evo.v3.desc": "Structural redesign with optimized chassis, better weight distribution and improved traction system.",
+    "evo.v4.title": "Prototype V4",
+    "evo.v4.desc": "Final version with compact design, integrated sensors and autonomous cave exploration capability.",
+    "evo.v4.badge": "Final Version",
 
     // Tecnologia
     "tech.title": "Technology",
