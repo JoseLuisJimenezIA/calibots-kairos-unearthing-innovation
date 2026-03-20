@@ -11,6 +11,7 @@ import { Users, Lightbulb, Heart, Search, Zap, PartyPopper, ArrowRight } from "l
 import { fadeUp, textReveal, slideFromLeft, slideFromRight, scaleReveal, staggerContainer, staggerItem, flipIn } from "@/lib/animations";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+import equipoFoto from "@/assets/grupo_completo_1-3.jpeg";
 import richardImg from "@/assets/team/richard.png";
 import diegoImg from "@/assets/team/diego.png";
 import joseLuisImg from "@/assets/team/jose_luis.png";
