@@ -98,7 +98,7 @@ const QuienesSomos = () => {
               </div>
             </motion.div>
             <motion.div variants={slideFromRight} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0}>
-              <PhotoPlaceholder aspectRatio="video" label="📷 Foto del equipo aquí" />
+              <img src={equipoFoto} alt="Equipo Calibots completo con mesa FLL" className="w-full rounded-2xl shadow-lg object-cover" />
             </motion.div>
           </div>
         </div>
