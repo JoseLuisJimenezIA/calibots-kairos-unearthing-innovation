@@ -15,8 +15,16 @@ import grupo5 from "@/assets/grupo5.jpeg";
 import grupo6 from "@/assets/grupo6.jpeg";
 import grupo7 from "@/assets/grupo7.jpeg";
 import grupo8 from "@/assets/grupo8.jpeg";
+import grupo9 from "@/assets/grupo9.jpeg";
+import grupo10 from "@/assets/grupo10.jpeg";
+import grupo11 from "@/assets/grupo11.jpeg";
+import grupo12 from "@/assets/grupo12.jpeg";
 import grupo13 from "@/assets/grupo_13.jpeg";
 import grupo132 from "@/assets/grupo_13-2.jpeg";
+import grupo14 from "@/assets/grupo14.jpeg";
+import grupo15 from "@/assets/grupo15.jpeg";
+import grupo16 from "@/assets/grupo16.jpeg";
+import grupo17 from "@/assets/grupo17.jpeg";
 import grupoCompleto1 from "@/assets/grupo_completo_1.jpeg";
 import grupoCompleto2 from "@/assets/grupo_completo_2.jpeg";
 import grupoCompleto12 from "@/assets/grupo_completo_1-2.jpeg";
@@ -34,6 +42,14 @@ const galleryImages = [
   { src: grupo6, alt: "Equipo Calibots 6" },
   { src: grupo7, alt: "Equipo Calibots 7" },
   { src: grupo8, alt: "Equipo Calibots 8" },
+  { src: grupo9, alt: "Equipo Calibots 9" },
+  { src: grupo10, alt: "Equipo Calibots 10" },
+  { src: grupo11, alt: "Equipo Calibots 11" },
+  { src: grupo12, alt: "Equipo Calibots 12" },
+  { src: grupo14, alt: "Equipo Calibots 14" },
+  { src: grupo15, alt: "Equipo Calibots 15" },
+  { src: grupo16, alt: "Equipo Calibots 16" },
+  { src: grupo17, alt: "Equipo Calibots 17" },
   { src: grupo132, alt: "Práctica en mesa FLL 2" },
   { src: grupoCompleto12, alt: "Equipo completo 3" },
   { src: grupoCompleto22, alt: "Equipo completo 4" },
