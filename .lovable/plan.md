@@ -1,31 +1,26 @@
 
 
-## Agregar 8 fotos nuevas a DomeGallery con orientación correcta
+## Galería armoniosa: tiles con cover, vista ampliada con contain
 
-### Problema
-Las fotos se recortan porque todos los tiles del DomeGallery usan `object-fit: cover` con tiles cuadrados. Las fotos verticales (grupo15, grupo16, grupo17) se cortan mucho.
+### Problema actual
+Con `object-fit: contain`, las fotos horizontales muestran barras negras feas arriba y abajo dentro de los tiles cuadrados. Eso rompe la armonía visual de la esfera 3D.
 
 ### Solución
-Cambiar `object-fit: cover` a `object-fit: contain` en los tiles de la galería para que cada foto se muestre completa sin recortar, con fondo oscuro detrás para rellenar el espacio sobrante.
+Usar dos estrategias diferentes:
+- **Tiles de la esfera**: `object-fit: cover` — cada tile se llena completamente, sin barras negras, aspecto uniforme y armónico
+- **Vista ampliada (click)**: `object-fit: contain` — al hacer click en una foto, se muestra completa sin recortar
+
+Esto da lo mejor de ambos mundos: la esfera se ve limpia y profesional, y al tocar una foto se ve completa.
 
 ### Cambios
 
-**1. Copiar 8 imágenes a `src/assets/`**
-- `grupo9.jpeg` a `grupo17.jpeg` (8 fotos nuevas)
+**1. `src/components/DomeGallery.css`**
+- `.item__image img`: cambiar a `object-fit: cover` con `object-position: center`
+- `.viewer .enlarge img`: mantener `object-fit: contain` para ver la foto completa al ampliar
 
-**2. Actualizar `src/pages/Galeria.tsx`**
-- Importar las 8 nuevas imágenes
-- Agregarlas al array `galleryImages` (total: 22 imágenes)
+**2. `src/pages/Galeria.tsx`** — sin cambios necesarios (las fotos ya están importadas y a color)
 
-**3. Actualizar `src/components/DomeGallery.css`**
-- Cambiar `.item__image img` de `object-fit: cover` a `object-fit: contain`
-- Agregar `background: rgba(0,0,0,0.3)` al `.item__image` para que las fotos verticales no tengan espacios transparentes
-- Hacer lo mismo en `.viewer .enlarge img` para la vista ampliada
-
-### Archivos modificados
 | Archivo | Cambio |
 |---|---|
-| `src/assets/grupo9-17.jpeg` (8) | Nuevos assets |
-| `src/pages/Galeria.tsx` | Importar y agregar 8 fotos |
-| `src/components/DomeGallery.css` | `object-fit: contain` + fondo oscuro |
+| `src/components/DomeGallery.css` | Tiles: cover. Ampliada: contain. |
 
