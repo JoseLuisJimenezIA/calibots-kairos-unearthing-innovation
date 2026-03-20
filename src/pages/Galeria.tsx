@@ -39,6 +39,45 @@ const galleryImages = [
   { src: grupoCompleto22, alt: "Equipo completo 4" },
 ];
 
+const Galeria = () => {
+  const { t } = useLanguage();
+
+  return (
+    <div className="flex min-h-screen flex-col bg-background">
+      <Navbar />
+      <BackButton />
+
+      <section className="relative py-24 overflow-hidden section-dark">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <motion.div
+            className="h-[400px] w-[400px] rounded-full bg-primary/8 blur-[100px]"
+            animate={{ scale: [1, 1.2, 1] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </div>
+        <div className="container relative z-10 text-center">
+          <motion.h1
+            className="font-heading text-3xl font-black uppercase tracking-wider md:text-5xl lg:text-6xl"
+            variants={textReveal}
+            initial="hidden"
+            animate="visible"
+            custom={0}
+          >
+            <span className="text-gradient-gold">{t("gal.title")}</span>
+          </motion.h1>
+          <motion.p
+            className="mt-5 font-subtitle text-lg text-muted-foreground/80"
+            initial={{ opacity: 0, filter: "blur(6px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{ delay: 0.4 }}
+          >
+            {t("gal.subtitle")}
+          </motion.p>
+        </div>
+      </section>
+
+      <SectionDivider variant="gold" />
+
       <section className="section-darker relative" style={{ height: "80vh", minHeight: "500px" }}>
         <DomeGallery
           images={galleryImages}
