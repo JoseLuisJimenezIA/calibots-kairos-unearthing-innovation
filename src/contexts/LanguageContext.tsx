@@ -264,6 +264,11 @@ const translations: Record<Language, Record<string, string>> = {
     "evo.v1.desc": "Primer modelo conceptual utilizado para analizar la forma general del robot y sus posibilidades de exploración.",
     "evo.v2.title": "Prototipo V2",
     "evo.v2.desc": "Versión mejorada con ruedas más grandes, suspensión y mejor estabilidad para terrenos irregulares.",
+    "evo.v3.title": "Prototipo V3",
+    "evo.v3.desc": "Rediseño estructural con chasis optimizado, mejor distribución de peso y sistema de tracción mejorado.",
+    "evo.v4.title": "Prototipo V4",
+    "evo.v4.desc": "Versión final con diseño compacto, sensores integrados y capacidad de exploración autónoma en cuevas.",
+    "evo.v4.badge": "Versión Final",
 
     // Tecnologia
     "tech.title": "Tecnología",
@@ -607,6 +612,11 @@ const translations: Record<Language, Record<string, string>> = {
     "evo.v1.desc": "First conceptual model used to analyze the general shape of the robot and its exploration possibilities.",
     "evo.v2.title": "Prototype V2",
     "evo.v2.desc": "Improved version with larger wheels, suspension and better stability for irregular terrain.",
+    "evo.v3.title": "Prototype V3",
+    "evo.v3.desc": "Structural redesign with optimized chassis, better weight distribution and improved traction system.",
+    "evo.v4.title": "Prototype V4",
+    "evo.v4.desc": "Final version with compact design, integrated sensors and autonomous cave exploration capability.",
+    "evo.v4.badge": "Final Version",
 
     // Tecnologia
     "tech.title": "Technology",
@@ -950,6 +960,11 @@ const translations: Record<Language, Record<string, string>> = {
     "evo.v1.desc": "ロボットの一般的な形状と探査の可能性を分析するために使用された最初の概念モデル。",
     "evo.v2.title": "プロトタイプ V2",
     "evo.v2.desc": "不整地のためにより大きな車輪、サスペンション、より良い安定性を備えた改良版。",
+    "evo.v3.title": "プロトタイプ V3",
+    "evo.v3.desc": "最適化されたシャーシ、より良い重量分散、改良されたトラクションシステムを備えた構造的再設計。",
+    "evo.v4.title": "プロトタイプ V4",
+    "evo.v4.desc": "コンパクトなデザイン、統合センサー、自律的な洞窟探査能力を備えた最終バージョン。",
+    "evo.v4.badge": "最終バージョン",
 
     // Tecnologia
     "tech.title": "技術",
