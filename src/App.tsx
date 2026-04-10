@@ -19,6 +19,15 @@ const Contacto = lazy(() => import("./pages/Contacto"));
 const ValorFIRST = lazy(() => import("./pages/ValorFIRST"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+// Admin pages
+const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
+const AdminTeam = lazy(() => import("./pages/admin/AdminTeam"));
+const AdminGallery = lazy(() => import("./pages/admin/AdminGallery"));
+const AdminRobot = lazy(() => import("./pages/admin/AdminRobot"));
+const AdminLayout = lazy(() => import("./components/admin/AdminLayout"));
+const ProtectedRoute = lazy(() => import("./components/admin/ProtectedRoute"));
+
 // Lazy load heavy global WebGL effect
 const SplashCursor = lazy(() => import("./components/SplashCursor"));
 
