@@ -59,6 +59,13 @@ const App = () => (
             <Route path="/galeria" element={<Galeria />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/valores/:slug" element={<ValorFIRST />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="team" element={<AdminTeam />} />
+              <Route path="gallery" element={<AdminGallery />} />
+              <Route path="robot" element={<AdminRobot />} />
+            </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
